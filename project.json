@@ -1,0 +1,35 @@
+{
+  "language": "de",
+  "name": "RKon.Alexa.NET",
+  "title": "RKon.Alexa.NET",
+  "version": "1.0.14-beta",
+  "authors": [ "R. Kling" ],
+  "description": "A simple .NET Core library for handling Alexa Smart Home Requests.",
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.2-beta2"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  "packOptions": {
+    "summary": "A simple .NET Core library for handling Alexa Smart Home Requests.",
+    "licenseUrl": "",
+    "projectUrl": "",
+
+    "owners": [
+      "R. Kling"
+    ],
+    "repository": { "url": "" },
+    "requireLicenseAcceptance": false,
+    "tags": [ "amazon", "alexa", "echo", "dot", "Smart","Home", "echo dot", "skills" ]
+  },
+  "buildOptions": {
+    "xmlDoc": true
+  }
+}
