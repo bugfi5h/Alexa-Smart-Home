@@ -1,8 +1,7 @@
 # Alexa-Smart-Home
 =============
 
-Nuget package: https://www.nuget.org/packages/RKon.Alexa.NET/1.0.15-beta
-
+Nuget package will be available soon..
 private try on creating a c# framework for the alexa smart home API.
 
 It will only work with Payload Version 2 at the moment.
