@@ -1,5 +1,5 @@
 ﻿
-namespace RKon.Alexa.NET.Types.PayloadObjects
+namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Klasse für Delta Temperaturwert

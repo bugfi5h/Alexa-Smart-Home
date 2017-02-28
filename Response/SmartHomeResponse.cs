@@ -1,29 +1,51 @@
-﻿using RKon.Alexa.NET.Response.Payloads;
-using RKon.Alexa.NET.Types;
+﻿using RKon.Alexa.NET.Types;
 using Newtonsoft.Json;
 using System;
 
 namespace RKon.Alexa.NET.Response
 {
+    /// <summary>
+    /// Exception, wenn der RequestHeader Name nicht bekannt ist
+    /// </summary>
     public class UnknownRequestHeaderException : Exception
     {
+        /// <summary>
+        /// Exception, wenn der RequestHeader Name nicht bekannt ist
+        /// </summary>
+        /// <param name="requestHeaderName"> Name des RequestHeader</param>
         public UnknownRequestHeaderException(string requestHeaderName) : base(requestHeaderName + " is not defined") { }
     }
-
+    /// <summary>
+    /// Klasse für Smart Home Responses
+    /// </summary>
     public class SmartHomeResponse : ISmartHomeResponse
     {
+        /// <summary>
+        /// Header Inhalt
+        /// </summary>
         [JsonRequired]
         [JsonProperty("header")]
         public ResponseHeader Header { get; set; }
+        /// <summary>
+        /// Payload Inhalt
+        /// </summary>
         [JsonRequired]
         [JsonProperty("payload")]
         public ResponsePayload Payload { get; set; }
 
+        /// <summary>
+        /// Liefert den Typ des Payloads
+        /// </summary>
+        /// <returns>System.Type des Payloads</returns>
         public System.Type GetResponsePayloadType()
         {
             return Payload?.GetType();
         }
 
+        /// <summary>
+        /// Legt eine SmartHomeResponse mit passendem Header und Payload mit Hilfe des requestHeaders an.
+        /// </summary>
+        /// <param name="requestHeader">Header des SmartHomeRequests</param>
         public SmartHomeResponse(Request.RequestHeader requestHeader)
         {
             Header = new ResponseHeader(requestHeader);

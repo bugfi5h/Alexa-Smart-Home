@@ -1,5 +1,5 @@
 ﻿
-namespace RKon.Alexa.NET.Response.Payloads
+namespace RKon.Alexa.NET.Response
 {
     /// <summary>
     /// Leerer Responsepayload

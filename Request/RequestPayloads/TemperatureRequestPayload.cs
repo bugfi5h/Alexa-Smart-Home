@@ -1,4 +1,4 @@
-﻿using RKon.Alexa.NET.Types.PayloadObjects;
+﻿using RKon.Alexa.NET.Types;
 using Newtonsoft.Json;
 
 namespace RKon.Alexa.NET.Request.RequestPayloads

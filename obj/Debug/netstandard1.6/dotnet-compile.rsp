@@ -11,9 +11,9 @@
 --output-name:RKon.Alexa.NET
 --title:RKon.Alexa.NET
 --description:A simple .NET Core library for handling Alexa Smart Home Requests.
---file-version:1.0.13.0
---version:1.0.13.0
---informational-version:1.0.13-beta
+--file-version:1.0.15.0
+--version:1.0.15.0
+--informational-version:1.0.15-beta
 --neutral-language:de
 --target-framework:.NETStandard,Version=v1.6
 --reference:C:\Users\Agentilo RK\.nuget\packages\Microsoft.CSharp\4.0.1\ref\netstandard1.0\Microsoft.CSharp.dll

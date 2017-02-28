@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Response.Payloads
+namespace RKon.Alexa.NET.Response
 {
     /// <summary>
     /// Payload für eine HealthCheckResponse

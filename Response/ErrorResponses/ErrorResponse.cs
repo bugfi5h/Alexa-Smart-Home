@@ -3,7 +3,6 @@
 using RKon.Alexa.NET.Request;
 using Newtonsoft.Json;
 using RKon.Alexa.NET.Types;
-using RKon.Alexa.NET.Response.Payloads;
 
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {

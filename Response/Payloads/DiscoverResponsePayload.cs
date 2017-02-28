@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace RKon.Alexa.NET.Response.Payloads
+namespace RKon.Alexa.NET.Response
 {
     /// <summary>
     /// Payload für eine DiscoverApplianceResponse

@@ -7,10 +7,25 @@ namespace RKon.Alexa.NET.Types
     /// </summary>
     public class DeviceModes
     {
+        /// <summary>
+        /// String für AUTO Mode
+        /// </summary>
         public const string AUTO = "AUTO";
+        /// <summary>
+        /// String für HEAT Mode
+        /// </summary>
         public const string HEAT = "HEAT";
+        /// <summary>
+        /// String für COOL Mode
+        /// </summary>
         public const string COOL = "COOL";
+        /// <summary>
+        /// String für AWAY Mode
+        /// </summary>
         public const string AWAY = "AWAY";
+        /// <summary>
+        /// String für OTHER Mode
+        /// </summary>
         public const string OTHER = "OTHER";
 
         /// <summary>

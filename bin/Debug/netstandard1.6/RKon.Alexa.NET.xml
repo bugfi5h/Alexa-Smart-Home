@@ -188,6 +188,27 @@
             Das Gerät für das die Aktion bestimmt ist
             </summary>
         </member>
+        <member name="T:RKon.Alexa.NET.Response.ISmartHomeResponse">
+            <summary>
+            Interface zur Definition einer SmartHome Response
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.ISmartHomeResponse.Header">
+            <summary>
+            Header
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.ISmartHomeResponse.Payload">
+            <summary>
+            Payload
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.ISmartHomeResponse.GetResponsePayloadType">
+            <summary>
+            Rückgabe des Payload Typs
+            </summary>
+            <returns>System.Type des Payloads</returns>
+        </member>
         <member name="T:RKon.Alexa.NET.Response.ResponseAppliance">
             <summary>
             Gerät, das per Response geschickt wird
@@ -256,6 +277,44 @@
             </summary>
             <param name="action">Action die hinzugefügt werden soll</param>
             <returns>True, wenn Wert hinzugefügt wurde</returns>
+        </member>
+        <member name="T:RKon.Alexa.NET.Response.UnknownRequestHeaderException">
+            <summary>
+            Exception, wenn der RequestHeader Name nicht bekannt ist
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.UnknownRequestHeaderException.#ctor(System.String)">
+            <summary>
+            Exception, wenn der RequestHeader Name nicht bekannt ist
+            </summary>
+            <param name="requestHeaderName"> Name des RequestHeader</param>
+        </member>
+        <member name="T:RKon.Alexa.NET.Response.SmartHomeResponse">
+            <summary>
+            Klasse für Smart Home Responses
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.SmartHomeResponse.Header">
+            <summary>
+            Header Inhalt
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.SmartHomeResponse.Payload">
+            <summary>
+            Payload Inhalt
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.SmartHomeResponse.GetResponsePayloadType">
+            <summary>
+            Liefert den Typ des Payloads
+            </summary>
+            <returns>System.Type des Payloads</returns>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.SmartHomeResponse.#ctor(RKon.Alexa.NET.Request.RequestHeader)">
+            <summary>
+            Legt eine SmartHomeResponse mit passendem Header und Payload mit Hilfe des requestHeaders an.
+            </summary>
+            <param name="requestHeader">Header des SmartHomeRequests</param>
         </member>
         <member name="T:RKon.Alexa.NET.Response.ErrorResponses.BridgeOfflineErrorResponse">
             <summary>
@@ -589,204 +648,143 @@
             <param name="minimumValue">Minimalwert</param>
             <param name="maximumValue">Maximalwert</param>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.DependentServiceUnavailablePayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.DependentServiceUnavailablePayload">
             <summary>
             Payload für DependentServiceUnavailable
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.DependentServiceUnavailablePayload.DependentServiceName">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.DependentServiceUnavailablePayload.DependentServiceName">
             <summary>
             Name des angeforderten Service
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.DependentServiceUnavailablePayload.#ctor(System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.DependentServiceUnavailablePayload.#ctor(System.String)">
             <summary>
             Konstruktor. Setzt DependentServiceName
             </summary>
             <param name="serviceName"></param>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.NotSupportedInCurrentModePayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.NotSupportedInCurrentModePayload">
             <summary>
             Payload für NotSupportedInCurrentMode
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.NotSupportedInCurrentModePayload.CurrentDeviceMode">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.NotSupportedInCurrentModePayload.CurrentDeviceMode">
             <summary>
             Aktiver Gerätemodus
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.NotSupportedInCurrentModePayload.#ctor(System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.NotSupportedInCurrentModePayload.#ctor(System.String)">
             <summary>
             Konstruktor. Setzt CurrentDeviceMode wenn möglich auf currenMode. Ansonsten auf OTHER
             </summary>
             <param name="currentMode"></param>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.NotSupportedInCurrentModePayload.TrySetDeviceMode(System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.NotSupportedInCurrentModePayload.TrySetDeviceMode(System.String)">
             <summary>
             Setzt CurrentDeviceMode wenn möglich auf mode. Ansonsten auf OTHER
             </summary>
             <param name="mode"></param>
             <returns></returns>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.RateLimitExceededPayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.RateLimitExceededPayload">
             <summary>
             Payload für RateLimitExceeded
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.RateLimitExceededPayload.RateLimit">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.RateLimitExceededPayload.RateLimit">
             <summary>
             Maximale Anzahl von Requests, die ein Gerät akzeptiert
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.RateLimitExceededPayload.TimeUnit">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.RateLimitExceededPayload.TimeUnit">
             <summary>
             Zeiteinheit für das RateLimit in Großbuchstaben. Z.B MINUTE, HOUR oder DAY 
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.RateLimitExceededPayload.#ctor(System.String,System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.RateLimitExceededPayload.#ctor(System.String,System.String)">
             <summary>
             Konstruktor. Setzt RateLimit und TimeUnit
             </summary>
             <param name="rateLimit"></param>
             <param name="timeUnit"></param>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.TargetFirmwareOutdatedPayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.TargetFirmwareOutdatedPayload">
             <summary>
             Payload für TargetFirmwareOutdated
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.TargetFirmwareOutdatedPayload.MinimumFirmwareVersion">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.TargetFirmwareOutdatedPayload.MinimumFirmwareVersion">
             <summary>
             Kleinste erlaubte Firmwareversion
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.TargetFirmwareOutdatedPayload.CurrentFirmwareVersion">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.TargetFirmwareOutdatedPayload.CurrentFirmwareVersion">
             <summary>
             Aktuelle Firmwareversion des Geräts
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.TargetFirmwareOutdatedPayload.#ctor(System.String,System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.TargetFirmwareOutdatedPayload.#ctor(System.String,System.String)">
             <summary>
             Konstruktor. Setzt minimum und current Firmware
             </summary>
             <param name="minimum"></param>
             <param name="current"></param>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.UnexpectedInformationReceivedPayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.UnexpectedInformationReceivedPayload">
             <summary>
             Payload für UnexpectedInformationReceived
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.UnexpectedInformationReceivedPayload.FaultingParameter">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.UnexpectedInformationReceivedPayload.FaultingParameter">
             <summary>
             Parameter der gescheitert ist
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.UnexpectedInformationReceivedPayload.#ctor(System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.UnexpectedInformationReceivedPayload.#ctor(System.String)">
             <summary>
             Konstruktor. Setzt FaultingParameter
             </summary>
             <param name="faultingParameter"></param>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.UnwillingToSetValuePayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.UnwillingToSetValuePayload">
             <summary>
             Payload für UnwillingToSetValue
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.UnwillingToSetValuePayload.ErrorInfo">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.UnwillingToSetValuePayload.ErrorInfo">
             <summary>
             Fehlerinformationen
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.UnwillingToSetValuePayload.#ctor(System.String,System.String)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.UnwillingToSetValuePayload.#ctor(System.String,System.String)">
             <summary>
             Konstruktor. Erstellt ErrorInfo Objekt aus Fehlercode und Fehlerbeschreibung
             </summary>
             <param name="code">Fehlercode</param>
             <param name="desc">Fehlerbeschreibung</param>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.ValueOutOfRangePayload">
+        <member name="T:RKon.Alexa.NET.Response.ErrorResponses.ValueOutOfRangePayload">
             <summary>
             Payload für ValueOutOfRange
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.ValueOutOfRangePayload.MinimumValue">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.ValueOutOfRangePayload.MinimumValue">
             <summary>
             Minimalwert
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.ValueOutOfRangePayload.MaximumValue">
+        <member name="P:RKon.Alexa.NET.Response.ErrorResponses.ValueOutOfRangePayload.MaximumValue">
             <summary>
             Maximalwert
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.ErrorPayloads.ValueOutOfRangePayload.#ctor(System.Double,System.Double)">
+        <member name="M:RKon.Alexa.NET.Response.ErrorResponses.ValueOutOfRangePayload.#ctor(System.Double,System.Double)">
             <summary>
             Konstruktor. Setzt Minimal und Maximalwert
             </summary>
             <param name="min"></param>
             <param name="max"></param>
-        </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.DiscoverResponsePayload">
-            <summary>
-            Payload für eine DiscoverApplianceResponse
-            </summary>
-        </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.DiscoverResponsePayload.DiscoveredAppliances">
-            <summary>
-            Gefundene Geräte
-            </summary>
-        </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.DiscoverResponsePayload.#ctor">
-            <summary>
-            Konstruktor. Erstellt eine neue Liste gefundener Geräte
-            </summary>
-        </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.HealthCheckResponsePayload">
-            <summary>
-            Payload für eine HealthCheckResponse
-            </summary>
-        </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.HealthCheckResponsePayload.#ctor">
-            <summary>
-            Konstruktor setzt IsHealthy auf false und Description auf The system is currenty not healthy
-            </summary>
-        </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.HealthCheckResponsePayload.SetHealthyStatus(System.Boolean)">
-            <summary>
-            Setzt die Beschreibung und IsHealthy an Hand des übergebenen Zustands
-            </summary>
-            <param name="isHealthy">Zustand des Geräts</param>
-        </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.ResponsePayload">
-            <summary>
-            Leerer Responsepayload
-            </summary>
-        </member>
-        <member name="T:RKon.Alexa.NET.Response.Payloads.TargetTemperatureResopnsePayload">
-            <summary>
-            Payload für TargetTemperatureResponse
-            </summary>
-        </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.TargetTemperatureResopnsePayload.TargetTemperature">
-            <summary>
-            Zieltemperatur
-            </summary>
-        </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.TargetTemperatureResopnsePayload.TemperatureMode">
-            <summary>
-            Temperaturmodus
-            </summary>
-        </member>
-        <member name="P:RKon.Alexa.NET.Response.Payloads.TargetTemperatureResopnsePayload.PreviousState">
-            <summary>
-            Letzter Zustand
-            </summary>
-        </member>
-        <member name="M:RKon.Alexa.NET.Response.Payloads.TargetTemperatureResopnsePayload.#ctor">
-            <summary>
-            Konstruktor. Initialisiert alle Properties.
-            </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Response.ResponseHeader">
             <summary>
@@ -819,9 +817,110 @@
             </summary>
             <param name="reqHeader">Requestheaders</param>
         </member>
+        <member name="T:RKon.Alexa.NET.Response.DiscoverResponsePayload">
+            <summary>
+            Payload für eine DiscoverApplianceResponse
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.DiscoverResponsePayload.DiscoveredAppliances">
+            <summary>
+            Gefundene Geräte
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.DiscoverResponsePayload.#ctor">
+            <summary>
+            Konstruktor. Erstellt eine neue Liste gefundener Geräte
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Response.HealthCheckResponsePayload">
+            <summary>
+            Payload für eine HealthCheckResponse
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.HealthCheckResponsePayload.#ctor">
+            <summary>
+            Konstruktor setzt IsHealthy auf false und Description auf The system is currenty not healthy
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.HealthCheckResponsePayload.SetHealthyStatus(System.Boolean)">
+            <summary>
+            Setzt die Beschreibung und IsHealthy an Hand des übergebenen Zustands
+            </summary>
+            <param name="isHealthy">Zustand des Geräts</param>
+        </member>
+        <member name="T:RKon.Alexa.NET.Response.ResponsePayload">
+            <summary>
+            Leerer Responsepayload
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload">
+            <summary>
+            Payload für TargetTemperatureResponse
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.TargetTemperature">
+            <summary>
+            Zieltemperatur
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.TemperatureMode">
+            <summary>
+            Temperaturmodus
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.PreviousState">
+            <summary>
+            Letzter Zustand
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.#ctor">
+            <summary>
+            Konstruktor. Initialisiert alle Properties.
+            </summary>
+        </member>
         <member name="T:RKon.Alexa.NET.Types.ApplianceActions">
             <summary>
             Actions für Geräte
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.DECREMENT_PERCENTAGE">
+            <summary>
+            String für die Decrement Percentage Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.TURN_OFF">
+            <summary>
+            String für die Turn Off Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.TURN_ON">
+            <summary>
+            String für die Turn On Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.SET_TARGET_TEMPERATURE">
+            <summary>
+            String für die Set Target Temperature Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.SET_PERCENTAGE">
+            <summary>
+            String für die Set Percentage Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.INCREMENT_TARGET_TEMPERATURE">
+            <summary>
+            String für die Increment Target Temperature Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.INCREMENT_PERCENTAGE">
+            <summary>
+            String für die Increment Percentage Gerätefunktion
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.ApplianceActions.DECREMENT_TARGET_TEMPERATURE">
+            <summary>
+            String für die Decrement Target Temperature Gerätefunktion
             </summary>
         </member>
         <member name="F:RKon.Alexa.NET.Types.ApplianceActions.Actions">
@@ -832,6 +931,31 @@
         <member name="T:RKon.Alexa.NET.Types.DeviceModes">
             <summary>
             Klasse für Gerätemodi
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.DeviceModes.AUTO">
+            <summary>
+            String für AUTO Mode
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.DeviceModes.HEAT">
+            <summary>
+            String für HEAT Mode
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.DeviceModes.COOL">
+            <summary>
+            String für COOL Mode
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.DeviceModes.AWAY">
+            <summary>
+            String für AWAY Mode
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.DeviceModes.OTHER">
+            <summary>
+            String für OTHER Mode
             </summary>
         </member>
         <member name="F:RKon.Alexa.NET.Types.DeviceModes.Modes">
@@ -849,6 +973,161 @@
             Smarthomerequest, -response, und -errorresponse Headernames
             </summary>
         </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.DISCOVERY_REQUEST">
+            <summary>
+            Header Name für DiscoverAppliance Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.HEALTH_CHECK_REQUEST">
+            <summary>
+            Header Name für HealthCheck Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TURN_ON_REQUEST">
+            <summary>
+            Header Name für Turn On Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TURN_OFF_REQUEST">
+            <summary>
+            Header Name für Turn Off Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.SET_TARGET_TEMPERATURE_REQUEST">
+            <summary>
+            Header Name für SetTargetTemperature Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.INCREMENT_TARGET_TEMPERATURE_REQUEST">
+            <summary>
+            Header Name für IncrementTargetTemperature Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.DECREMENT_TARGET_TEMPERATURE_REQUEST">
+            <summary>
+            Header Name für DecrementTargetTemperature Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.SET_PERCENTAGE_REQUEST">
+            <summary>
+            Header Name für SetPercentage Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.INCREMENT_PERCENTAGE_REQUEST">
+            <summary>
+            Header Name für IncrementPercentage Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.DECREMENT_PERCENTAGE_REQUEST">
+            <summary>
+            Header Name für DecrementPercentage Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.VALUE_OUT_OF_RANGE_ERROR">
+            <summary>
+            Error Header Name wenn der zu setzende Wert ausserhalb der unterstützen Spanne liegt
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_OFFLINE_ERROR">
+            <summary>
+            Error Header Name wenn das angesprochene Gerät nicht erreichbar ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.BRIDGE_OFFLINE_ERROR">
+            <summary>
+            Error Header Name wenn die Bridge oder der Hub für das angesprochene Gerät nicht erreichbar ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.NO_SUCH_TARGET_ERROR">
+            <summary>
+            Error Header Name wenn das angesprochene Gerät nicht existiert
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.DRIVER_INTERNAL_ERROR">
+            <summary>
+            Error Header Name für generische Laufzeitfehler
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.DEPENDENT_SERVICE_UNAVAILABLE_ERROR">
+            <summary>
+            Error Header Name wenn ein benötigter Dienst nicht erreichbar ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_CONNECTIVITY_UNSTABLE_ERROR">
+            <summary>
+            Error Header Name wenn die Verbindung zum angesprochenen Gerät nicht stabil ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_BRIDGE_CONNECTIVITY_UNSTABLE_ERROR">
+            <summary>
+            Error Header Name wenn die Verbindung zur Bridge oder Hub des angesprochenen Geräts nicht stabil ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_FIRMWARE_OUTDATED_ERROR">
+            <summary>
+            Error Header Name wenn die Firmware des angesprochenen Geräts nicht mehr aktuell ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_BRIDGE_FIRMWARE_OUTDATED_ERROR">
+            <summary>
+            Error Header Name wenn die Firmware der Bridge oder des Hubs des angesprochenen Geräts nicht mehr aktuell ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_HARDWARE_MALFUNCTION_ERROR">
+            <summary>
+            Error Header Name wenn das angesprochene Gerät eine Hardware Fehlfunktion hat
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.TARGET_BRIDGE_HARDWARE_MALFUNCTION_ERROR">
+            <summary>
+            Error Header Name wenn der Hub oder die Bridge des angesprochenen Geräts eine Hardware Fehlfunktion hat
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.UNWILLING_TO_SET_VALUE_ERROR">
+            <summary>
+            Error Header Name wenn das Gerät den Wert nicht setzt
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.RATE_LIMIT_EXCEEDED_ERROR">
+            <summary>
+            Error Header Name wenn das Requestlimit des Gerät erreicht wurde
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.NOT_SUPPORTED_IN_CURRENT_MODE_ERROR">
+            <summary>
+            Error Header Name wenn die Aktion im aktuellen Modus des Geräts nicht unterstützt wird
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.EXSPIRED_ACCESS_TOKEN_ERROR">
+            <summary>
+            Error Header Name wenn der übergebene Access Token abgelaufen ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.INVALID_ACCESS_TOKEN_ERROR">
+            <summary>
+            Error Header Name wenn der übergebene Access Token abgelaufen ist
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.UNSUPPORTED_TARGET_ERROR">
+            <summary>
+            Error Header Name wenn das Gerät nicht vom Skill Adapter unterstützt wird
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.UNSUPPORTED_OPERATION_ERROR">
+            <summary>
+            Error Header Name wenn die Aktion auf dem Gerät nicht unterstützt wird.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.UNSUPPORTED_TARGET_SETTING_ERROR">
+            <summary>
+            Error Header Name wenn die Option vom Gerät oder der Aktion nicht unterstützt wird
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.UNEXCEPTED_INFORMATION_RECEIVED_ERROR">
+            <summary>
+            Error Header Name wenn ein Parameter einen nicht erwarteten Wert besitzt
+            </summary>
+        </member>
         <member name="F:RKon.Alexa.NET.Types.HeaderNames.ResponseHeaderNames">
             <summary>
             KeyValuePairs von RequestHeaderNames(Key) und ResponseHeaderNames(Value).
@@ -859,89 +1138,104 @@
             Namespaces für Smarthomerequests,-responses und -errorresponses
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.DeltaPercentage">
+        <member name="F:RKon.Alexa.NET.Types.Namespaces.DISCOVERY">
+            <summary>
+            Header Namespace für DiscoveryAppliance Requests und Responses 
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.Namespaces.CONTROL">
+            <summary>
+            Header Namespace für Geräte Requests und Responses
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.Namespaces.SYSTEM">
+            <summary>
+            Header Namespace für HealthChecks
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Types.DeltaPercentage">
             <summary>
             Klasse für Delta Prozentwert
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.DeltaTemperature">
+        <member name="T:RKon.Alexa.NET.Types.DeltaTemperature">
             <summary>
             Klasse für Delta Temperaturwert
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.ErrorInfo">
+        <member name="T:RKon.Alexa.NET.Types.ErrorInfo">
             <summary>
             Klasse für Fehlerinformationen
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.ErrorInfo.Code">
+        <member name="P:RKon.Alexa.NET.Types.ErrorInfo.Code">
             <summary>
             Fehlercode
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.ErrorInfo.Description">
+        <member name="P:RKon.Alexa.NET.Types.ErrorInfo.Description">
             <summary>
             Fehlerbeschreibung
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Types.PayloadObjects.ErrorInfo.#ctor(System.String,System.String)">
+        <member name="M:RKon.Alexa.NET.Types.ErrorInfo.#ctor(System.String,System.String)">
             <summary>
             Konstruktor.
             </summary>
             <param name="code">Fehlercode</param>
             <param name="description">Fehlerbeschreibung</param>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.PercentageState">
+        <member name="T:RKon.Alexa.NET.Types.PercentageState">
             <summary>
             Klasse für Prozentstatus
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.PreviousState">
+        <member name="T:RKon.Alexa.NET.Types.PreviousState">
             <summary>
             Klasse für letzten Temperaturstatus
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.PreviousState.TargetTemperature">
+        <member name="P:RKon.Alexa.NET.Types.PreviousState.TargetTemperature">
             <summary>
             Zieltemperatur
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.PreviousState.Mode">
+        <member name="P:RKon.Alexa.NET.Types.PreviousState.Mode">
             <summary>
             Temperaturmodus
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Types.PayloadObjects.PreviousState.#ctor">
+        <member name="M:RKon.Alexa.NET.Types.PreviousState.#ctor">
             <summary>
             Konstruktor
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.TargetTemperature">
+        <member name="T:RKon.Alexa.NET.Types.TargetTemperature">
             <summary>
             Klasse für Temperaturwert
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.TargetTemperature.Value">
+        <member name="P:RKon.Alexa.NET.Types.TargetTemperature.Value">
             <summary>
             Wert
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.TemperatureMode">
+        <member name="T:RKon.Alexa.NET.Types.TemperatureMode">
             <summary>
             Klasse für Temperatur Modus
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.TemperatureMode.Value">
+        <member name="P:RKon.Alexa.NET.Types.TemperatureMode.Value">
             <summary>
             Wert
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Types.PayloadObjects.TemperatureMode.#ctor">
+        <member name="M:RKon.Alexa.NET.Types.TemperatureMode.#ctor">
             <summary>
             Konsturktor setzt Wert auf AUTO
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Types.PayloadObjects.TemperatureMode.TrySetTemperatureMode(System.String)">
+        <member name="M:RKon.Alexa.NET.Types.TemperatureMode.TrySetTemperatureMode(System.String)">
             <summary>
             Setzt den Wert auf mode wenn möglich. Gültige Eingaben finden Sie im Namespace RKon.Alexa.Net.Types.DeviceModes
             Bei Fehlschlag wird AUTO eingestellt

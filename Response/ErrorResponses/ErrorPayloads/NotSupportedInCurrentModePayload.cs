@@ -1,7 +1,7 @@
 ﻿using RKon.Alexa.NET.Types;
 using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Response.Payloads.ErrorPayloads
+namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
     /// Payload für NotSupportedInCurrentMode

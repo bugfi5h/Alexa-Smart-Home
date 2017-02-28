@@ -1,5 +1,4 @@
 ﻿using RKon.Alexa.NET.Request;
-using RKon.Alexa.NET.Response.Payloads;
 
 
 namespace RKon.Alexa.NET.Response.ErrorResponses
