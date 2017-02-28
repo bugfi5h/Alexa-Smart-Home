@@ -40,7 +40,7 @@ namespace RKon.Alexa.NET.Response
         /// <param name="reqHeader">Requestheaders</param>
         public ResponseHeader(RequestHeader reqHeader)
         {
-            MessageId = reqHeader.MessageId;
+            MessageId = System.Guid.NewGuid().ToString();
             PayloadVersion = reqHeader.PayloadVersion;
             Namespace = reqHeader.Namespace;
             if (HeaderNames.ResponseHeaderNames.Keys.Contains(reqHeader.Name))
