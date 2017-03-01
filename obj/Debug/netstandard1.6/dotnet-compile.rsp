@@ -11,9 +11,9 @@
 --output-name:RKon.Alexa.NET
 --title:RKon.Alexa.NET
 --description:A simple .NET Core library for handling Alexa Smart Home Requests.
---file-version:1.0.15.0
---version:1.0.15.0
---informational-version:1.0.15-beta
+--file-version:1.0.17.0
+--version:1.0.17.0
+--informational-version:1.0.17-beta
 --neutral-language:de
 --target-framework:.NETStandard,Version=v1.6
 --reference:C:\Users\Agentilo RK\.nuget\packages\Microsoft.CSharp\4.0.1\ref\netstandard1.0\Microsoft.CSharp.dll
@@ -73,9 +73,11 @@ D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NE
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\SmartHomeRequest.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\DiscoveryRequestPayload.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\HealthCheckRequestPayload.cs
-D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\IncrementDecrementPercentageRequestPayload.cs
-D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\IncrementDecrementRequestPayload.cs
+D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\In_DecrementPercentageRequestPayload.cs
+D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\In_DecrementTemperatureRequestPayload.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\RequestPayload.cs
+D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\RequestPayloadWithAccessToken.cs
+D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\RequestPayloadWithAppliance.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\SetPercentageRequestPayload.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\SmartHomeRequestConverter.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Request\RequestPayloads\TemperatureRequestPayload.cs
@@ -116,7 +118,7 @@ D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NE
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Response\Payloads\DiscoverResponsePayload.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Response\Payloads\HealthCheckResponsePayload.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Response\Payloads\ResponsePayload.cs
-D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Response\Payloads\TargetTemperatureResopnsePayload.cs
+D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Response\Payloads\TargetTemperatureResponsePayload.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Types\ApplianceActions.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Types\DeviceModes.cs
 D:\Downloads\alexa-skills-dotnet-master\alexa-skills-dotnet-master\RKon.Alexa.NET\Types\HeaderNames.cs

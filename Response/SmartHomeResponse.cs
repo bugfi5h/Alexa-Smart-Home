@@ -65,7 +65,7 @@ namespace RKon.Alexa.NET.Response
                     case HeaderNames.SET_TARGET_TEMPERATURE_REQUEST:
                     case HeaderNames.INCREMENT_TARGET_TEMPERATURE_REQUEST:
                     case HeaderNames.DECREMENT_TARGET_TEMPERATURE_REQUEST:
-                        Payload = new TargetTemperatureResopnsePayload();
+                        Payload = new TargetTemperatureResponsePayload();
                         break;
                     case HeaderNames.TURN_OFF_REQUEST:
                     case HeaderNames.TURN_ON_REQUEST:

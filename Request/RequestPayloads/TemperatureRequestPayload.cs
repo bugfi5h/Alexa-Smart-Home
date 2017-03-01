@@ -6,7 +6,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
     /// <summary>
     /// Payload für ein SetTargetTemperatureRequest
     /// </summary>
-    public class SetTemperatureRequestPayload : TurnOnOffRequestPayload
+    public class SetTemperatureRequestPayload : RequestPayloadWithAppliance
     {
         /// <summary>
         /// Zieltemperatur in Grad Celsius.

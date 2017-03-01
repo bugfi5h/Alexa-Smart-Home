@@ -1,16 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Request
+namespace RKon.Alexa.NET.Request.RequestPayloads
 {
     /// <summary>
     /// Payload für TurnOn und TurnOfRequests
     /// </summary>
-    public class TurnOnOffRequestPayload : DiscoveryRequestPayload
+    public class TurnOnOffRequestPayload : RequestPayloadWithAppliance
     {
-        /// <summary>
-        /// Das Gerät für das die Aktion bestimmt ist
-        /// </summary>
-        [JsonProperty("appliance")]
-        public RequestAppliance Appliance { get; set; }
+
     }
 }

@@ -83,12 +83,12 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
                         return new HealthCheckRequestPayload();
                     case HeaderNames.DECREMENT_TARGET_TEMPERATURE_REQUEST:
                     case HeaderNames.INCREMENT_TARGET_TEMPERATURE_REQUEST:
-                        return new IncrementDecrementRequestPayload();
+                        return new In_DecrementTemperatureRequestPayload();
                     case HeaderNames.SET_TARGET_TEMPERATURE_REQUEST:
                         return new SetTemperatureRequestPayload();
                     case HeaderNames.DECREMENT_PERCENTAGE_REQUEST:
                     case HeaderNames.INCREMENT_PERCENTAGE_REQUEST:
-                        return new IncrementDecrementPercentageRequestPayload();
+                        return new In_DecrementPercentageRequestPayload();
                     case HeaderNames.SET_PERCENTAGE_REQUEST:
                         return new SetPercentageRequestPayload();
                     default:

@@ -70,14 +70,9 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:RKon.Alexa.NET.Request.DiscoveryRequestPayload">
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.DiscoveryRequestPayload">
             <summary>
             Payload für einen DiscoverApplianceRequest
-            </summary>
-        </member>
-        <member name="P:RKon.Alexa.NET.Request.DiscoveryRequestPayload.AccessToken">
-            <summary>
-            Access Token, der der Kunden Geräte Cloud zugewiesen ist.
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Request.RequestPayloads.HealthCheckRequestPayload">
@@ -90,24 +85,44 @@
             Zeitstempel in Millisekunden seit dem 1.01.1970
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.IncrementDecrementPercentageRequestPayload">
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.In_DecrementPercentageRequestPayload">
             <summary>
             Payload für einen DecrementPercentage- oder IncrementPercentageRequest
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.IncrementDecrementPercentageRequestPayload.DeltaPercentage">
+        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.In_DecrementPercentageRequestPayload.DeltaPercentage">
             <summary>
             Menge um wie viel der Prozentwert des Geräts angepasst werden soll
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.IncrementDecrementRequestPayload">
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.In_DecrementTemperatureRequestPayload">
             <summary>
             Payload für einen DecrementTemperature- oder IncrementTemperatureRequest
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.IncrementDecrementRequestPayload.DeltaTemperature">
+        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.In_DecrementTemperatureRequestPayload.DeltaTemperature">
             <summary>
             Menge um wie viel die Temperatur angepasst werden soll
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.RequestPayloadWithAccessToken">
+            <summary>
+            Abstrakte Basisklasse für Payloads mit AccessToken
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.RequestPayloadWithAccessToken.AccessToken">
+            <summary>
+            Access Token, der der Kunden Geräte Cloud zugewiesen ist.
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.RequestPayloadWithAppliance">
+            <summary>
+            Abstrakte Basisklasse für Payloads mit AccessToken und Appliance
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.RequestPayloadWithAppliance.Appliance">
+            <summary>
+            Das Gerät für das die Aktion bestimmt ist
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Request.RequestPayloads.SetPercentageRequestPayload">
@@ -173,19 +188,14 @@
             Zieltemperatur in Grad Celsius.
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Request.RequestPayload">
-            <summary>
-            Abstrakte Basis Klasse für RequestPayloads
-            </summary>
-        </member>
-        <member name="T:RKon.Alexa.NET.Request.TurnOnOffRequestPayload">
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.TurnOnOffRequestPayload">
             <summary>
             Payload für TurnOn und TurnOfRequests
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Request.TurnOnOffRequestPayload.Appliance">
+        <member name="T:RKon.Alexa.NET.Request.RequestPayload">
             <summary>
-            Das Gerät für das die Aktion bestimmt ist
+            Abstrakte Basis Klasse für RequestPayloads
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Response.ISmartHomeResponse">
@@ -853,27 +863,27 @@
             Leerer Responsepayload
             </summary>
         </member>
-        <member name="T:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload">
+        <member name="T:RKon.Alexa.NET.Response.TargetTemperatureResponsePayload">
             <summary>
             Payload für TargetTemperatureResponse
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.TargetTemperature">
+        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResponsePayload.TargetTemperature">
             <summary>
             Zieltemperatur
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.TemperatureMode">
+        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResponsePayload.TemperatureMode">
             <summary>
             Temperaturmodus
             </summary>
         </member>
-        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.PreviousState">
+        <member name="P:RKon.Alexa.NET.Response.TargetTemperatureResponsePayload.PreviousState">
             <summary>
             Letzter Zustand
             </summary>
         </member>
-        <member name="M:RKon.Alexa.NET.Response.TargetTemperatureResopnsePayload.#ctor">
+        <member name="M:RKon.Alexa.NET.Response.TargetTemperatureResponsePayload.#ctor">
             <summary>
             Konstruktor. Initialisiert alle Properties.
             </summary>
