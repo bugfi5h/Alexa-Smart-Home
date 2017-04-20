@@ -9,10 +9,10 @@ namespace RKon.Alexa.NET.Response
     {
         [JsonRequired]
         [JsonProperty("description")]
-        private string Description { get; set; }
+        public string Description { get; private set; }
         [JsonRequired]
         [JsonProperty("isHealthy")]
-        private bool IsHealthy { get; set; }
+        public bool IsHealthy { get; private set; }
         /// <summary>
         /// Konstruktor setzt IsHealthy auf false und Description auf The system is currenty not healthy
         /// </summary>
