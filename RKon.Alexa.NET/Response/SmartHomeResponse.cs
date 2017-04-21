@@ -85,6 +85,12 @@ namespace RKon.Alexa.NET.Response
                     case HeaderNames.DECREMENT_COLOR_TEMPERATURE_REQUEST:
                         Payload = new ColorTemperatureResponsePayload();
                         break;
+                    case HeaderNames.GET_TEMPERATURE_READING_REQUEST:
+                        Payload = new GetTemperatureReadingResponsePayload();
+                        break;
+                    case HeaderNames.GET_TARGET_TEMPERATURE_REQUEST:
+                        Payload = new GetTargetTemperatureResponsePayload();
+                        break;
                     default: throw new UnknownRequestHeaderException(name);
                 }
             }else

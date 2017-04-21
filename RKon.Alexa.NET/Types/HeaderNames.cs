@@ -63,6 +63,14 @@ namespace RKon.Alexa.NET.Types
         /// Header Name für SetColorTemperature Requests
         /// </summary>
         public const string SET_COLOR_TEMPERATURE_REQUEST = "SetColorTemperatureRequest";
+        /// <summary>
+        /// Header Name für GetTemperatureReading Requests
+        /// </summary>
+        public const string GET_TEMPERATURE_READING_REQUEST = "GetTemperatureReadingRequest";
+        /// <summary>
+        /// Header Name für GetTargetTemperature Requests
+        /// </summary>
+        public const string GET_TARGET_TEMPERATURE_REQUEST = "GetTargetTemperatureRequest";
 
 
 
@@ -173,7 +181,9 @@ namespace RKon.Alexa.NET.Types
             {SET_COLOR_REQUEST,"SetColorConfirmation" },
             {SET_COLOR_TEMPERATURE_REQUEST,"SetColorTemperatureConfirmation" },
             {INCREMENT_COLOR_TEMPERATURE_REQUEST,"IncrementColorTemperatureConfirmation" },
-            {DECREMENT_COLOR_TEMPERATURE_REQUEST, "DecrementColorTemperatureConfirmation" }
+            {DECREMENT_COLOR_TEMPERATURE_REQUEST, "DecrementColorTemperatureConfirmation" },
+            {GET_TEMPERATURE_READING_REQUEST, "GetTemperatureReadingResponse" },
+            { GET_TARGET_TEMPERATURE_REQUEST, "GetTargetTemperatureResponse" }
         };
     }
 }

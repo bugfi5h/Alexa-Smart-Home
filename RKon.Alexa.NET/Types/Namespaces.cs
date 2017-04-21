@@ -18,5 +18,9 @@ namespace RKon.Alexa.NET.Types
         /// Header Namespace für HealthChecks
         /// </summary>
         public const string SYSTEM = "Alexa.ConnectedHome.System";
+        /// <summary>
+        /// Header Namespace für  Abfragen
+        /// </summary>
+        public const string QUERY = "Alexa.ConnectedHome.Query";
     }
 }

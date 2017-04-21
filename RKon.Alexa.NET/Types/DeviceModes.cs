@@ -29,6 +29,22 @@ namespace RKon.Alexa.NET.Types
         public const string OTHER = "OTHER";
 
         /// <summary>
+        /// String für CUSTOM Mode
+        /// </summary>
+        public const string CUSTOM = "CUSTOM";
+
+        /// <summary>
+        /// String für ECO Mode
+        /// </summary>
+        public const string ECO = "ECO";
+
+        /// <summary>
+        /// String für OFF Mode
+        /// </summary>
+        public const string OFF = "OFF";
+
+
+        /// <summary>
         /// Liste aller Gerätemodi
         /// </summary>
         public static readonly List<string> Modes = new List<string>()
@@ -41,6 +57,13 @@ namespace RKon.Alexa.NET.Types
         public static readonly List<string> TemperatureModes = new List<string>()
         {
             AUTO,HEAT,COOL
+        };
+        /// <summary>
+        /// Liste aller Gerätemodi
+        /// </summary>
+        public static readonly List<string> GetTemperatureModes = new List<string>()
+        {
+            AUTO,HEAT,COOL,OFF,CUSTOM,ECO
         };
 
     }

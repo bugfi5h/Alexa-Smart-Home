@@ -98,6 +98,9 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
                     case HeaderNames.INCREMENT_COLOR_TEMPERATURE_REQUEST:
                     case HeaderNames.DECREMENT_COLOR_TEMPERATURE_REQUEST:
                         return new In_DecrementColorTemperatureRequestPayload();
+                    case HeaderNames.GET_TEMPERATURE_READING_REQUEST:
+                    case HeaderNames.GET_TARGET_TEMPERATURE_REQUEST:
+                        return new GetTemperatureRequestPayload();
                     default:
                         throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
                 }

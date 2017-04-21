@@ -1,5 +1,4 @@
-﻿
-using RKon.Alexa.NET.Types;
+﻿using RKon.Alexa.NET.Types;
 using Newtonsoft.Json;
 
 
