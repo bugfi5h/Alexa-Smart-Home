@@ -4,19 +4,19 @@
 namespace RKon.Alexa.NET.Types.PayloadObjects
 {
     /// <summary>
-    /// AchievedState für Farbänderungen. Sollte es nicht möglich sein, die Werte auszulesen können die Werte aus dem Request genommen werden.
+    /// AchievedState für color changes.
     /// </summary>
     public class AchievedColorState
     {
         /// <summary>
-        /// Farbantwort nach setzen der Farbänderung. 
+        /// Colorresponse of the appliance. 
         /// </summary>
         [JsonProperty("color")]
         [JsonRequired]
         public Color Color { get; set; }
 
         /// <summary>
-        /// Konstruktor
+        /// Constructor
         /// </summary>
         public AchievedColorState()
         {

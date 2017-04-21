@@ -3,14 +3,13 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlermeldung wenn die Cloud Verbindung zum Gerät nicht stabil ist
+    /// Error response if target connectivity to the device is unstable
     /// </summary>
     public class TargetConnectivityUnstableErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor erstellt Header an Hand vom Requestheader und einen leeren Payload
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="header">Requestheader</param>
         public TargetConnectivityUnstableErrorResponse(RequestHeader header)

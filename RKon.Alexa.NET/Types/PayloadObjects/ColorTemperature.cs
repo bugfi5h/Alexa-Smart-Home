@@ -4,13 +4,13 @@
 namespace RKon.Alexa.NET.Types.PayloadObjects
 {
     /// <summary>
-    /// Wie TargetTemperature mit Begrenzung zwischen 1000 und 10000
+    /// Like TargetTemperature with limit between 1000 and 10000
     /// </summary>
     public class ColorTemperature
     {
         private double mValue;
         /// <summary>
-        /// Wert
+        /// value
         /// </summary>
         [JsonRequired]
         [JsonProperty("value")]

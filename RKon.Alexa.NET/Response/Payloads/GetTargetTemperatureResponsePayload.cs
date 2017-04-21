@@ -6,42 +6,42 @@ using System;
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Payload für GetTargetTemperatureResponse
+    /// Payload for a GetTargetTemperatureResponse
     /// </summary>
     public class GetTargetTemperatureResponsePayload : ResponsePayload
     {
         /// <summary>
-        /// Temperatur für Geräte im "Single-Setpoint" Modus in Celsius. Kann null sein
+        /// Temperature for a device in "Single-Setpoint" mode in celsius. Can be null
         /// </summary>
         [JsonProperty("targetTemperature",NullValueHandling =NullValueHandling.Ignore)]
         public TargetTemperature TargetTemperature { get; set; }
         /// <summary>
-        ///  Kühltemperatur für Geräte im "Dual-Setpoint" Modus in Celsius. Kann null sein
+        ///  Cooling Temperature for a device in "Dual-Setpoint" mode in celsius. Can be null
         /// </summary>
         [JsonProperty("coolingTargetTemperature", NullValueHandling = NullValueHandling.Ignore)]
         public TargetTemperature CoolingTargetTemperature { get; set; }
         /// <summary>
-        /// Heiztemperatur für Geräte im "Dual-Setpoint" Modus in Celsius. Kann null sein
+        /// Heating temperature for a device in "Dual-Setpoint" mode in celsius. Can be null
         /// </summary>
         [JsonProperty("heatingTargetTemperature", NullValueHandling = NullValueHandling.Ignore)]
         public TargetTemperature HeatingTargetTemperature { get; set; }
 
         /// <summary>
-        /// Temperaturmodus. Folgende Werte sind erlaubt: AUTO, COOL, HEAT, ECO, OFF, CUSTOM
-        /// Aus der API: "CUSTOM: Indicates a custom mode that is specified by friendlyName"
+        /// Temperaturemode. Allowed values: AUTO, COOL, HEAT, ECO, OFF, CUSTOM
+        /// From the smart home API: "CUSTOM: Indicates a custom mode that is specified by friendlyName"
         /// </summary>
         [JsonProperty("temperatureMode")]
         [JsonRequired]
         public GetTemperatureMode TemperatureMode { get; private set; }
 
         /// <summary>
-        /// Zeigt, wann die letzte Zieltemperatur vom Gerät abgefragt wurde. Nicht notwendig
+        /// the last time the temperatur was requestet. Can be null
         /// </summary>
         [JsonProperty("applianceResponseTimestamp", NullValueHandling = NullValueHandling.Ignore)]
         public DateTime ApplianceResponseTimestamp { get; set; }
 
         /// <summary>
-        /// Konstruktor
+        /// Constructor
         /// </summary>
         public GetTargetTemperatureResponsePayload()
         {

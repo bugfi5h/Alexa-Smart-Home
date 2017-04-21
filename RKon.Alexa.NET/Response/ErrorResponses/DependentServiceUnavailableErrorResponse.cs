@@ -3,17 +3,16 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlermeldung wenn eine Dependency nicht erreichbar ist.
+    /// Error response, if a dependency is unavailable.
     /// </summary>
     public class DependentServiceUnavailableErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor. Erstellt an Hand des Requestheaders den Header und den Payload mit dem Namen des Services, der nicht erreichbar ist.      
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor.      
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="reqHeader">Requestheader</param>
-        /// <param name="serviceName">Name des Services, der nicht erreichbar ist</param>
+        /// <param name="serviceName">Name of the service, that is unavailable</param>
         public DependentServiceUnavailableErrorResponse(RequestHeader reqHeader,string serviceName)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);

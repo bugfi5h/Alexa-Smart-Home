@@ -5,19 +5,19 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für GetTemperature Modi
+    /// Class for GetTemperature Modes
     /// </summary>
     public class GetTemperatureMode
     {
         /// <summary>
-        /// Wert
+        /// Value
         /// </summary>
         [JsonRequired]
         [JsonProperty("value")]
         public string Value { get; private set; }
 
         /// <summary>
-        /// Muss existieren, wenn der TemperatureMode auf Custom gestellt wird.
+        /// Can not be null if the temperature mode is set to CUSTOM
         /// </summary>
         [JsonProperty("friendlyName", NullValueHandling = NullValueHandling.Ignore)]
         public string FriendlyName { get; private set; }
@@ -31,16 +31,16 @@ namespace RKon.Alexa.NET.Types
         }
 
         /// <summary>
-        /// Setzt den Wert auf mode wenn möglich. Gültige Eingaben finden Sie im Namespace RKon.Alexa.Net.Types.DeviceModes
-        /// Bei Fehlschlag wird AUTO eingestellt. friendlyName kann Null sein, aussßer im Modus Custom
+        /// Sets mode if able. Valid values can be found in the Namespace RKon.Alexa.Net.Types.DeviceModes
+        /// If its not successfull it will be set to AUTO. friendlyName can be Null if the mode is not Custom
         /// /// </summary>
-        /// <param name="mode">Einzustellender Modus</param>
-        /// <param name="friendlyName">Beschreibung des Modus</param>
-        /// <returns>True bei Wertänderung</returns>
+        /// <param name="mode">Mode to use</param>
+        /// <param name="friendlyName">Description of the Mode</param>
+        /// <returns>True if value changes</returns>
         public bool TrySetTemperatureMode(string mode, string friendlyName)
         {
             bool success = true;
-            if (DeviceModes.GetTemperatureModes.Contains(mode))
+            if (DeviceModes.GetTemperatureModes.Contains(mode.ToUpper()))
             {
                 Value = mode;
                 FriendlyName = friendlyName;

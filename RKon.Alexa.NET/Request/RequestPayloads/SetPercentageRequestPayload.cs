@@ -4,12 +4,12 @@ using RKon.Alexa.NET.Types;
 namespace RKon.Alexa.NET.Request.RequestPayloads
 {
     /// <summary>
-    ///  Payload für einen SetPercentageRequests
+    ///  Payload for a SetPercentageRequests
     /// </summary>
     public class SetPercentageRequestPayload : RequestPayloadWithAppliance
     {
         /// <summary>
-        /// Prozentwert um den das Gerät angepasst werden soll
+        /// The percent change to apply to the device
         /// </summary>
         [JsonProperty("percentageState")]
         public PercentageState PercentageState { get; set; }

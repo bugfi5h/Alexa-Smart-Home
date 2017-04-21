@@ -3,24 +3,24 @@
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Payload für eine HealthCheckResponse
+    /// Payload for a HealthCheckResponse
     /// </summary>
     public class HealthCheckResponsePayload : ResponsePayload
     {
         /// <summary>
-        /// Beschreibung des Zustands
+        /// Description of the Healthstatus
         /// </summary>
         [JsonRequired]
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// Boolean ob Gerät aktiv ist.
+        /// Boolean if the appliance is online
         /// </summary>
         [JsonRequired]
         [JsonProperty("isHealthy")]
         public bool IsHealthy { get; private set; }
         /// <summary>
-        /// Konstruktor setzt IsHealthy auf false und Description auf The system is currenty not healthy
+        /// Constructor
         /// </summary>
         public HealthCheckResponsePayload()
         {
@@ -28,9 +28,9 @@ namespace RKon.Alexa.NET.Response
             IsHealthy = false;
         }
         /// <summary>
-        /// Setzt die Beschreibung und IsHealthy an Hand des übergebenen Zustands
+        /// Sets description and isHealthy
         /// </summary>
-        /// <param name="isHealthy">Zustand des Geräts</param>
+        /// <param name="isHealthy">state of the appliance</param>
         public void SetHealthyStatus(bool isHealthy)
         {
             IsHealthy = isHealthy;

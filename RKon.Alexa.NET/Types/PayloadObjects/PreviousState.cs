@@ -4,24 +4,24 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für letzten Temperaturstatus
+    /// Class for the last Temperature status
     /// </summary>
     public class PreviousState
     {
         /// <summary>
-        /// Zieltemperatur
+        /// Target Temperature
         /// </summary>
         [JsonRequired]
         [JsonProperty("targetTemperature")]
         public TargetTemperature TargetTemperature { get; set; }
         /// <summary>
-        /// Temperaturmodus
+        /// Temperaturemode
         /// </summary>
         [JsonRequired]
         [JsonProperty("mode")]
         public TemperatureMode Mode { get; set; }
         /// <summary>
-        /// Konstruktor
+        /// Constructor
         /// </summary>
         public PreviousState()
         {

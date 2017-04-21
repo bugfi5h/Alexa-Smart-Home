@@ -3,18 +3,17 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlermeldung, wenn die Firmware des Geräts veraltet ist
+    /// Error response, if the firmware of the device is outdated
     /// </summary>
     public class TargetFirmwareOutdatedErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor erstellt Header an Hand vom Requestheader und einen Payload mit Minimum  und aktueller Firmwareversion
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="reqHeader">Requestheader</param>
-        /// <param name="minimumFirmwareVersion">Minimale Firmwareversion</param>
-        /// <param name="currentFirmwareVersion">Aktuelle Firmwareversion</param>
+        /// <param name="minimumFirmwareVersion">Minimum Firmwareversion</param>
+        /// <param name="currentFirmwareVersion">Current Firmwareversion</param>
         public TargetFirmwareOutdatedErrorResponse(RequestHeader reqHeader,string minimumFirmwareVersion,string currentFirmwareVersion)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);

@@ -2,7 +2,7 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für Prozentstatus
+    /// Class for PercentageState
     /// </summary>
     public class PercentageState : TargetTemperature
     {

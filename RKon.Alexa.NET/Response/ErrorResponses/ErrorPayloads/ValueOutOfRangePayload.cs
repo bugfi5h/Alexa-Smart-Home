@@ -4,24 +4,24 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Payload für ValueOutOfRange
+    /// Payload for ValueOutOfRange
     /// </summary>
     public class ValueOutOfRangePayload : ResponsePayload
     {
         /// <summary>
-        /// Minimalwert
+        /// Minimum value
         /// </summary>
         [JsonRequired]
         [JsonProperty("minimumValue")]
         public double MinimumValue { get; set; }
         /// <summary>
-        /// Maximalwert
+        /// Maximum value
         /// </summary>
         [JsonRequired]
         [JsonProperty("maximumValue")]
         public double MaximumValue { get; set; }
         /// <summary>
-        /// Konstruktor. Setzt Minimal und Maximalwert
+        /// Constructor. Sets minimal and maximal value
         /// </summary>
         /// <param name="min"></param>
         /// <param name="max"></param>

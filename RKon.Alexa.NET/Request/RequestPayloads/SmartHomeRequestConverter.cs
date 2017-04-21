@@ -6,7 +6,7 @@ using System;
 namespace RKon.Alexa.NET.Request.RequestPayloads
 {
     /// <summary>
-    /// JsonConverter zur Auswertung von SmartHomeRequests
+    /// JsonConverter for the creation of SmartHomeRequests
     /// </summary>
     public class SmartHomeRequestConverter : JsonConverter
     {
@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
         /// </summary>
         public override bool CanWrite => false;
         /// <summary>
-        /// Liefert zurück, ob in das übergebene Objekt konvertiert werden kann.
+        /// Returns, if the object can be converted
         /// </summary>
         /// <param name="objectType"></param>
         /// <returns></returns>
@@ -24,7 +24,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
             return objectType == typeof(SmartHomeRequest);
         }
         /// <summary>
-        /// Nicht implementiert
+        /// Not implemented
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="value"></param>
@@ -34,7 +34,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
             throw new NotImplementedException();
         }
         /// <summary>
-        /// Liest Json in ein Objekt und erstellt an Hand des Header Namens ein passendes SmartHomeRequest
+        /// Reads Json in a Objekt und creates a SmartHomeRequest
         /// </summary>
         /// <param name="reader"></param>
         /// <param name="objectType"></param>
@@ -63,10 +63,10 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
             return req;
         }
         /// <summary>
-        /// Liefert den Payload für den jeweiligen Requesttyp
+        /// returns the payload for the specific requesttype
         /// </summary>
-        /// <param name="requestType">Name des Requests></param>
-        /// <param name="payloadVersion">Version des Payloads</param>
+        /// <param name="requestType">Name of the Requests></param>
+        /// <param name="payloadVersion">Version of the Payloads</param>
         /// <returns></returns>
         public RequestPayload Create(string requestType, string payloadVersion)
         {
@@ -101,6 +101,10 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
                     case HeaderNames.GET_TEMPERATURE_READING_REQUEST:
                     case HeaderNames.GET_TARGET_TEMPERATURE_REQUEST:
                         return new GetTemperatureRequestPayload();
+                    case HeaderNames.GET_LOCK_STATE_REQUEST:
+                        return new GetLockStateRequestPayload();
+                    case HeaderNames.SET_LOCK_STATE_REQUEST:
+                        return new SetLockStateRequestPayload();
                     default:
                         throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
                 }

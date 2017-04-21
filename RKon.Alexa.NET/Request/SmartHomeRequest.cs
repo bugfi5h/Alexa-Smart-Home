@@ -3,26 +3,26 @@
 namespace RKon.Alexa.NET.Request
 {
     /// <summary>
-    /// SmartHomeRequest Objekt an Hand von JSON Requests 
+    /// SmartHomeRequest Class 
     /// </summary>
     [JsonConverter(typeof(RequestPayloads.SmartHomeRequestConverter))]
     public class SmartHomeRequest
     {
         /// <summary>
-        /// Headerinformationen
+        /// Headerinformations
         /// </summary>
         [JsonProperty("header")]
         public RequestHeader Header { get; set; }
         /// <summary>
-        /// Payloadinformationen
+        /// Payloadinformations
         /// </summary>
         [JsonProperty("payload")]
         public RequestPayload Payload { get; set; }
 
         /// <summary>
-        /// Gibt den Typ des Payloads zurück
+        /// returns the type of the payload
         /// </summary>
-        /// <returns></returns>
+        /// <returns>System.Type Payloadtype</returns>
         public System.Type GetRequestPayloadType()
         {
             return Payload?.GetType();

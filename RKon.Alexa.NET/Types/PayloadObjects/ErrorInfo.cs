@@ -3,27 +3,27 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für Fehlerinformationen
+    /// Class for error informations
     /// </summary>
     public class ErrorInfo
     {
         /// <summary>
-        /// Fehlercode
+        /// Errorcode
         /// </summary>
         [JsonRequired]
         [JsonProperty("code")]
         public string Code { get; set; }
         /// <summary>
-        /// Fehlerbeschreibung
+        /// Fehlerdescription
         /// </summary>
         [JsonRequired]
         [JsonProperty("description")]
         public string Description { get; set; }
         /// <summary>
-        /// Konstruktor.
+        /// Constructor.
         /// </summary>
-        /// <param name="code">Fehlercode</param>
-        /// <param name="description">Fehlerbeschreibung</param>
+        /// <param name="code">Errorcode</param>
+        /// <param name="description">Error description</param>
         public ErrorInfo(string code, string description)
         {
             Code = code;

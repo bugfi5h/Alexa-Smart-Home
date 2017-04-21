@@ -6,7 +6,7 @@ using System.Linq;
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Klasse für den Header einer SmartHomeResponse
+    /// Class for the header of a SmartHomeResponse
     /// </summary>
     public class ResponseHeader
     {
@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response
         [JsonRequired()]
         public string MessageId { get; set; }
         /// <summary>
-        /// Version des Payloads
+        /// Version of the Payload
         /// </summary>
         [JsonProperty("payloadVersion")]
         [JsonRequired()]
@@ -29,13 +29,13 @@ namespace RKon.Alexa.NET.Response
         [JsonRequired()]
         public string Namespace { get; set; }
         /// <summary>
-        /// Aktionsname
+        /// Name
         /// </summary>
         [JsonProperty("name")]
         [JsonRequired()]
         public string Name { get; set; }
         /// <summary>
-        /// Erstellt an Hand eines Requestheaders den ResponseHeader
+        /// Creates the ResponseHeader
         /// </summary>
         /// <param name="reqHeader">Requestheaders</param>
         public ResponseHeader(RequestHeader reqHeader)

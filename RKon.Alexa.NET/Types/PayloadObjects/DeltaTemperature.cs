@@ -2,7 +2,7 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für Delta Temperaturwert
+    /// Class for delta temperatures
     /// </summary>
     public class DeltaTemperature : TargetTemperature
     {

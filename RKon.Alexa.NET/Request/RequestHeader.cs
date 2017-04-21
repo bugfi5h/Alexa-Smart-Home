@@ -3,12 +3,12 @@
 namespace RKon.Alexa.NET.Request
 {
     /// <summary>
-    /// Header für ein SmartHomeRequest
+    /// Header for a SmartHomeRequest
     /// </summary>
     public class RequestHeader
     {
         /// <summary>
-        /// Nachrichtennummer
+        /// MessageId
         /// </summary>
         [JsonProperty("messageId")]
         public string MessageId { get; set; }
@@ -23,7 +23,7 @@ namespace RKon.Alexa.NET.Request
         [JsonProperty("namespace")]
         public string Namespace { get; set; }
         /// <summary>
-        /// Aktionsname
+        /// Name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

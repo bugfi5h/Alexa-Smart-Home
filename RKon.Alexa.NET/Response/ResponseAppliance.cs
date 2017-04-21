@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Gerät, das per Response geschickt wird
+    /// Appliance for responses
     /// </summary>
     public class ResponseAppliance
     {
@@ -17,13 +17,13 @@ namespace RKon.Alexa.NET.Response
         [JsonRequired]
         public string ApplianceID { get; set; }
         /// <summary>
-        /// Hersteller
+        /// Maufacturer
         /// </summary>
         [JsonProperty("manufacturerName")]
         [JsonRequired]
         public string ManufacturerName { get; set; }
         /// <summary>
-        /// Modell
+        /// Model
         /// </summary>
         [JsonProperty("modelName")]
         [JsonRequired]
@@ -35,45 +35,45 @@ namespace RKon.Alexa.NET.Response
         [JsonRequired]
         public string Version { get; set; }
         /// <summary>
-        /// Name des Geräts, der vom Nutzer verwendet wird um das Gerät zu identifizieren
+        /// Name of the appliance, that is used to identify the device
         /// </summary>
         [JsonProperty("friendlyName")]
         [JsonRequired]
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Beschreibung in 128 Zeichen
+        /// Description in 128 characters
         /// </summary>
         [JsonProperty("friendlyDescription")]
         [JsonRequired]
         public string FriendlyDescription { get; set; }
         /// <summary>
-        /// Gibt an, ob das Gerät erreichbar ist
+        /// boolean to represent if the appliance is reachable
         /// </summary>
         [JsonProperty("isReachable")]
         [JsonRequired]
         public bool IsReachable { get; set; }
         /// <summary>
-        /// Aktionen, die durchgeführt werden können
+        /// available actions of the appliance
         /// </summary>
         [JsonProperty("actions")]
         [JsonRequired]
         public List<string> Actions { get; set; }
         /// <summary>
-        /// Zusätzliche Details
+        /// List of additional details. Can be empty
         /// </summary>
         [JsonProperty("additionalApplianceDetails")]
         public Dictionary<string,object> AdditionalApplianceDetails { get; private set; }
 
         /// <summary>
-        /// Erstellt Gerät an Hand der übergebenen Werte. Aktionen müssen manuell gesetzt werden.
+        /// Constructor
         /// </summary>
-        /// <param name="id">GeräteId</param>
-        /// <param name="manufacturerName">Hersteller</param>
-        /// <param name="modelName">Modell</param>
+        /// <param name="id">DeviceId</param>
+        /// <param name="manufacturerName">manufacturer</param>
+        /// <param name="modelName">Model</param>
         /// <param name="version">Version</param>
-        /// <param name="friendlyName">Name des Geräts, der vom Nutzer verwendet wird um das Gerät zu identifizieren</param>
-        /// <param name="friendlyDescription">Beschreibung in 128 Zeichen</param>
-        /// <param name="isReachable">Gibt an, ob das Gerät erreichbar ist</param>
+        /// <param name="friendlyName">Name of the appliance, that is used to identify the device</param>
+        /// <param name="friendlyDescription">Description in 128 characters</param>
+        /// <param name="isReachable">boolean to represent if the appliance is reachable</param>
         public ResponseAppliance(string id, string manufacturerName, string modelName, string version, string friendlyName, string friendlyDescription, bool isReachable)
         {
             AdditionalApplianceDetails = new Dictionary<string, object>();
@@ -88,10 +88,10 @@ namespace RKon.Alexa.NET.Response
         }
 
         /// <summary>
-        /// Versucht einen Action hinzuzufügen. Gültige Actions finden Sie im Namespace RKon.Alexa.NET.Types.ApplianceActions
+        /// Tries to add a action. Valid actions can be found in the namespace RKon.Alexa.NET.Types.ApplianceActions
         /// </summary>
-        /// <param name="action">Action die hinzugefügt werden soll</param>
-        /// <returns>True, wenn Wert hinzugefügt wurde</returns>
+        /// <param name="action">Action to add</param>
+        /// <returns>True, if a value was added</returns>
         public bool TryAddAction(string action)
         {
             if (ApplianceActions.Actions.Contains(action))

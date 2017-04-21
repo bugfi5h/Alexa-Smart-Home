@@ -3,12 +3,12 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für Temperaturwert
+    /// Class for TargetTemperature
     /// </summary>
     public class TargetTemperature
     {
         /// <summary>
-        /// Wert
+        /// Value
         /// </summary>
         [JsonRequired]
         [JsonProperty("value")]

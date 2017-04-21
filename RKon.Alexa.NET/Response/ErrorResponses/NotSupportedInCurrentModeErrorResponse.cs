@@ -1,5 +1,4 @@
 ﻿using RKon.Alexa.NET.Request;
-using System;
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
@@ -8,13 +7,13 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
     public class NotSupportedInCurrentModeErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor. currentDeviceMode muss einen validen Modus übergeben bekommen. Diese findet man unter RKon.Alexa.NET.Types.DeviceModes.Modes.
-        /// Falls eine ungültige Eingabe getätigt wird, wird CurrentDeviceMode auf OTHER gesetzt.
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequeson.
+        /// CurrentDeviceMode has to be a valid mode. These can be found in RKon.Alexa.NET.Types.DeviceModes.Modes.
+        /// If a unvalid entry is entered, it will set to OTHER.
         /// </summary>
         /// <param name="reqHeader">Requestheader</param>
-        /// <param name="currentDeviceMode">Aktiver Modus des Geräts</param>
+        /// <param name="currentDeviceMode">Active mode of the device</param>
         public NotSupportedInCurrentModeErrorResponse(RequestHeader reqHeader, string currentDeviceMode)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);

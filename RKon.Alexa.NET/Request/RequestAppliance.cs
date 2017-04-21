@@ -4,23 +4,23 @@ using System.Collections.Generic;
 namespace RKon.Alexa.NET.Request
 {
     /// <summary>
-    /// Gerät aus einem Request
+    /// Appliance from a Request
     /// </summary>
     public class RequestAppliance
     {
         /// <summary>
-        /// GeräteId
+        /// ApplianceID
         /// </summary>
         [JsonProperty("applianceID")]
         public string ApplianceId { get; set; }
         /// <summary>
-        /// Zusätzliche Appliance Informationen
+        /// Additional Appliance details
         /// </summary>
         [JsonProperty("additionalApplianceDetails")]
         public Dictionary<string,object>AdditionalApplianceDetails { get; set; }
 
         /// <summary>
-        /// Konstruktor. Initialisiert AdditionalApplianceDetails
+        /// Konstruktor. Initialises AdditionalApplianceDetails
         /// </summary>
         public RequestAppliance()
         {

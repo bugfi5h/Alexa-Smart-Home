@@ -4,24 +4,24 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Payload für TargetFirmwareOutdated
+    /// Payload for TargetFirmwareOutdated
     /// </summary>
     public class TargetFirmwareOutdatedPayload : ResponsePayload
     {
         /// <summary>
-        /// Kleinste erlaubte Firmwareversion
+        /// Smallest allowed Firmwareversion
         /// </summary>
         [JsonRequired]
         [JsonProperty("minimumFirmwareVersion")]
         public string MinimumFirmwareVersion { get; set; }
         /// <summary>
-        /// Aktuelle Firmwareversion des Geräts
+        /// Actual Firmwareversion of the device
         /// </summary>
         [JsonRequired]
         [JsonProperty("currentFirmwareVersion")]
         public string CurrentFirmwareVersion { get; set; }
         /// <summary>
-        /// Konstruktor. Setzt minimum und current Firmware
+        /// Constructor. Sets min and current Firmware
         /// </summary>
         /// <param name="minimum"></param>
         /// <param name="current"></param>

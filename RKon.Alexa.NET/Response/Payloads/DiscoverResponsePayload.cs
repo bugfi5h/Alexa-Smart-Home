@@ -4,19 +4,19 @@ using System.Collections.Generic;
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Payload für eine DiscoverApplianceResponse
+    /// Payload for a DiscoverApplianceResponse
     /// </summary>
     public class DiscoverResponsePayload : ResponsePayload
     {
         /// <summary>
-        /// Gefundene Geräte
+        /// List of discovered appliances
         /// </summary>
         [JsonProperty("discoveredAppliances")]
         [JsonRequired]
         public List<ResponseAppliance> DiscoveredAppliances { get; set; }
 
         /// <summary>
-        /// Konstruktor. Erstellt eine neue Liste gefundener Geräte
+        /// Constructor
         /// </summary>
         public DiscoverResponsePayload()
         {

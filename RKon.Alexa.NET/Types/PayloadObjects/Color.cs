@@ -3,7 +3,7 @@
 namespace RKon.Alexa.NET.Types.PayloadObjects
 {
     /// <summary>
-    /// Klasse für Farbobjekte mit HUE
+    /// Class for Colorobjects with HUE
     /// </summary>
     public class Color
     {
@@ -12,7 +12,7 @@ namespace RKon.Alexa.NET.Types.PayloadObjects
         private double mBrightness;
 
         /// <summary>
-        /// Double zwischen 0.00 und 360.00
+        /// Double between 0.00 and 360.00
         /// </summary>
         [JsonProperty("hue")]
         public double Hue
@@ -30,7 +30,7 @@ namespace RKon.Alexa.NET.Types.PayloadObjects
             }
         }
         /// <summary>
-        /// Double zwischen 0.0000 und 1.0000
+        /// Double between 0.0000 and 1.0000
         /// </summary>
         [JsonProperty("saturation")]
         public double Saturation
@@ -48,7 +48,7 @@ namespace RKon.Alexa.NET.Types.PayloadObjects
             }
         }
         /// <summary>
-        /// Double zwischen 0.0000 und 1.00000
+        /// Double between 0.0000 and 1.00000
         /// </summary>
         [JsonProperty("brightness")]
         public double Brightness

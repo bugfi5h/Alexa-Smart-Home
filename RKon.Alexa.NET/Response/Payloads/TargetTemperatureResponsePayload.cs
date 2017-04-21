@@ -5,31 +5,31 @@ using Newtonsoft.Json;
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Payload für TargetTemperatureResponse
+    /// Payload for a TargetTemperatureResponse
     /// </summary>
     public class TargetTemperatureResponsePayload : ResponsePayload
     {
         /// <summary>
-        /// Zieltemperatur
+        /// Target temperature to set
         /// </summary>
         [JsonRequired]
         [JsonProperty("targetTemperature")]
         public TargetTemperature TargetTemperature { get; set; }
         /// <summary>
-        /// Temperaturmodus
+        /// temperature mode
         /// </summary>
         [JsonRequired]
         [JsonProperty("temperatureMode")]
         public TemperatureMode TemperatureMode { get; set; }
         /// <summary>
-        /// Letzter Zustand
+        /// previous temperature mode
         /// </summary>
         [JsonRequired]
         [JsonProperty("previousState")]
         public PreviousState PreviousState { get; set; }
 
         /// <summary>
-        /// Konstruktor. Initialisiert alle Properties.
+        /// Constructor
         /// </summary>
         public TargetTemperatureResponsePayload()
         {

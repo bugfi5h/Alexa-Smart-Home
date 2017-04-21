@@ -4,19 +4,19 @@
 namespace RKon.Alexa.NET.Types.PayloadObjects
 {
     /// <summary>
-    /// Zustand des Geräts nach Wechseln der Farbe durch double wert
+    /// State of the appliance after the color change
     /// </summary>
     public class AchievedColorTemperatureState
     {
         /// <summary>
-        /// Farbwert nach Schaltung
+        /// Color value after commiting the request
         /// </summary>
         [JsonRequired]
         [JsonProperty("colorTemperature")]
         public ColorTemperature colorTemperature { get; set; }
 
         /// <summary>
-        /// Konstruktor
+        /// Constructor
         /// </summary>
         public AchievedColorTemperatureState()
         {

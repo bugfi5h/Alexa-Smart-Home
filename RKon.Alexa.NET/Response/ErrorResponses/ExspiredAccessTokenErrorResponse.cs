@@ -3,14 +3,13 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlermeldung wenn das übergebene Accesstoken abgelaufen ist.
+    /// Error response, if the Accesstoken is exspired.
     /// </summary>
     public class ExspiredAccessTokenErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor erstellt Header an Hand vom Requestheader und einen leeren Payload
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="header">Requestheader</param>
         public ExspiredAccessTokenErrorResponse(RequestHeader header)

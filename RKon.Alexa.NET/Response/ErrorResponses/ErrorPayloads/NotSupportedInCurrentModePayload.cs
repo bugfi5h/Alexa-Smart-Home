@@ -4,26 +4,26 @@ using Newtonsoft.Json;
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Payload für NotSupportedInCurrentMode
+    /// Payload for NotSupportedInCurrentMode
     /// </summary>
     public class NotSupportedInCurrentModePayload : ResponsePayload
     {
         /// <summary>
-        /// Aktiver Gerätemodus
+        /// Active DeviceMode
         /// </summary>
         [JsonProperty("currentDeviceMode")]
         [JsonRequired]
         public string CurrentDeviceMode { get; private set; }
 
         /// <summary>
-        /// Konstruktor. Setzt CurrentDeviceMode wenn möglich auf currenMode. Ansonsten auf OTHER
+        /// Constructor. Sets CurrentDeviceMode if possible to currenMode. Otherwise to OTHER
         /// </summary>
         /// <param name="currentMode"></param>
         public NotSupportedInCurrentModePayload(string currentMode){
             TrySetDeviceMode(currentMode);
         }
         /// <summary>
-        /// Setzt CurrentDeviceMode wenn möglich auf mode. Ansonsten auf OTHER
+        /// Sets CurrentDeviceMode if possible to currenMode. Otherwise to OTHER
         /// </summary>
         /// <param name="mode"></param>
         /// <returns></returns>

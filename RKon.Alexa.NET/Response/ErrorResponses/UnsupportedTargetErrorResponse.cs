@@ -3,14 +3,13 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlermeldung, wenn das angesprochene Gerät nicht vom Skill Adapter unterstützt wird.
+    /// Error message if the target is not supported by the skill adapter.
     /// </summary>
     public class UnsupportedTargetErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor erstellt Header an Hand vom Requestheader und einen leeren Payload
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="header">Requestheader</param>
         public UnsupportedTargetErrorResponse(RequestHeader header)

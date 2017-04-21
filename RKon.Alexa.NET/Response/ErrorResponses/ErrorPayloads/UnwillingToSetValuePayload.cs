@@ -17,10 +17,10 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public ErrorInfo ErrorInfo { get; set; }
 
         /// <summary>
-        /// Konstruktor. Erstellt ErrorInfo Objekt aus Fehlercode und Fehlerbeschreibung
+        /// Construktor. Creates ErrorInfo Object out of the error code and error description
         /// </summary>
-        /// <param name="code">Fehlercode</param>
-        /// <param name="desc">Fehlerbeschreibung</param>
+        /// <param name="code">ErrorCode</param>
+        /// <param name="desc">Error description</param>
         public UnwillingToSetValuePayload(string code, string desc)
         {
             ErrorInfo = new ErrorInfo(code, desc);

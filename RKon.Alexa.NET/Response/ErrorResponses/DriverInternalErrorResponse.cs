@@ -3,14 +3,13 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Generische Laufzeitfehlermeldung
+    /// Generic runtimeerror
     /// </summary>
     public class DriverInternalErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor erstellt Header an Hand vom Requestheader und einen leeren Payload
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="header">Requestheader</param>
         public DriverInternalErrorResponse(RequestHeader header)

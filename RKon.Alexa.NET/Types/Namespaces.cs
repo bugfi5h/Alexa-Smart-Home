@@ -2,24 +2,24 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Namespaces für Smarthomerequests,-responses und -errorresponses
+    /// Namespaces for Smarthomerequests,-responses and -errorresponses
     /// </summary>
     public class Namespaces
     {
         /// <summary>
-        /// Header Namespace für DiscoveryAppliance Requests und Responses 
+        /// Header Namespace for DiscoveryAppliance Requests and Responses 
         /// </summary>
         public const string DISCOVERY = "Alexa.ConnectedHome.Discovery";
         /// <summary>
-        /// Header Namespace für Geräte Requests und Responses
+        /// Header Namespace for Appliance Requests and Responses
         /// </summary>
         public const string CONTROL = "Alexa.ConnectedHome.Control";
         /// <summary>
-        /// Header Namespace für HealthChecks
+        /// Header Namespace for HealthChecks
         /// </summary>
         public const string SYSTEM = "Alexa.ConnectedHome.System";
         /// <summary>
-        /// Header Namespace für  Abfragen
+        /// Header Namespace for queries
         /// </summary>
         public const string QUERY = "Alexa.ConnectedHome.Query";
     }

@@ -9,7 +9,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
     public class In_DecrementTemperatureRequestPayload : RequestPayloadWithAppliance
     {
         /// <summary>
-        /// Menge um wie viel die Temperatur angepasst werden soll
+        /// The temperature decrease/increase to apply to the device
         /// </summary>
         [JsonProperty("deltaTemperature")]
         public DeltaTemperature DeltaTemperature { get; set; }

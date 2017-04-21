@@ -2,7 +2,7 @@
 namespace RKon.Alexa.NET.Request.RequestPayloads
 {
     /// <summary>
-    /// Payload für GetTemperature Requests
+    /// GetTemperatureRequestPayload
     /// </summary>
     public class GetTemperatureRequestPayload : RequestPayloadWithAppliance
     {

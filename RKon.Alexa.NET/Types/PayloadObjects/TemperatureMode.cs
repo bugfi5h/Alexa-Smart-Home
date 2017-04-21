@@ -4,18 +4,18 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Klasse für Temperatur Modus
+    ///Class for the Temperature Mode
     /// </summary>
     public class TemperatureMode
     {
         /// <summary>
-        /// Wert
+        /// Value
         /// </summary>
         [JsonRequired]
         [JsonProperty("value")]
         public string Value { get; private set; }
         /// <summary>
-        /// Konsturktor setzt Wert auf AUTO
+        /// Constructor
         /// </summary>
         public TemperatureMode()
         {
@@ -23,15 +23,15 @@ namespace RKon.Alexa.NET.Types
         }
 
         /// <summary>
-        /// Setzt den Wert auf mode wenn möglich. Gültige Eingaben finden Sie im Namespace RKon.Alexa.Net.Types.DeviceModes
-        /// Bei Fehlschlag wird AUTO eingestellt
+        /// Sets the Value to mode if able. Valid modes can be found under Namespace RKon.Alexa.Net.Types.DeviceModes
+        /// On error it will use AUTO
         /// </summary>
-        /// <param name="mode">Einzustellender Modus</param>
-        /// <returns>True bei Wertänderung</returns>
+        /// <param name="mode">New Mode</param>
+        /// <returns>True on success</returns>
         public bool TrySetTemperatureMode(string mode)
         {
             bool success = true;
-            if (DeviceModes.TemperatureModes.Contains(mode))
+            if (DeviceModes.TemperatureModes.Contains(mode.ToUpper()))
             {
                 Value = mode;
             }

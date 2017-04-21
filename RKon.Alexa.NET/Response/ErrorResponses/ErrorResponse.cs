@@ -7,18 +7,18 @@ using RKon.Alexa.NET.Types;
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Exception, wenn versucht wird eine ErrorResponse für ein DiscoverApplianceRequest zu verwenden.
+    /// Exception, if this error response is for a  DiscoverApplianceRequest
     /// </summary>
     public class UnvalidDiscoveryResponseException : Exception
     {
         /// <summary>
-        /// Konstruktor mit Exceptionmeldung.
+        ///  Constructor
         /// </summary>
         public UnvalidDiscoveryResponseException() : base("Discovery requests can not be answered by error responses") { }
     }
 
     /// <summary>
-    /// Abstrakte Basisklasse für Fehlermeldungen auf SmartHomeRequests.
+    /// Abstract base class for error responses of SmartHomeRequests.
     /// </summary>
     public abstract class ErrorResponse : ISmartHomeResponse
     {
@@ -41,19 +41,19 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
             get; set;
         }
         /// <summary>
-        /// Liefert den Typ des Payloads zurück
+        /// returns the Type of a Payloads
         /// </summary>
-        /// <returns>System.Type des Payloads</returns>
+        /// <returns>System.Type of the Payloads</returns>
         public System.Type GetResponsePayloadType()
         {
             return Payload?.GetType();
         }
 
         /// <summary>
-        /// Setzt den Header an Hand des RequestHeaders und dem Namen des Fehlers
+        /// Sets the Header with the request header and the errorname.
         /// </summary>
-        /// <param name="reqHeader">RequestHeaders</param>
-        /// <param name="errorName">Name des Fehlers</param>
+        /// <param name="reqHeader">RequestHeader</param>
+        /// <param name="errorName">Name of the error</param>
         /// <returns></returns>
         protected ResponseHeader setHeader(RequestHeader reqHeader, string errorName)
         {

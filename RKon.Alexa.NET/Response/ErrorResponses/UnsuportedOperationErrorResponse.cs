@@ -3,14 +3,13 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlermeldung, wenn die angeforderte Operation von dem Gerät nicht unterstützt wird
+    /// Error response if the wanted operation is not supported.
     /// </summary>
     public class UnsuportedOperationErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor erstellt Header an Hand vom Requestheader und einen leeren Payload
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="header">Requestheader</param>
         public UnsuportedOperationErrorResponse(RequestHeader header)

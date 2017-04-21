@@ -3,18 +3,17 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Fehlerantwort, wenn ein Request einen Wert einstellen will, der sich nicht in der vom Gerät akzeptierten Wertspanne befindet.
+    /// Error response, if a request wants to set a value that is out of range.
     /// </summary>
     public class ValueOutOfRangeErrorResponse : ErrorResponse
     {
         /// <summary>
-        /// Konstruktor. Setzt header an Hand des Requestheaders und Payload mit minimal und Maximalwert
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn diese Fehlerresponse auf ein DiscoverApplianceRequest antworten soll,
-        /// da diese Requests nie eine ErrorResponse als Antwort bekommen.
+        /// Constructor
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
         /// </summary>
         /// <param name="reqHeader">Requestheader</param>
-        /// <param name="minimumValue">Minimalwert</param>
-        /// <param name="maximumValue">Maximalwert</param>
+        /// <param name="minimumValue">Minimun supported value</param>
+        /// <param name="maximumValue">Maximum supported value</param>
         public ValueOutOfRangeErrorResponse(RequestHeader reqHeader, double minimumValue, double maximumValue)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);

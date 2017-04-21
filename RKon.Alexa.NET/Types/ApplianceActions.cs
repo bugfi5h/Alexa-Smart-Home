@@ -4,45 +4,45 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// Actions für Geräte
+    /// Actions of a appliance
     /// </summary>
     public class ApplianceActions
     {
         /// <summary>
-        /// String für die Decrement Percentage Gerätefunktion
+        /// String for the Decrement Percentage Action
         /// </summary>
         public const string DECREMENT_PERCENTAGE = "decrementPercentage";
         /// <summary>
-        /// String für die Turn Off Gerätefunktion
+        /// String for the Turn Off Action
         /// </summary>
         public const string TURN_OFF = "turnOff";
         /// <summary>
-        /// String für die Turn On Gerätefunktion
+        /// String for the Turn On Action
         /// </summary>
         public const string TURN_ON = "turnOn";
         /// <summary>
-        /// String für die Set Target Temperature Gerätefunktion
+        /// String for the Set Target Temperature Action
         /// </summary>
         public const string SET_TARGET_TEMPERATURE = "setTargetTemperature";
         /// <summary>
-        /// String für die Set Percentage Gerätefunktion
+        /// String for the Set Percentage Action
         /// </summary>
         public const string SET_PERCENTAGE = "setPercentage";
         /// <summary>
-        /// String für die Increment Target Temperature Gerätefunktion
+        /// String for the Increment Target Temperature Action
         /// </summary>
         public const string INCREMENT_TARGET_TEMPERATURE = "incrementTargetTemperature";
         /// <summary>
-        /// String für die Increment Percentage Gerätefunktion
+        /// String for the Increment Percentage Action
         /// </summary>
         public const string INCREMENT_PERCENTAGE = "incrementPercentage";
         /// <summary>
-        /// String für die Decrement Target Temperature Gerätefunktion
+        /// String for the Decrement Target Temperature Action
         /// </summary>
         public const string DECREMENT_TARGET_TEMPERATURE = "decrementTargetTemperature";
 
         /// <summary>
-        /// Liste aller verfügbaren Aktionen
+        /// List of all available actions
         /// </summary>
         public static readonly List<string> Actions = new List<string>()
         {

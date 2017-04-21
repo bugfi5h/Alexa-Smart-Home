@@ -5,47 +5,47 @@ using System;
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Exception, wenn der RequestHeader Name nicht bekannt ist
+    /// Exception,if the RequestHeader Name is not known
     /// </summary>
     public class UnknownRequestHeaderException : Exception
     {
         /// <summary>
-        /// Exception, wenn der RequestHeader Name nicht bekannt ist
+        /// Exception,if the RequestHeader Name is not known
         /// </summary>
-        /// <param name="requestHeaderName"> Name des RequestHeader</param>
+        /// <param name="requestHeaderName"> Name of the RequestHeader</param>
         public UnknownRequestHeaderException(string requestHeaderName) : base(requestHeaderName + " is not defined") { }
     }
     /// <summary>
-    /// Klasse für Smart Home Responses
+    /// Class for Smart Home Responses
     /// </summary>
     public class SmartHomeResponse : ISmartHomeResponse
     {
         /// <summary>
-        /// Header Inhalt
+        /// Header
         /// </summary>
         [JsonRequired]
         [JsonProperty("header")]
         public ResponseHeader Header { get; set; }
         /// <summary>
-        /// Payload Inhalt
+        /// Payload
         /// </summary>
         [JsonRequired]
         [JsonProperty("payload")]
         public ResponsePayload Payload { get; set; }
 
         /// <summary>
-        /// Liefert den Typ des Payloads
+        /// System.Type of the Payloads
         /// </summary>
-        /// <returns>System.Type des Payloads</returns>
+        /// <returns>System.Type of the Payloads</returns>
         public System.Type GetResponsePayloadType()
         {
             return Payload?.GetType();
         }
 
         /// <summary>
-        /// Legt eine SmartHomeResponse mit passendem Header und Payload mit Hilfe des requestHeaders an.
+        /// Constructor
         /// </summary>
-        /// <param name="requestHeader">Header des SmartHomeRequests</param>
+        /// <param name="requestHeader">Header of the SmartHomeRequests</param>
         public SmartHomeResponse(Request.RequestHeader requestHeader)
         {
             Header = new ResponseHeader(requestHeader);
@@ -90,6 +90,12 @@ namespace RKon.Alexa.NET.Response
                         break;
                     case HeaderNames.GET_TARGET_TEMPERATURE_REQUEST:
                         Payload = new GetTargetTemperatureResponsePayload();
+                        break;
+                    case HeaderNames.GET_LOCK_STATE_REQUEST:
+                        Payload = new GetLockStateResponsePayload();
+                        break;
+                    case HeaderNames.SET_LOCK_STATE_REQUEST:
+                        Payload = new SetLockStateResponsePayload();
                         break;
                     default: throw new UnknownRequestHeaderException(name);
                 }

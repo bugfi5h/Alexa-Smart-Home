@@ -2,7 +2,7 @@
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Leerer Responsepayload
+    /// empty Responsepayload
     /// </summary>
     public class ResponsePayload
     {

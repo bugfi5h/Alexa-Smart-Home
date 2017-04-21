@@ -3,7 +3,7 @@
 namespace RKon.Alexa.NET.Response
 {
     /// <summary>
-    /// Interface zur Definition einer SmartHome Response
+    /// Interface for a definition of a SmartHome Response
     /// </summary>
     public interface ISmartHomeResponse
     {
@@ -16,9 +16,9 @@ namespace RKon.Alexa.NET.Response
         /// </summary>
         ResponsePayload Payload { get; set; }
         /// <summary>
-        /// Rückgabe des Payload Typs
+        /// Return the Payload Type
         /// </summary>
-        /// <returns>System.Type des Payloads</returns>
+        /// <returns>System.Type of the Payloads</returns>
         System.Type GetResponsePayloadType();
     }
 }

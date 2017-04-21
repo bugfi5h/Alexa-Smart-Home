@@ -4,18 +4,18 @@
 namespace RKon.Alexa.NET.Response.ErrorResponses
 {
     /// <summary>
-    /// Payload für UnexpectedInformationReceived
+    /// Payload for UnexpectedInformationReceived
     /// </summary>
     public class UnexpectedInformationReceivedPayload : ResponsePayload
     {
         /// <summary>
-        /// Parameter der gescheitert ist
+        /// Parameter that failed
         /// </summary>
         [JsonProperty("faultingParameter")]
         [JsonRequired]
         public string FaultingParameter { get; set; }
         /// <summary>
-        /// Konstruktor. Setzt FaultingParameter
+        /// Constructor. Sets FaultingParameter
         /// </summary>
         /// <param name="faultingParameter"></param>
         public UnexpectedInformationReceivedPayload(string faultingParameter)

@@ -1,7 +1,7 @@
 ﻿namespace RKon.Alexa.NET.Request
 {
     /// <summary>
-    /// Abstrakte Basis Klasse für RequestPayloads
+    /// Abstract base class for RequestPayloads
     /// </summary>
     public abstract class RequestPayload
     {

@@ -1,18 +1,15 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace RKon.Alexa.NET.Request.RequestPayloads
 {
     /// <summary>
-    /// Abstrakte Basisklasse für Payloads mit AccessToken
+    /// Abstract base class for payloads with accessToken
     /// </summary>
     public abstract class RequestPayloadWithAccessToken : RequestPayload
     {
         /// <summary>
-        /// Access Token, der der Kunden Geräte Cloud zugewiesen ist.
+        /// Access Token
         /// </summary>
         [JsonProperty("accessToken")]
         public string AccessToken { get; set; }
