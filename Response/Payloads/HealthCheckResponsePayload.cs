@@ -7,9 +7,15 @@ namespace RKon.Alexa.NET.Response
     /// </summary>
     public class HealthCheckResponsePayload : ResponsePayload
     {
+        /// <summary>
+        /// Beschreibung des Zustands
+        /// </summary>
         [JsonRequired]
         [JsonProperty("description")]
         public string Description { get; private set; }
+        /// <summary>
+        /// Boolean ob Gerät aktiv ist.
+        /// </summary>
         [JsonRequired]
         [JsonProperty("isHealthy")]
         public bool IsHealthy { get; private set; }

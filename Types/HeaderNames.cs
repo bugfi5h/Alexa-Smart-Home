@@ -47,6 +47,24 @@ namespace RKon.Alexa.NET.Types
         /// Header Name für DecrementPercentage Requests.
         /// </summary>
         public const string DECREMENT_PERCENTAGE_REQUEST = "DecrementPercentageRequest";
+        /// <summary>
+        /// Header Name für SetColor Requests.
+        /// </summary>
+        public const string SET_COLOR_REQUEST = "SetColorRequest";
+        /// <summary>
+        /// Header Name für IncrementColorTemperature Requests
+        /// </summary>
+        public const string INCREMENT_COLOR_TEMPERATURE_REQUEST = "IncrementColorTemperatureRequest";
+        /// <summary>
+        /// Header Name für DecrementColorTemperature Requests
+        /// </summary>
+        public const string DECREMENT_COLOR_TEMPERATURE_REQUEST = "DecrementColorTemperatureRequest";
+        /// <summary>
+        /// Header Name für SetColorTemperature Requests
+        /// </summary>
+        public const string SET_COLOR_TEMPERATURE_REQUEST = "SetColorTemperatureRequest";
+
+
 
         #region ERROR_NAMES
         /// <summary>
@@ -151,7 +169,11 @@ namespace RKon.Alexa.NET.Types
             {DECREMENT_TARGET_TEMPERATURE_REQUEST,"DecrementTargetTemperatureConfirmation"},
             {SET_PERCENTAGE_REQUEST,"SetPercentageConfirmation"},
             {INCREMENT_PERCENTAGE_REQUEST,"IncrementPercentageConfirmation"},
-            {DECREMENT_PERCENTAGE_REQUEST,"DecrementPercentageConfirmation"}
+            {DECREMENT_PERCENTAGE_REQUEST,"DecrementPercentageConfirmation"},
+            {SET_COLOR_REQUEST,"SetColorConfirmation" },
+            {SET_COLOR_TEMPERATURE_REQUEST,"SetColorTemperatureConfirmation" },
+            {INCREMENT_COLOR_TEMPERATURE_REQUEST,"IncrementColorTemperatureConfirmation" },
+            {DECREMENT_COLOR_TEMPERATURE_REQUEST, "DecrementColorTemperatureConfirmation" }
         };
     }
 }

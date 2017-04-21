@@ -70,6 +70,16 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.ColorTemperatureRequestPayload">
+            <summary>
+            Payload für SetColorTemperature Requests
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.ColorTemperatureRequestPayload.ColorTemperature">
+            <summary>
+            Wert zwischen 1000 und 10000
+            </summary>
+        </member>
         <member name="T:RKon.Alexa.NET.Request.RequestPayloads.DiscoveryRequestPayload">
             <summary>
             Payload für einen DiscoverApplianceRequest
@@ -83,6 +93,11 @@
         <member name="P:RKon.Alexa.NET.Request.RequestPayloads.HealthCheckRequestPayload.InitiationTimestamp">
             <summary>
             Zeitstempel in Millisekunden seit dem 1.01.1970
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.In_DecrementColorTemperatureRequestPayload">
+            <summary>
+            Request Payload für In- DecrementColorTemperature Payloads
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Request.RequestPayloads.In_DecrementPercentageRequestPayload">
@@ -123,6 +138,16 @@
         <member name="P:RKon.Alexa.NET.Request.RequestPayloads.RequestPayloadWithAppliance.Appliance">
             <summary>
             Das Gerät für das die Aktion bestimmt ist
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Request.RequestPayloads.SetColorRequestPayload">
+            <summary>
+            Payload für einen SetColorRequest
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Request.RequestPayloads.SetColorRequestPayload.Color">
+            <summary>
+            Color Objekt mit Hue, Saturation und Brightness
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Request.RequestPayloads.SetPercentageRequestPayload">
@@ -827,6 +852,21 @@
             </summary>
             <param name="reqHeader">Requestheaders</param>
         </member>
+        <member name="T:RKon.Alexa.NET.Response.ColorTemperatureResponsePayload">
+            <summary>
+            Payload für ColorTemperature Responses
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.ColorTemperatureResponsePayload.AchievedState">
+            <summary>
+            Status des Geräts nach der Farbtemperaturänderung 
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.ColorTemperatureResponsePayload.#ctor">
+            <summary>
+            Konstruktor. Initialisiert alle Properties.
+            </summary>
+        </member>
         <member name="T:RKon.Alexa.NET.Response.DiscoverResponsePayload">
             <summary>
             Payload für eine DiscoverApplianceResponse
@@ -847,6 +887,16 @@
             Payload für eine HealthCheckResponse
             </summary>
         </member>
+        <member name="P:RKon.Alexa.NET.Response.HealthCheckResponsePayload.Description">
+            <summary>
+            Beschreibung des Zustands
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.HealthCheckResponsePayload.IsHealthy">
+            <summary>
+            Boolean ob Gerät aktiv ist.
+            </summary>
+        </member>
         <member name="M:RKon.Alexa.NET.Response.HealthCheckResponsePayload.#ctor">
             <summary>
             Konstruktor setzt IsHealthy auf false und Description auf The system is currenty not healthy
@@ -861,6 +911,21 @@
         <member name="T:RKon.Alexa.NET.Response.ResponsePayload">
             <summary>
             Leerer Responsepayload
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Response.SetColorResponsePayload">
+            <summary>
+            Payload für ein SetColorResponse
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Response.SetColorResponsePayload.AchievedState">
+            <summary>
+            Status des Geräts nach der Farbänderung
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Response.SetColorResponsePayload.#ctor">
+            <summary>
+            Konstruktor. Initialisiert alle Properties.
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Response.TargetTemperatureResponsePayload">
@@ -1033,6 +1098,26 @@
             Header Name für DecrementPercentage Requests.
             </summary>
         </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.SET_COLOR_REQUEST">
+            <summary>
+            Header Name für SetColor Requests.
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.INCREMENT_COLOR_TEMPERATURE_REQUEST">
+            <summary>
+            Header Name für IncrementColorTemperature Requests
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.DECREMENT_COLOR_TEMPERATURE_REQUEST">
+            <summary>
+            Header Name für DecrementColorTemperature Requests
+            </summary>
+        </member>
+        <member name="F:RKon.Alexa.NET.Types.HeaderNames.SET_COLOR_TEMPERATURE_REQUEST">
+            <summary>
+            Header Name für SetColorTemperature Requests
+            </summary>
+        </member>
         <member name="F:RKon.Alexa.NET.Types.HeaderNames.VALUE_OUT_OF_RANGE_ERROR">
             <summary>
             Error Header Name wenn der zu setzende Wert ausserhalb der unterstützen Spanne liegt
@@ -1161,6 +1246,66 @@
         <member name="F:RKon.Alexa.NET.Types.Namespaces.SYSTEM">
             <summary>
             Header Namespace für HealthChecks
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.AchievedColorState">
+            <summary>
+            AchievedState für Farbänderungen. Sollte es nicht möglich sein, die Werte auszulesen können die Werte aus dem Request genommen werden.
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.AchievedColorState.Color">
+            <summary>
+            Farbantwort nach setzen der Farbänderung. 
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Types.PayloadObjects.AchievedColorState.#ctor">
+            <summary>
+            Konstruktor
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.AchievedColorTemperatureState">
+            <summary>
+            Zustand des Geräts nach Wechseln der Farbe durch double wert
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.AchievedColorTemperatureState.colorTemperature">
+            <summary>
+            Farbwert nach Schaltung
+            </summary>
+        </member>
+        <member name="M:RKon.Alexa.NET.Types.PayloadObjects.AchievedColorTemperatureState.#ctor">
+            <summary>
+            Konstruktor
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.Color">
+            <summary>
+            Klasse für Farbobjekte mit HUE
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.Color.Hue">
+            <summary>
+            Double zwischen 0.00 und 360.00
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.Color.Saturation">
+            <summary>
+            Double zwischen 0.0000 und 1.0000
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.Color.Brightness">
+            <summary>
+            Double zwischen 0.0000 und 1.00000
+            </summary>
+        </member>
+        <member name="T:RKon.Alexa.NET.Types.PayloadObjects.ColorTemperature">
+            <summary>
+            Wie TargetTemperature mit Begrenzung zwischen 1000 und 10000
+            </summary>
+        </member>
+        <member name="P:RKon.Alexa.NET.Types.PayloadObjects.ColorTemperature.Value">
+            <summary>
+            Wert
             </summary>
         </member>
         <member name="T:RKon.Alexa.NET.Types.DeltaPercentage">

@@ -91,6 +91,13 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
                         return new In_DecrementPercentageRequestPayload();
                     case HeaderNames.SET_PERCENTAGE_REQUEST:
                         return new SetPercentageRequestPayload();
+                    case HeaderNames.SET_COLOR_REQUEST:
+                        return new SetColorRequestPayload();
+                    case HeaderNames.SET_COLOR_TEMPERATURE_REQUEST:
+                        return new ColorTemperatureRequestPayload();
+                    case HeaderNames.INCREMENT_COLOR_TEMPERATURE_REQUEST:
+                    case HeaderNames.DECREMENT_COLOR_TEMPERATURE_REQUEST:
+                        return new In_DecrementColorTemperatureRequestPayload();
                     default:
                         throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
                 }

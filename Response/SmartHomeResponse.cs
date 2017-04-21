@@ -77,6 +77,14 @@ namespace RKon.Alexa.NET.Response
                     case HeaderNames.HEALTH_CHECK_REQUEST:
                         Payload = new HealthCheckResponsePayload();
                         break;
+                    case HeaderNames.SET_COLOR_REQUEST:
+                        Payload = new SetColorResponsePayload();
+                        break;
+                    case HeaderNames.SET_COLOR_TEMPERATURE_REQUEST:
+                    case HeaderNames.INCREMENT_COLOR_TEMPERATURE_REQUEST:
+                    case HeaderNames.DECREMENT_COLOR_TEMPERATURE_REQUEST:
+                        Payload = new ColorTemperatureResponsePayload();
+                        break;
                     default: throw new UnknownRequestHeaderException(name);
                 }
             }else
