@@ -52,6 +52,7 @@ namespace RKon.Alexa.NET.Types
             if(!success || (Value == DeviceModes.CUSTOM && FriendlyName == null))
             {
                 Value = DeviceModes.AUTO;
+                success = false;
             }
             return success;
         }
