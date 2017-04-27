@@ -13,14 +13,14 @@ namespace RKon.Alexa.NET.Types.PayloadObjects
         /// </summary>
         [JsonRequired]
         [JsonProperty("colorTemperature")]
-        public ColorTemperature colorTemperature { get; set; }
+        public ColorTemperature ColorTemperature { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public AchievedColorTemperatureState()
         {
-            colorTemperature = new ColorTemperature();
+            ColorTemperature = new ColorTemperature();
         }
     }
 }

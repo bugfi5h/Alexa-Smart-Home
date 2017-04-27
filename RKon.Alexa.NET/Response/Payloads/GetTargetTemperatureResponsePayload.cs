@@ -38,7 +38,7 @@ namespace RKon.Alexa.NET.Response
         /// the last time the temperatur was requestet. Can be null
         /// </summary>
         [JsonProperty("applianceResponseTimestamp", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime ApplianceResponseTimestamp { get; set; }
+        public DateTime? ApplianceResponseTimestamp { get; set; }
 
         /// <summary>
         /// Constructor

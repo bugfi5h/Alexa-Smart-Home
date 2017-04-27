@@ -20,7 +20,7 @@ namespace RKon.Alexa.NET.Response
         ///  A time-stamp representing when the lockState above was last retrieved from the target appliance. Can be null.
         /// </summary>
         [JsonProperty("applianceResponseTimeStamp",NullValueHandling =NullValueHandling.Ignore)]
-        public DateTime ApplianceResponseTimeStamp { get; set; }
+        public DateTime? ApplianceResponseTimeStamp { get; set; }
 
         /// <summary>
         /// Tries to set Lock State. Valid Options can be found in de Home Skill API or under DeviceModes.
