@@ -63,7 +63,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         }
 
         /// <summary>
-        /// Schmeißt eine UnvalidDiscoveryResponseException, wenn versucht wird eine ErrorResponse für ein DiscoverApplianceRequest zu verwenden.
+        /// Throws a UnvalidDiscoveryResponseException, if a Errorresponse is used as a response for DiscoverApplianceRequests.
         /// </summary>
         /// <param name="reqHeaderName"></param>
         protected void throwExceptionOnDiscoveryRequest(string reqHeaderName)
