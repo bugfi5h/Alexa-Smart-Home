@@ -1,0 +1,23 @@
+﻿using RKon.Alexa.NET46.Request;
+
+namespace RKon.Alexa.NET46.Response.ErrorResponses
+{
+    /// <summary>
+    /// Error response, if a dependency is unavailable.
+    /// </summary>
+    public class DependentServiceUnavailableErrorResponse : ErrorResponse
+    {
+        /// <summary>
+        /// Constructor.      
+        /// Throws a  UnvalidDiscoveryResponseException, if this error response is for a  DiscoverApplianceRequest
+        /// </summary>
+        /// <param name="reqHeader">Requestheader</param>
+        /// <param name="serviceName">Name of the service, that is unavailable</param>
+        public DependentServiceUnavailableErrorResponse(RequestHeader reqHeader,string serviceName)
+        {
+            throwExceptionOnDiscoveryRequest(reqHeader.Name);
+            Header = setHeader(reqHeader, RKon.Alexa.NET46.Types.HeaderNames.DEPENDENT_SERVICE_UNAVAILABLE_ERROR);
+            Payload = new DependentServiceUnavailablePayload(serviceName);
+        }
+    }
+}
