@@ -1,0 +1,3 @@
+Im Verzeichnis RKOn.Alexa.Net.Tests eine Kommandozeile öffnen
+
+dotnet test ausführen.
