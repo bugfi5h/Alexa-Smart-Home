@@ -2,7 +2,7 @@
   "language": "de",
   "name": "RKon.Alexa.NET",
   "title": "RKon.Alexa.NET",
-  "version": "1.0.18-beta",
+  "version": "1.0.20-beta",
   "authors": [ "R. Kling" ],
   "description": "A simple .NET Core library for handling Alexa Smart Home Requests.",
 

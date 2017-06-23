@@ -105,6 +105,8 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
                         return new GetLockStateRequestPayload();
                     case HeaderNames.SET_LOCK_STATE_REQUEST:
                         return new SetLockStateRequestPayload();
+                    case HeaderNames.RETRIEVE_CAMERA_STREAM_URI_REQUEST:
+                        return new RetrieveCameraStreamUriRequestPayload();
                     default:
                         throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
                 }

@@ -66,6 +66,12 @@ namespace RKon.Alexa.Net.Tests
             TestRequestApplianceAndAccessToken(payload, accessToken, appId, details);
         }
 
+        public static void TestRetrieveCameraStreamUriRequestPayload(RetrieveCameraStreamUriRequestPayload payload, string accessToken, string appId, Dictionary<string, object> details, string dirID)
+        {
+            Assert.True(payload.DirectedId != null);
+            Assert.True(payload.DirectedId == dirID);
+            TestRequestApplianceAndAccessToken(payload, accessToken, appId, details);
+        }
 
         public static SmartHomeResponse TestCreateResponseIfPossible(RequestHeader header)
         {
