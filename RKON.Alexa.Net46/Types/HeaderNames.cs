@@ -80,6 +80,11 @@ namespace RKon.Alexa.NET46.Types
         /// Header Name for the SetLockState Requests
         /// </summary>
         public const string SET_LOCK_STATE_REQUEST = "SetLockStateRequest";
+
+        /// <summary>
+        /// Header Name for the SetLockState Requests
+        /// </summary>
+        public const string RETRIEVE_CAMERA_STREAM_URI_REQUEST = "RetrieveCameraStreamUriRequest";
         #endregion
 
 
@@ -194,7 +199,8 @@ namespace RKon.Alexa.NET46.Types
             {GET_TEMPERATURE_READING_REQUEST, "GetTemperatureReadingResponse" },
             { GET_TARGET_TEMPERATURE_REQUEST, "GetTargetTemperatureResponse" },
             {GET_LOCK_STATE_REQUEST, "GetLockStateResponse" },
-            {SET_LOCK_STATE_REQUEST, "SetLockStateConfirmation" }
+            {SET_LOCK_STATE_REQUEST, "SetLockStateConfirmation" },
+            {RETRIEVE_CAMERA_STREAM_URI_REQUEST, "RetrieveCameraStreamUriResponse" }
         };
     }
 }

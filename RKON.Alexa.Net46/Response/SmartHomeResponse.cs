@@ -97,6 +97,9 @@ namespace RKon.Alexa.NET46.Response
                     case HeaderNames.SET_LOCK_STATE_REQUEST:
                         Payload = new SetLockStateResponsePayload();
                         break;
+                    case HeaderNames.RETRIEVE_CAMERA_STREAM_URI_REQUEST:
+                        Payload = new RetrieveCameraStreamUriResponsePayload();
+                        break;
                     default: throw new UnknownRequestHeaderException(name);
                 }
             }else

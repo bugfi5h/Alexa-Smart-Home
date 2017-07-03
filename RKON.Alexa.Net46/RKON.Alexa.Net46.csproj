@@ -59,6 +59,7 @@
     <Compile Include="Request\RequestPayloads\RequestPayload.cs" />
     <Compile Include="Request\RequestPayloads\RequestPayloadWithAccessToken.cs" />
     <Compile Include="Request\RequestPayloads\RequestPayloadWithAppliance.cs" />
+    <Compile Include="Request\RequestPayloads\RetrieveCameraStreamUriRequestPayload.cs" />
     <Compile Include="Request\RequestPayloads\SetColorRequestPayload.cs" />
     <Compile Include="Request\RequestPayloads\SetLockStateRequestPayload.cs" />
     <Compile Include="Request\RequestPayloads\SetPercentageRequestPayload.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Response\Payloads\GetTemperatureReadingResponsePayload.cs" />
     <Compile Include="Response\Payloads\HealthCheckResponsePayload.cs" />
     <Compile Include="Response\Payloads\ResponsePayload.cs" />
+    <Compile Include="Response\Payloads\RetrieveCameraStreamUriResponsePayload.cs" />
     <Compile Include="Response\Payloads\SetColorResponsePayload.cs" />
     <Compile Include="Response\Payloads\SetLockStateResponsePayload.cs" />
     <Compile Include="Response\Payloads\TargetTemperatureResponsePayload.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Types\Namespaces.cs" />
     <Compile Include="Types\PayloadObjects\AchievedColorState.cs" />
     <Compile Include="Types\PayloadObjects\AchievedColorTemperatureState.cs" />
+    <Compile Include="Types\PayloadObjects\ApplianceTypes.cs" />
     <Compile Include="Types\PayloadObjects\Color.cs" />
     <Compile Include="Types\PayloadObjects\ColorTemperature.cs" />
     <Compile Include="Types\PayloadObjects\DeltaPercentage.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="Types\PayloadObjects\PreviousState.cs" />
     <Compile Include="Types\PayloadObjects\TargetTemperature.cs" />
     <Compile Include="Types\PayloadObjects\TemperatureMode.cs" />
+    <Compile Include="Types\PayloadObjects\URI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
