@@ -68,7 +68,7 @@ namespace RKon.Alexa.NET46.Response
         /// An array that contains one string indicating the category of the connected device such as THERMOSTAT or SMARTPLUG. For a full list of supported strings see Appliance Categories. Any other strings will be rejected. 
         /// </summary>
         [JsonProperty("applianceTypes", NullValueHandling=NullValueHandling.Ignore)]
-        public List<string> ApplianceTypes { get; private set; }
+        public List<string> ApplianceTypes { get; set; }
         /// <summary>
         /// Constructor
         /// </summary>
