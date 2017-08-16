@@ -51,6 +51,14 @@ namespace RKon.Alexa.NET.Response
                 throw new UnknownRequestHeaderException(reqHeader.Name);
             }
         }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ResponseHeader()
+        {
+
+        }
+
 
     }
 }

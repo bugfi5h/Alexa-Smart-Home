@@ -107,5 +107,13 @@ namespace RKon.Alexa.NET46.Response
                 throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown Payload Version: {payloadVersion}.");
             }
         }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public SmartHomeResponse()
+        {
+
+        }
     }
 }
