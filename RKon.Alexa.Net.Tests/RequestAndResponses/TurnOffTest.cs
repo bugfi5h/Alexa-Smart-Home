@@ -33,7 +33,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(TURN_OFF_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "01ebf625-0b89-4c4d-b3aa-32340e894688", Namespaces.CONTROL, HeaderNames.TURN_OFF_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "01ebf625-0b89-4c4d-b3aa-32340e894688", Namespaces.CONTROL, HeaderNames.V2.TURN_OFF_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(TurnOnOffRequestPayload));
@@ -47,7 +47,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(TURN_OFF_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.TURN_OFF_REQUEST);
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.TURN_OFF_REQUEST);
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(ResponsePayload));
             Assert.True(TestFunctions.GenerateStringFromResponse(response) != null);

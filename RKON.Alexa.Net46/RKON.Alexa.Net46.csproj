@@ -113,7 +113,7 @@
     <Compile Include="Response\SmartHomeResponse.cs" />
     <Compile Include="Types\ApplianceActions.cs" />
     <Compile Include="Types\DeviceModes.cs" />
-    <Compile Include="Types\HeaderNames.cs" />
+    <Compile Include="Types\HeaderNamesV2.cs" />
     <Compile Include="Types\Namespaces.cs" />
     <Compile Include="Types\PayloadObjects\AchievedColorState.cs" />
     <Compile Include="Types\PayloadObjects\AchievedColorTemperatureState.cs" />

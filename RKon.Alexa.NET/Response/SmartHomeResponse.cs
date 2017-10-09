@@ -59,45 +59,45 @@ namespace RKon.Alexa.NET.Response
             {
                 switch (name)
                 {
-                    case HeaderNames.DISCOVERY_REQUEST:
+                    case HeaderNames.V2.DISCOVERY_REQUEST:
                         Payload = new DiscoverResponsePayload();
                         break;
-                    case HeaderNames.SET_TARGET_TEMPERATURE_REQUEST:
-                    case HeaderNames.INCREMENT_TARGET_TEMPERATURE_REQUEST:
-                    case HeaderNames.DECREMENT_TARGET_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.SET_TARGET_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.INCREMENT_TARGET_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.DECREMENT_TARGET_TEMPERATURE_REQUEST:
                         Payload = new TargetTemperatureResponsePayload();
                         break;
-                    case HeaderNames.TURN_OFF_REQUEST:
-                    case HeaderNames.TURN_ON_REQUEST:
-                    case HeaderNames.SET_PERCENTAGE_REQUEST:
-                    case HeaderNames.DECREMENT_PERCENTAGE_REQUEST:
-                    case HeaderNames.INCREMENT_PERCENTAGE_REQUEST:
+                    case HeaderNames.V2.TURN_OFF_REQUEST:
+                    case HeaderNames.V2.TURN_ON_REQUEST:
+                    case HeaderNames.V2.SET_PERCENTAGE_REQUEST:
+                    case HeaderNames.V2.DECREMENT_PERCENTAGE_REQUEST:
+                    case HeaderNames.V2.INCREMENT_PERCENTAGE_REQUEST:
                         Payload = new ResponsePayload();
                         break;
-                    case HeaderNames.HEALTH_CHECK_REQUEST:
+                    case HeaderNames.V2.HEALTH_CHECK_REQUEST:
                         Payload = new HealthCheckResponsePayload();
                         break;
-                    case HeaderNames.SET_COLOR_REQUEST:
+                    case HeaderNames.V2.SET_COLOR_REQUEST:
                         Payload = new SetColorResponsePayload();
                         break;
-                    case HeaderNames.SET_COLOR_TEMPERATURE_REQUEST:
-                    case HeaderNames.INCREMENT_COLOR_TEMPERATURE_REQUEST:
-                    case HeaderNames.DECREMENT_COLOR_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.SET_COLOR_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.INCREMENT_COLOR_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.DECREMENT_COLOR_TEMPERATURE_REQUEST:
                         Payload = new ColorTemperatureResponsePayload();
                         break;
-                    case HeaderNames.GET_TEMPERATURE_READING_REQUEST:
+                    case HeaderNames.V2.GET_TEMPERATURE_READING_REQUEST:
                         Payload = new GetTemperatureReadingResponsePayload();
                         break;
-                    case HeaderNames.GET_TARGET_TEMPERATURE_REQUEST:
+                    case HeaderNames.V2.GET_TARGET_TEMPERATURE_REQUEST:
                         Payload = new GetTargetTemperatureResponsePayload();
                         break;
-                    case HeaderNames.GET_LOCK_STATE_REQUEST:
+                    case HeaderNames.V2.GET_LOCK_STATE_REQUEST:
                         Payload = new GetLockStateResponsePayload();
                         break;
-                    case HeaderNames.SET_LOCK_STATE_REQUEST:
+                    case HeaderNames.V2.SET_LOCK_STATE_REQUEST:
                         Payload = new SetLockStateResponsePayload();
                         break;
-                    case HeaderNames.RETRIEVE_CAMERA_STREAM_URI_REQUEST:
+                    case HeaderNames.V2.RETRIEVE_CAMERA_STREAM_URI_REQUEST:
                         Payload = new RetrieveCameraStreamUriResponsePayload();
                         break;
                     default: throw new UnknownRequestHeaderException(name);

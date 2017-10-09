@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public RateLimitExceededErrorResponse(RequestHeader reqHeader,string rateLimit, string timeUnit)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);
-            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.RATE_LIMIT_EXCEEDED_ERROR);
+            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.V2.RATE_LIMIT_EXCEEDED_ERROR);
             Payload = new RateLimitExceededPayload(rateLimit, timeUnit);
         }
     }

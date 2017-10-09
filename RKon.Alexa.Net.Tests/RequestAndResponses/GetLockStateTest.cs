@@ -37,7 +37,7 @@ namespace RKon.Alexa.Net.Tests
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(GET_LOCK_STATE_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "01ebf625-0b89-4c4d-b3aa-32340e894688", Namespaces.QUERY, HeaderNames.GET_LOCK_STATE_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "01ebf625-0b89-4c4d-b3aa-32340e894688", Namespaces.QUERY, HeaderNames.V2.GET_LOCK_STATE_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(GetLockStateRequestPayload));
@@ -56,7 +56,7 @@ namespace RKon.Alexa.Net.Tests
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(GET_LOCK_STATE_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.GET_LOCK_STATE_REQUEST);
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.GET_LOCK_STATE_REQUEST);
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(GetLockStateResponsePayload));
             GetLockStateResponsePayload payload = response.Payload as GetLockStateResponsePayload;

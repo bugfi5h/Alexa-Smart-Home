@@ -5,7 +5,7 @@ namespace RKon.Alexa.NET46.Types
     /// <summary>
     /// Smarthomerequest, -response, and -errorresponse Headernames
     /// </summary>
-    public class HeaderNames
+    public class HeaderNamesV2
     {
         #region HeaderNames
         /// <summary>

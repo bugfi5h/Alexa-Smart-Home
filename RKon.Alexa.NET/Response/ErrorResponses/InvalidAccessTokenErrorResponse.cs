@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public InvalidAccessTokenErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.INVALID_ACCESS_TOKEN_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.INVALID_ACCESS_TOKEN_ERROR);
             Payload = new ResponsePayload();
         }
     }

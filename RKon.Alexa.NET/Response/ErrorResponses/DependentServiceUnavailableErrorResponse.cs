@@ -16,7 +16,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public DependentServiceUnavailableErrorResponse(RequestHeader reqHeader,string serviceName)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);
-            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.DEPENDENT_SERVICE_UNAVAILABLE_ERROR);
+            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.V2.DEPENDENT_SERVICE_UNAVAILABLE_ERROR);
             Payload = new DependentServiceUnavailablePayload(serviceName);
         }
     }

@@ -36,7 +36,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(DECREMENT_TARGET_TEMPERATURE_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "77ff65eb-a015-4777-99ba-6e90d200dd6c", Namespaces.CONTROL, HeaderNames.DECREMENT_TARGET_TEMPERATURE_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "77ff65eb-a015-4777-99ba-6e90d200dd6c", Namespaces.CONTROL, HeaderNames.V2.DECREMENT_TARGET_TEMPERATURE_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(In_DecrementTemperatureRequestPayload));
@@ -50,7 +50,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(DECREMENT_TARGET_TEMPERATURE_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.DECREMENT_TARGET_TEMPERATURE_REQUEST);
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.DECREMENT_TARGET_TEMPERATURE_REQUEST);
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(TargetTemperatureResponsePayload));
             TargetTemperatureResponsePayload payload = response.Payload as TargetTemperatureResponsePayload;

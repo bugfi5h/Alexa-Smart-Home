@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public UnwillingToSetValueErrorResponse(RequestHeader reqHeader, string errorInfoCode, string errorInfoDescription)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);
-            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.UNWILLING_TO_SET_VALUE_ERROR);
+            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.V2.UNWILLING_TO_SET_VALUE_ERROR);
             Payload = new UnwillingToSetValuePayload(errorInfoCode, errorInfoDescription);
         }
     }

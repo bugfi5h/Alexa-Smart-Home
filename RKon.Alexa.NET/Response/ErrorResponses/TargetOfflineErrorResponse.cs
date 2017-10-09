@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public TargetOfflineErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.TARGET_OFFLINE_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.TARGET_OFFLINE_ERROR);
             Payload = new ResponsePayload();
         }
     }

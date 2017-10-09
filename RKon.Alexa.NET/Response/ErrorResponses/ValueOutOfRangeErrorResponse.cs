@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public ValueOutOfRangeErrorResponse(RequestHeader reqHeader, double minimumValue, double maximumValue)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);
-            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.VALUE_OUT_OF_RANGE_ERROR);
+            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.V2.VALUE_OUT_OF_RANGE_ERROR);
             Payload = new ValueOutOfRangePayload(minimumValue, maximumValue);
         }
     }

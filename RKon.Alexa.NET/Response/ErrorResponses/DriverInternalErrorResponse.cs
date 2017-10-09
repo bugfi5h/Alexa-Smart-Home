@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public DriverInternalErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.DRIVER_INTERNAL_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.DRIVER_INTERNAL_ERROR);
             Payload = new ResponsePayload();
         }
     }

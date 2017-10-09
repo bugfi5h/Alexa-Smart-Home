@@ -39,7 +39,7 @@ namespace RKon.Alexa.Net.Tests
             {
                 SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(SET_COLOR_REQUEST);
                 //Header Check
-                TestFunctions.TestRequestHeader(requestFromString.Header, "ABC-123-DEF-456", Namespaces.CONTROL, HeaderNames.SET_COLOR_REQUEST);
+                TestFunctions.TestRequestHeader(requestFromString.Header, "ABC-123-DEF-456", Namespaces.CONTROL, HeaderNames.V2.SET_COLOR_REQUEST);
                 //Payload Check
                 Assert.True(requestFromString.Payload != null);
                 Assert.True(requestFromString.GetRequestPayloadType() == typeof(SetColorRequestPayload));
@@ -57,7 +57,7 @@ namespace RKon.Alexa.Net.Tests
                 SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(SET_COLOR_REQUEST);
                 SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
                 //Header Check
-                TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.SET_COLOR_REQUEST);
+                TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.SET_COLOR_REQUEST);
                 //Payload Check
                 Assert.True(response.GetResponsePayloadType() == typeof(SetColorResponsePayload));
                 SetColorResponsePayload payload = response.Payload as SetColorResponsePayload;

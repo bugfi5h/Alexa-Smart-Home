@@ -7,7 +7,7 @@
     "System.Runtime.Serialization.Primitives": "4.1.1",
     "xunit": "2.2.0-beta4-build3444",
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
-    "RKon.Alexa.NET": "1.0.18-beta",
+    "RKon.Alexa.NET": "1.0.20-beta",
     "xunit.runner.visualstudio": "2.2.0",
     "Microsoft.NET.Test.Sdk": "15.0.0",
     "Microsoft.DotNet.InternalAbstractions": "1.0.500-preview2-1-003177"

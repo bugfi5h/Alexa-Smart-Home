@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public ExspiredAccessTokenErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.EXSPIRED_ACCESS_TOKEN_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.EXSPIRED_ACCESS_TOKEN_ERROR);
             Payload = new ResponsePayload();
         }
     }

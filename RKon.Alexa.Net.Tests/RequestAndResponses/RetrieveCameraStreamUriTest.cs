@@ -40,7 +40,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(RETRIEVE_CAMERA_STREAM_URI_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "ABC-123-DEF-456", Namespaces.QUERY, HeaderNames.RETRIEVE_CAMERA_STREAM_URI_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "ABC-123-DEF-456", Namespaces.QUERY, HeaderNames.V2.RETRIEVE_CAMERA_STREAM_URI_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(RetrieveCameraStreamUriRequestPayload));
@@ -57,7 +57,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(RETRIEVE_CAMERA_STREAM_URI_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.RETRIEVE_CAMERA_STREAM_URI_REQUEST);
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.RETRIEVE_CAMERA_STREAM_URI_REQUEST);
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(RetrieveCameraStreamUriResponsePayload));
             RetrieveCameraStreamUriResponsePayload payload = response.Payload as RetrieveCameraStreamUriResponsePayload;

@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public NotSupportedInCurrentModeErrorResponse(RequestHeader reqHeader, string currentDeviceMode)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);
-            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.NOT_SUPPORTED_IN_CURRENT_MODE_ERROR);
+            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.V2.NOT_SUPPORTED_IN_CURRENT_MODE_ERROR);
             Payload = new NotSupportedInCurrentModePayload(currentDeviceMode);
         }
     }

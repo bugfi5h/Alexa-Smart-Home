@@ -5,7 +5,7 @@ namespace RKon.Alexa.NET.Request
     /// <summary>
     /// SmartHomeRequest Class 
     /// </summary>
-    [JsonConverter(typeof(RequestPayloads.SmartHomeRequestConverter))]
+    [JsonConverter(typeof(SmartHomeRequestConverter))]
     public class SmartHomeRequest
     {
         /// <summary>

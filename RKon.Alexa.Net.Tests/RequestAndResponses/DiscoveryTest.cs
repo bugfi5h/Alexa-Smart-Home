@@ -29,7 +29,7 @@ namespace RKon.Alexa.Net.Tests
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(DISCOVERY_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "6d6d6e14-8aee-473e-8c24-0d31ff9c17a2", Namespaces.DISCOVERY, HeaderNames.DISCOVERY_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "6d6d6e14-8aee-473e-8c24-0d31ff9c17a2", Namespaces.DISCOVERY, HeaderNames.V2.DISCOVERY_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(DiscoveryRequestPayload));
@@ -43,7 +43,7 @@ namespace RKon.Alexa.Net.Tests
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(DISCOVERY_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.DISCOVERY_REQUEST);
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.DISCOVERY_REQUEST);
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(DiscoverResponsePayload));
             DiscoverResponsePayload payload = response.Payload as DiscoverResponsePayload;

@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public BridgeOfflineErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.BRIDGE_OFFLINE_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.BRIDGE_OFFLINE_ERROR);
             Payload = new ResponsePayload();
         }
     }

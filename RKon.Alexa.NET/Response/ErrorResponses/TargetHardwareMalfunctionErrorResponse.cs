@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public TargetHardwareMalfunctionErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.TARGET_HARDWARE_MALFUNCTION_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.TARGET_HARDWARE_MALFUNCTION_ERROR);
             Payload = new ResponsePayload();
         }
     }

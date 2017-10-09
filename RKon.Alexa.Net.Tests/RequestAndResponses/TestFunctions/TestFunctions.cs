@@ -93,7 +93,7 @@ namespace RKon.Alexa.Net.Tests
         {
             Assert.True(header.MessageId != null);
             Assert.Equal(header.Namespace,strNamespace);
-            Assert.Equal(header.Name,HeaderNames.ResponseHeaderNames[strRequestName]);
+            Assert.Equal(header.Name,HeaderNames.V2.ResponseHeaderNames[strRequestName]);
             Assert.Equal(header.PayloadVersion,"2");
         }
 

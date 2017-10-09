@@ -16,7 +16,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public UnexpectedInformationReceivedErrorResponse(RequestHeader reqHeader, string faultingParameter)
         {
             throwExceptionOnDiscoveryRequest(reqHeader.Name);
-            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.UNEXCEPTED_INFORMATION_RECEIVED_ERROR);
+            Header = setHeader(reqHeader, RKon.Alexa.NET.Types.HeaderNames.V2.UNEXCEPTED_INFORMATION_RECEIVED_ERROR);
             Payload = new UnexpectedInformationReceivedPayload(faultingParameter);
         }
     }

@@ -29,7 +29,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(HEALTH_CHECK_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "243550dc-5f95-4ae4-ad43-4e1e7cb037fd", Namespaces.SYSTEM, HeaderNames.HEALTH_CHECK_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "243550dc-5f95-4ae4-ad43-4e1e7cb037fd", Namespaces.SYSTEM, HeaderNames.V2.HEALTH_CHECK_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(HealthCheckRequestPayload));
@@ -43,7 +43,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(HEALTH_CHECK_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.HEALTH_CHECK_REQUEST);
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.HEALTH_CHECK_REQUEST);
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(HealthCheckResponsePayload));
             HealthCheckResponsePayload payload = response.Payload as HealthCheckResponsePayload;

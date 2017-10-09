@@ -36,7 +36,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
         {
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(INCREMENT_PERCENTAGE_REQUEST);
             //Header Check
-            TestFunctions.TestRequestHeader(requestFromString.Header, "ABC-123-DEF-456", Namespaces.CONTROL, HeaderNames.INCREMENT_PERCENTAGE_REQUEST);
+            TestFunctions.TestRequestHeader(requestFromString.Header, "ABC-123-DEF-456", Namespaces.CONTROL, HeaderNames.V2.INCREMENT_PERCENTAGE_REQUEST);
             //Payload Check
             Assert.True(requestFromString.Payload != null);
             Assert.True(requestFromString.GetRequestPayloadType() == typeof(In_DecrementPercentageRequestPayload));
@@ -50,7 +50,7 @@ namespace RKon.Alexa.Net.Tests.RequestAndResponses
             SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(INCREMENT_PERCENTAGE_REQUEST);
             SmartHomeResponse response = TestFunctions.TestCreateResponseIfPossible(requestFromString.Header);
             //Header Check
-            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.INCREMENT_PERCENTAGE_REQUEST );
+            TestFunctions.TestResponseHeader(response.Header, requestFromString.Header.Namespace, HeaderNames.V2.INCREMENT_PERCENTAGE_REQUEST );
             //Payload Check
             Assert.True(response.GetResponsePayloadType() == typeof(ResponsePayload));
             Assert.True(TestFunctions.GenerateStringFromResponse(response) != null);

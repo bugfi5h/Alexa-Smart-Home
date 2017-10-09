@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public NoSuchTargetErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.NO_SUCH_TARGET_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.NO_SUCH_TARGET_ERROR);
             Payload = new ResponsePayload();
         }
     }

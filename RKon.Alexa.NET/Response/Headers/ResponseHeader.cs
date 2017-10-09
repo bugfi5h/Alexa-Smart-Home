@@ -43,9 +43,9 @@ namespace RKon.Alexa.NET.Response
             MessageId = System.Guid.NewGuid().ToString();
             PayloadVersion = reqHeader.PayloadVersion;
             Namespace = reqHeader.Namespace;
-            if (HeaderNames.ResponseHeaderNames.Keys.Contains(reqHeader.Name))
+            if (HeaderNames.V2.ResponseHeaderNames.Keys.Contains(reqHeader.Name))
             {
-                Name = HeaderNames.ResponseHeaderNames[reqHeader.Name];
+                Name = HeaderNames.V2.ResponseHeaderNames[reqHeader.Name];
             }else
             {
                 throw new UnknownRequestHeaderException(reqHeader.Name);

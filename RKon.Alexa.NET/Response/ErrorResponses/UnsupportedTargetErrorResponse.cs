@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public UnsupportedTargetErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.UNSUPPORTED_TARGET_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.UNSUPPORTED_TARGET_ERROR);
             Payload = new ResponsePayload();
         }
     }

@@ -68,7 +68,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         /// <param name="reqHeaderName"></param>
         protected void throwExceptionOnDiscoveryRequest(string reqHeaderName)
         {
-            if (reqHeaderName == HeaderNames.DISCOVERY_REQUEST)
+            if (reqHeaderName == HeaderNames.V2.DISCOVERY_REQUEST)
             {
                 throw new UnvalidDiscoveryResponseException();
             }

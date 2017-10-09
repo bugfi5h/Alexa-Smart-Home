@@ -15,7 +15,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public UnsuportedOperationErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.UNSUPPORTED_OPERATION_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.UNSUPPORTED_OPERATION_ERROR);
             Payload = new ResponsePayload();
         }
     }

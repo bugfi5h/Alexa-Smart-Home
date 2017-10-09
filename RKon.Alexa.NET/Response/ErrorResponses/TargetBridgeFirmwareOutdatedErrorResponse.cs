@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public TargetBridgeFirmwareOutdatedErrorResponse(RequestHeader header, string minimumFirmwareVersion, string currentFirmwareVersion)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.TARGET_BRIDGE_FIRMWARE_OUTDATED_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.TARGET_BRIDGE_FIRMWARE_OUTDATED_ERROR);
             Payload = new TargetFirmwareOutdatedPayload(minimumFirmwareVersion, currentFirmwareVersion);
         }
     }

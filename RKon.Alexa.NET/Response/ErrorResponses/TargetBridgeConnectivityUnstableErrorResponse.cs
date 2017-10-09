@@ -16,7 +16,7 @@ namespace RKon.Alexa.NET.Response.ErrorResponses
         public TargetBridgeConnectivityUnstableErrorResponse(RequestHeader header)
         {
             throwExceptionOnDiscoveryRequest(header.Name);
-            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.TARGET_BRIDGE_CONNECTIVITY_UNSTABLE_ERROR);
+            Header = setHeader(header, RKon.Alexa.NET.Types.HeaderNames.V2.TARGET_BRIDGE_CONNECTIVITY_UNSTABLE_ERROR);
             Payload = new ResponsePayload();
         }
     }
