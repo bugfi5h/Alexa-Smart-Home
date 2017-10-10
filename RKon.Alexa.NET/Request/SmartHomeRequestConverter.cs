@@ -49,8 +49,9 @@ namespace RKon.Alexa.NET.Request
             var jObject = JObject.Load(reader);
             string headerName = jObject["header"]?["name"]?.Value<string>();
             string payloadVersion = jObject["header"]?["payloadVersion"]?.Value<string>();
+            string headerNamespace = jObject["header"]?["namespace"]?.Value<string>();
             object req = null;
-            if (!String.IsNullOrEmpty(headerName) && !String.IsNullOrEmpty(payloadVersion))
+            if (!String.IsNullOrEmpty(headerName) && !String.IsNullOrEmpty(payloadVersion) && !String.IsNullOrEmpty(headerNamespace))
             {
                 if(payloadVersion == "2")
                 {
@@ -59,7 +60,7 @@ namespace RKon.Alexa.NET.Request
                 }else if(payloadVersion == "3")
                 {
                     req = new Directive();
-                    (req as Directive).Payload = CreateV3Payload(headerName);
+                    (req as Directive).Payload = CreateV3Payload(headerName, headerNamespace);
                 }
                 else
                 {
@@ -75,7 +76,7 @@ namespace RKon.Alexa.NET.Request
             return req;
         }
 
-        private RequestPayload CreateV3Payload(string requestType)
+        private RequestPayload CreateV3Payload(string requestType, string namespaceType)
         {
             switch (requestType)
             {
@@ -99,12 +100,43 @@ namespace RKon.Alexa.NET.Request
                     return new AdjustBrightnessRequestPayload();
                 case HeaderNames.V3.SET_COLOR:
                     return new V3.Payloads.SetColorRequestPayload();
+                case HeaderNames.V3.SET_COLORTEMPERATURE:
+                    return new SetColorTemperatureRequestPayload();
+                case HeaderNames.V3.INIT_CAMERA_STREAMS:
+                    return new InitializeCameraRequestPayload();
+                case HeaderNames.V3.CHANGE_CHANNEL:
+                    return new ChangeChannelRequestPayload();
+                case HeaderNames.V3.SKIP_CHANNELS:
+                    return new SkipChannelRequestPayload();
+                case HeaderNames.V3.SELECT_INPUT:
+                    return new SelectInputRequestPayload();
+                case HeaderNames.V3.SET_MUTE:
+                    return new SetMuteRequestPayload();
+                case HeaderNames.V3.SET_VOLUME:
+                    return new SetVolumeRequestPayload();
+                case HeaderNames.V3.FAST_FORWARD:
+                case HeaderNames.V3.NEXT:
+                case HeaderNames.V3.PAUSE:
+                case HeaderNames.V3.PLAY:
+                case HeaderNames.V3.PREVIOUS:
+                case HeaderNames.V3.REWIND:
+                case HeaderNames.V3.START_OVER:
+                case HeaderNames.V3.STOP:
                 case HeaderNames.V3.TURN_ON_REQUEST:
                 case HeaderNames.V3.TURN_OFF_REQUEST:
                 case HeaderNames.V3.REPORT_STATE:
                 case HeaderNames.V3.LOCK:
                 case HeaderNames.V3.UNLOCK:
+                case HeaderNames.V3.INCREASE_COLORTEMPERATURE:
+                case HeaderNames.V3.DECREASE_COLORTEMPERATURE:
                     return new RequestPayload();
+                case HeaderNames.V3.ADJUST_VOLUME:
+                    if (namespaceType == Namespaces.ALEXA_STEPSPEAKER)
+                        return new StepSpeakerAdjustVolumeRequestPayload();
+                    else if (namespaceType == Namespaces.ALEXA_SPEAKER)
+                        return new SpeakerAdjustVolumeRequestPayload();
+                    else
+                        throw new JsonSerializationException("Namespace not valid for AdjustVolume Requestname.");
                 default:
                     throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
             }

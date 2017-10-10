@@ -1,6 +1,6 @@
 ﻿
 using Newtonsoft.Json;
-using RKon.Alexa.NET.Types.PayloadObjects;
+using RKon.Alexa.NET.JsonObjects;
 
 namespace RKon.Alexa.NET.Response
 {

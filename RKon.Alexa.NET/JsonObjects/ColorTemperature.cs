@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 
-namespace RKon.Alexa.NET.Types.PayloadObjects
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// Like TargetTemperature with limit between 1000 and 10000

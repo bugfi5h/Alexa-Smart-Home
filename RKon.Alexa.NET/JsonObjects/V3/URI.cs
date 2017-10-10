@@ -1,7 +1,10 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Types.PayloadObjects
+namespace RKon.Alexa.NET.JsonObjects
 {
+    /// <summary>
+    /// Uri Jsonobject
+    /// </summary>
     public class URI
     {
         /// <summary>

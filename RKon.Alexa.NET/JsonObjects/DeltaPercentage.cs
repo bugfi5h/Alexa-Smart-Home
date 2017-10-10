@@ -1,5 +1,5 @@
 ﻿
-namespace RKon.Alexa.NET.Types
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// Class for Delta Percentage values

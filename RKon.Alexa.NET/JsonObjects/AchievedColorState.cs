@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 
-namespace RKon.Alexa.NET.Types.PayloadObjects
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// AchievedState für color changes.

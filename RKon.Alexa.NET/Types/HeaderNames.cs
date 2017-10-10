@@ -73,6 +73,78 @@ namespace RKon.Alexa.NET.Types
             /// Header Name for SetColor Requests.
             /// </summary>
             public const string SET_COLOR = "SetColor";
+            /// <summary>
+            /// Header Name for SetColorTemperature Requests.
+            /// </summary>
+            public const string SET_COLORTEMPERATURE = "SetColorTemperature";
+            /// <summary>
+            /// Header Name for IncreaseColorTemperature Requests.
+            /// </summary>
+            public const string INCREASE_COLORTEMPERATURE = "IncreaseColorTemperature";
+            /// <summary>
+            /// Header Name for DecreaseColorTemperature Requests.
+            /// </summary>
+            public const string DECREASE_COLORTEMPERATURE = "DecreaseColorTemperature";
+            /// <summary>
+            /// Header Name for InitializeCameraStreams Requests.
+            /// </summary>
+            public const string INIT_CAMERA_STREAMS = "InitializeCameraStreams";
+            /// <summary>
+            /// Header Name for ChangeChannel Requests.
+            /// </summary>
+            public const string CHANGE_CHANNEL = "ChangeChannel";
+            /// <summary>
+            /// Header Name for SkipChannels Requests.
+            /// </summary>
+            public const string SKIP_CHANNELS = "SkipChannels";
+            /// <summary>
+            /// Header Name for SelectInput Requests.
+            /// </summary>
+            public const string SELECT_INPUT = "SelectInput";
+            /// <summary>
+            /// Header Name for FastForward Requests.
+            /// </summary>
+            public const string FAST_FORWARD = "FastForward";
+            /// <summary>
+            /// Header Name for Next Requests.
+            /// </summary>
+            public const string NEXT = "Next";
+            /// <summary>
+            /// Header Name for Pause Requests.
+            /// </summary>
+            public const string PAUSE = "Pause";
+            /// <summary>
+            /// Header Name for Play Requests.
+            /// </summary>
+            public const string PLAY = "Play";
+            /// <summary>
+            /// Header Name for Previous Requests.
+            /// </summary>
+            public const string PREVIOUS = "Previous";
+            /// <summary>
+            /// Header Name for Rewind Requests.
+            /// </summary>
+            public const string REWIND = "Rewind";
+            /// <summary>
+            /// Header Name for StartOver Requests.
+            /// </summary>
+            public const string START_OVER = "StartOver";
+            /// <summary>
+            /// Header Name for Stop Requests.
+            /// </summary>
+            public const string STOP = "Stop";
+            /// <summary>
+            /// Header Name for AdjustVolume Requests.
+            /// </summary>
+            public const string ADJUST_VOLUME = "AdjustVolume";
+            /// <summary>
+            /// Header Name for SetMute Requests.
+            /// </summary>
+            public const string SET_MUTE = "SetMute";
+            /// <summary>
+            /// Header Name for SetMute Requests.
+            /// </summary>
+            public const string SET_VOLUME = "SetVolume";
             #endregion
         }
 

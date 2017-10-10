@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RKon.Alexa.NET.Types.PayloadObjects
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// Appliances
