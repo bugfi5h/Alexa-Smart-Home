@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Request
         /// Payloadinformations
         /// </summary>
         [JsonProperty("payload")]
-        public RequestPayload Payload { get; set; }
+        public Payload Payload { get; set; }
 
         /// <summary>
         /// returns the type of the payload

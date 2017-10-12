@@ -16,7 +16,7 @@ namespace RKon.Alexa.NET.Types
             /// <summary>
             /// Header Name for the DiscoverAppliance Requests.
             /// </summary>
-            public const string DISCOVERY_REQUEST = "Alexa.Discovery";
+            public const string DISCOVERY_REQUEST = "Discover";
             /// <summary>
             /// Header Name for Report States.
             /// </summary>
@@ -146,6 +146,10 @@ namespace RKon.Alexa.NET.Types
             /// </summary>
             public const string SET_VOLUME = "SetVolume";
             #endregion
+            /// <summary>
+            /// Header Name for Responses;
+            /// </summary>
+            public const string RESPONSE = "Response";
         }
 
         /// <summary>

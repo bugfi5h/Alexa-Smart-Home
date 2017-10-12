@@ -4,7 +4,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
     /// <summary>
     /// Payload for a HealthCheckRequest
     /// </summary>
-    public class HealthCheckRequestPayload : RequestPayload
+    public class HealthCheckRequestPayload : Payload
     {
         /// <summary>
         /// Timestamp  in Milliseconds till the 1.01.1970

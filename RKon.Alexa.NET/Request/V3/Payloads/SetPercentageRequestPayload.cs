@@ -6,7 +6,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
     /// <summary>
     /// Payload for SetPercentage Requests
     /// </summary>
-    public class SetPercentageRequestPayload : RequestPayload
+    public class SetPercentageRequestPayload : Payload
     {
         /// <summary>
         /// The percentage value to set for the device. Integer from 0-100, inclusive.

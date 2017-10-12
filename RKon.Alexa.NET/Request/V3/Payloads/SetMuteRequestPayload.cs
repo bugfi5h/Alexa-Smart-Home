@@ -4,7 +4,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
     /// <summary>
     /// A request to mute or unmute an endpoint.
     /// </summary>
-    public class SetMuteRequestPayload : RequestPayload
+    public class SetMuteRequestPayload : Payload
     {
         /// <summary>
         /// true to indicate the endpoint should be muted. False to indicate that the endpoint should be unmuted.

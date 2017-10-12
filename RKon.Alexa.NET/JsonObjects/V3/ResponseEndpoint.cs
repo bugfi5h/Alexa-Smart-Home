@@ -1,0 +1,86 @@
+﻿using Newtonsoft.Json;
+using RKon.Alexa.NET.Types;
+using System.Collections.Generic;
+
+namespace RKon.Alexa.NET.JsonObjects
+{
+    /// <summary>
+    /// Endpoints for Discoveryresponse
+    /// </summary>
+    public class ResponseEndpoint 
+    {
+        /// <summary>
+        /// A device identifier. The identifier must be unique across all devices owned by an end user within the domain for the skill. In addition, the identifier needs to be consistent across multiple discovery requests for the same device. An identifier can contain any letter or number and the following special characters: _ - = # ; : ? @ &. The identifier cannot exceed 256 characters.
+        /// </summary>
+        [JsonProperty("endpointId")]
+        [JsonRequired]
+        public string EndpointID { get; set; }
+        /// <summary>
+        /// The name of the device manufacturer. This value cannot exceed 128 characters.
+        /// </summary>
+        [JsonProperty("manufacturerName")]
+        [JsonRequired]
+        public string ManufacturerName { get; set; }
+        /// <summary>
+        /// The name used by the customer to identify the device. This value cannot exceed 128 characters and should not contain special characters or punctuation.
+        /// </summary>
+        [JsonProperty("friendlyName")]
+        [JsonRequired]
+        public string FriendlyName { get; set; }
+        /// <summary>
+        /// A human-readable description of the device. This value cannot exceed 128 characters. The description should contain the manufacturer name or how the device is connected. For example, “Smart Lock by Sample Manufacturer” or “WiFi Thermostat connected via SmartHub”. This value cannot exceed 128 characters.
+        /// </summary>
+        [JsonProperty("description")]
+        [JsonRequired]
+        public string Description { get; set; }
+        /// <summary>
+        /// Indicates the group name where the device should display in the Alexa app. Current supported values are ‘LIGHT’, ‘SMARTPLUG’, ‘SWITCH’, ‘CAMERA’, ‘DOOR’, “TEMPERATURE_SENSOR”, ‘THERMOSTAT’, ‘SMARTLOCK’, ‘SCENE_TRIGGER’, ‘ACTIVITY_TRIGGER’, ‘OTHER’
+        /// </summary>
+        [JsonProperty("displayCategories")]
+        [JsonRequired]
+        private List<string> DisplayCategories;
+        /// <summary>
+        /// String name/value pairs that provide additional information about a device for use by the skill. The contents of this property cannot exceed 5000 bytes. The API doesn’t use or understand this data.
+        /// </summary>
+        [JsonProperty("cookie")]
+        [JsonRequired]
+        public Dictionary<string, string> Cookies { get; set; }
+        /// <summary>
+        /// An array of capability objects that represents actions particular device supports and can respond to. A capability object can contain different fields depending on the type
+        /// </summary>
+        [JsonProperty("capabilities")]
+        [JsonRequired]
+        public List<Capability> Capability { get; set; }
+
+
+        /// <summary>
+        /// Valid Types can be found in RKon.Alexa.NET.Types.DisplayCategories
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public void AddDisplayCategory(DisplayCategory category)
+        {
+            DisplayCategories.Add(category.ToString());
+        }
+
+        /// <summary>
+        /// Copy of DisplayCategories
+        /// </summary>
+        /// <returns></returns>
+        public List<string> CloneDisplayCategories()
+        {
+            List<string> copy = new List<string>();
+            copy.AddRange(DisplayCategories);
+            return copy;
+        }
+
+        /// <summary>
+        /// Standartconstructor
+        /// </summary>
+        public ResponseEndpoint()
+        {
+            DisplayCategories = new List<string>();
+            Capability = new List<Capability>();
+        }
+    }
+}

@@ -7,7 +7,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
     /// <summary>
     /// Requestpalyoud containing a Scope
     /// </summary>
-    public class RequestPayloadWithScope : RequestPayload
+    public class RequestPayloadWithScope : Payload
     {
         /// <summary>
         /// Scope of the Payload

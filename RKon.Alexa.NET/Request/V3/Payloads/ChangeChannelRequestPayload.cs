@@ -7,7 +7,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
     /// <summary>
     /// Requestpayload for a channel change by specifying a channel number or call sign.
     /// </summary>
-    public class ChangeChannelRequestPayload : RequestPayload
+    public class ChangeChannelRequestPayload : Payload
     {
         /// <summary>
         /// Describes a channel.

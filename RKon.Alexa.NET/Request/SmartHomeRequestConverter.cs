@@ -76,7 +76,7 @@ namespace RKon.Alexa.NET.Request
             return req;
         }
 
-        private RequestPayload CreateV3Payload(string requestType, string namespaceType)
+        private Payload CreateV3Payload(string requestType, string namespaceType)
         {
             switch (requestType)
             {
@@ -129,7 +129,7 @@ namespace RKon.Alexa.NET.Request
                 case HeaderNames.V3.UNLOCK:
                 case HeaderNames.V3.INCREASE_COLORTEMPERATURE:
                 case HeaderNames.V3.DECREASE_COLORTEMPERATURE:
-                    return new RequestPayload();
+                    return new Payload();
                 case HeaderNames.V3.ADJUST_VOLUME:
                     if (namespaceType == Namespaces.ALEXA_STEPSPEAKER)
                         return new StepSpeakerAdjustVolumeRequestPayload();
@@ -147,7 +147,7 @@ namespace RKon.Alexa.NET.Request
         /// </summary>
         /// <param name="requestType">Name of the Requests></param>
         /// <returns></returns>
-        public RequestPayload CreateV2Payload(string requestType)
+        public Payload CreateV2Payload(string requestType)
         {
             switch (requestType)
             {

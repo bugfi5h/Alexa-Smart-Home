@@ -7,7 +7,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
     /// <summary>
     /// Payload for SetTargetTemperature requests.
     /// </summary>
-    public class SetTargetTemperatureRequestPayload : RequestPayload
+    public class SetTargetTemperatureRequestPayload : Payload
     {
         /// <summary>
         /// Indicates the target temperature to set on the device. Sent for single and triple mode thermostats.

@@ -2,7 +2,7 @@
 
 namespace RKon.Alexa.NET.Request.V3.Payloads
 {
-    public class AdjustPowerLeverRequestPayload : RequestPayload
+    public class AdjustPowerLeverRequestPayload : Payload
     {
         /// <summary>
         /// The desired change in power level as percentage points (-100 - 100). A positive or negative integer value used to increase or decrease the power level. For example, a starting value of 97 with a power level delta of 3 would increase the power level value to 100

@@ -3,7 +3,7 @@
     /// <summary>
     /// Abstract base class for RequestPayloads
     /// </summary>
-    public class RequestPayload
+    public class Payload
     {
     }
 }

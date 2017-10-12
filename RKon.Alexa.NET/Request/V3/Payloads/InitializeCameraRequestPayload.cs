@@ -8,7 +8,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
     /// <summary>
     /// Payload for InitializeCameraRequests
     /// </summary>
-    public class InitializeCameraRequestPayload : RequestPayload
+    public class InitializeCameraRequestPayload : Payload
     {
         /// <summary>
         /// An array of cameraStream structures that provide information about the stream.

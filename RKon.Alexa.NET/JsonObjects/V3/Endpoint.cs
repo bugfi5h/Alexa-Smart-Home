@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
-using RKon.Alexa.NET.JsonObjects;
 using System.Collections.Generic;
 
-namespace RKon.Alexa.NET.Request.V3
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// Enpoint Element for directives
