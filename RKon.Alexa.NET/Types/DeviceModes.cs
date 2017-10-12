@@ -3,31 +3,25 @@
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
-    /// List of all device modes
+    /// List of all ThermostatModes
     /// </summary>
-    public enum DeviceModes
+    public enum ThermostatModes
     {
-        AUTO, HEAT, COOL, AWAY, OTHER
-    }
-    /// <summary>
-    /// List of all Temperature modes
-    /// </summary>
-    public enum TemperatureModes
-    {
-        AUTO, HEAT, COOL
-    }
-    /// <summary>
-    /// List of all GetTemperature modes
-    /// </summary>
-    public enum GetTemperatureModes
-    {
-        AUTO, HEAT, COOL, OFF, CUSTOM, ECO
+        AUTO, HEAT, COOL, OFF, ECO
     }
     /// <summary>
     ///List of all Lockstates
     /// </summary>
     public enum LockModes
     {
-        LOCKED, UNLOCKED
+        LOCKED, UNLOCKED, JAMMED
+    }
+
+    /// <summary>
+    /// List of all Powerstates
+    /// </summary>
+    public enum PowerStates
+    {
+        ON, OFF
     }
 }

@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using RKon.Alexa.NET.Request.RequestPayloads;
 using RKon.Alexa.NET.Request.V3;
 using RKon.Alexa.NET.Request.V3.Payloads;
 
@@ -53,11 +52,7 @@ namespace RKon.Alexa.NET.Request
             object req = null;
             if (!String.IsNullOrEmpty(headerName) && !String.IsNullOrEmpty(payloadVersion) && !String.IsNullOrEmpty(headerNamespace))
             {
-                if(payloadVersion == "2")
-                {
-                    req = new SmartHomeRequest();
-                    (req as SmartHomeRequest).Payload = CreateV2Payload(headerName);
-                }else if(payloadVersion == "3")
+                if(payloadVersion == "3")
                 {
                     req = new Directive();
                     (req as Directive).Payload = CreateV3Payload(headerName, headerNamespace);
@@ -137,53 +132,6 @@ namespace RKon.Alexa.NET.Request
                         return new SpeakerAdjustVolumeRequestPayload();
                     else
                         throw new JsonSerializationException("Namespace not valid for AdjustVolume Requestname.");
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
-            }
-        }
-
-        /// <summary>
-        /// returns the payload for the specific requesttype
-        /// </summary>
-        /// <param name="requestType">Name of the Requests></param>
-        /// <returns></returns>
-        public Payload CreateV2Payload(string requestType)
-        {
-            switch (requestType)
-            {
-                case HeaderNames.V2.DISCOVERY_REQUEST:
-                    return new DiscoveryRequestPayload();
-                case HeaderNames.V2.TURN_OFF_REQUEST:
-                case HeaderNames.V2.TURN_ON_REQUEST:
-                    return new TurnOnOffRequestPayload();
-                case HeaderNames.V2.HEALTH_CHECK_REQUEST:
-                    return new HealthCheckRequestPayload();
-                case HeaderNames.V2.DECREMENT_TARGET_TEMPERATURE_REQUEST:
-                case HeaderNames.V2.INCREMENT_TARGET_TEMPERATURE_REQUEST:
-                    return new In_DecrementTemperatureRequestPayload();
-                case HeaderNames.V2.SET_TARGET_TEMPERATURE_REQUEST:
-                    return new SetTemperatureRequestPayload();
-                case HeaderNames.V2.DECREMENT_PERCENTAGE_REQUEST:
-                case HeaderNames.V2.INCREMENT_PERCENTAGE_REQUEST:
-                    return new In_DecrementPercentageRequestPayload();
-                case HeaderNames.V2.SET_PERCENTAGE_REQUEST:
-                    return new RequestPayloads.SetPercentageRequestPayload();
-                case HeaderNames.V2.SET_COLOR_REQUEST:
-                    return new RequestPayloads.SetColorRequestPayload();
-                case HeaderNames.V2.SET_COLOR_TEMPERATURE_REQUEST:
-                    return new ColorTemperatureRequestPayload();
-                case HeaderNames.V2.INCREMENT_COLOR_TEMPERATURE_REQUEST:
-                case HeaderNames.V2.DECREMENT_COLOR_TEMPERATURE_REQUEST:
-                    return new In_DecrementColorTemperatureRequestPayload();
-                case HeaderNames.V2.GET_TEMPERATURE_READING_REQUEST:
-                case HeaderNames.V2.GET_TARGET_TEMPERATURE_REQUEST:
-                    return new GetTemperatureRequestPayload();
-                case HeaderNames.V2.GET_LOCK_STATE_REQUEST:
-                    return new GetLockStateRequestPayload();
-                case HeaderNames.V2.SET_LOCK_STATE_REQUEST:
-                    return new SetLockStateRequestPayload();
-                case HeaderNames.V2.RETRIEVE_CAMERA_STREAM_URI_REQUEST:
-                    return new RetrieveCameraStreamUriRequestPayload();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
             }
