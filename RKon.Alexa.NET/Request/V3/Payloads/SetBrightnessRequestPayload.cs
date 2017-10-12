@@ -10,7 +10,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
         /// <summary>
         /// A value that indicates the desired brightness as a percentage. integer from 0-100, inclusive.
         /// </summary>
-        [JsonProperty("brightness")]
+        [JsonProperty(PropertyNames.BRIGHTNESS)]
         public int Brightness { get; set; }
     }
 }

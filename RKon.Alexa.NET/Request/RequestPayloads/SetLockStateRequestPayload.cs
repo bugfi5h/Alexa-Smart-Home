@@ -1,6 +1,7 @@
 ﻿
 
 using Newtonsoft.Json;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Request.RequestPayloads
 {
@@ -12,7 +13,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
         /// <summary>
         /// LockState
         /// </summary>
-        [JsonProperty("lockState")]
+        [JsonProperty(PropertyNames.LOCK_STATE)]
         public string LockState { get; private set; }
     }
 }

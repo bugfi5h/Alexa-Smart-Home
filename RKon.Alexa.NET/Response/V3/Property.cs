@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.JsonObjects
+namespace RKon.Alexa.NET.Response.V3
 {
     /// <summary>
     /// Descripes a Property in Context Objects
     /// </summary>
+    [JsonConverter(typeof(PropertyConverter))]
     public class Property
     {
         /// <summary>
@@ -21,7 +22,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// The value for the property specified by name
         /// </summary>
         [JsonProperty("value")]
-        public object Value { get; set; }//TODO
+        public object Value { get; set; }
         /// <summary>
         /// The time at which the property value was provided in ISO 8601 format, and specified in UTC
         /// </summary>

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Request.V3.Payloads
 {
@@ -10,7 +11,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
         /// <summary>
         /// The identifier for the input device the customer requested
         /// </summary>
-        [JsonProperty("input")]
+        [JsonProperty(PropertyNames.INPUT)]
         public string Input { get; set; }
     }
 }

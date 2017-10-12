@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Request.V3.Payloads
 {
@@ -11,17 +12,17 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
         /// <summary>
         /// Indicates the target temperature to set on the device. Sent for single and triple mode thermostats.
         /// </summary>
-        [JsonProperty("targetSetpoint", NullValueHandling =NullValueHandling.Ignore)]
+        [JsonProperty(PropertyNames.TARGET_SETPOINT, NullValueHandling =NullValueHandling.Ignore)]
         public Setpoint TargetSetpoint { get; set; }
         /// <summary>
         /// Indicates the lower temperature setpoint for the device. temperature. Sent for dual and triple setpoint temperature modes.
         /// </summary>
-        [JsonProperty("lowerSetpoint", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyNames.LOWER_SETPOINT, NullValueHandling = NullValueHandling.Ignore)]
         public Setpoint LowerSetpoint { get; set; }
         /// <summary>
         /// Indicates the upper temperature setpoint for the device. Sent for dual and triple setpoint temperature modes
         /// </summary>
-        [JsonProperty("upperSetpoint", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty(PropertyNames.UPPER_SETPOINT, NullValueHandling = NullValueHandling.Ignore)]
         public Setpoint UpperSetpoint { get; set; }
     }
 }

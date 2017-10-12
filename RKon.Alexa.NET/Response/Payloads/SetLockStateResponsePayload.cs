@@ -12,7 +12,7 @@ namespace RKon.Alexa.NET.Response
         /// <summary>
         ///  	Indicates the locked state of the specified appliance. Valid values are LOCKED, UNLOCKED
         /// </summary>
-        [JsonProperty("lockState")]
+        [JsonProperty(PropertyNames.LOCK_STATE)]
         [JsonRequired]
         public string LockState { get; private set; }
 

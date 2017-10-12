@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects
 {
@@ -50,7 +51,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// <summary>
         /// Double between 0.0000 and 1.00000
         /// </summary>
-        [JsonProperty("brightness")]
+        [JsonProperty(PropertyNames.BRIGHTNESS)]
         public double Brightness
         {
             get { return mBrightness; }

@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using RKon.Alexa.NET.Types;
+
 namespace RKon.Alexa.NET.Request.V3.Payloads
 {
     /// <summary>
@@ -9,7 +11,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
         /// <summary>
         /// An integer that indicates the requested volume, scaled from 0, the minimum volume, to 100, which is the maximum volume.
         /// </summary>
-        [JsonProperty("volume")]
+        [JsonProperty(PropertyNames.VOLUME)]
         public int Volume { get; set; }
     }
 }

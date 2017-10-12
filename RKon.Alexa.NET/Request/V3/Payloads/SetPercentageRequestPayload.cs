@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Request.V3.Payloads
 {
@@ -10,7 +11,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
         /// <summary>
         /// The percentage value to set for the device. Integer from 0-100, inclusive.
         /// </summary>
-        [JsonProperty("percentage")]
+        [JsonProperty(PropertyNames.PERCENTAGE)]
         public int Percentage { get; set; }
     }
 }

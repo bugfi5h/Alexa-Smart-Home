@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Request.V3.Payloads
 {
@@ -11,7 +12,7 @@ namespace RKon.Alexa.NET.Request.V3.Payloads
         /// <summary>
         /// Describes a channel.
         /// </summary>
-        [JsonProperty("channel")]
+        [JsonProperty(PropertyNames.CHANNEL)]
         public Channel Channel { get; set; }
         /// <summary>
         /// Provides additional information about the specified channel. Can be null

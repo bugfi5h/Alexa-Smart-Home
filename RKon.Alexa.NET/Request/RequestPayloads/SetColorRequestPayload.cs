@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Request.RequestPayloads
 {
@@ -11,7 +12,7 @@ namespace RKon.Alexa.NET.Request.RequestPayloads
         /// <summary>
         /// Color Object with Hue, Saturation and Brightness
         /// </summary>
-        [JsonProperty("color")]
+        [JsonProperty(PropertyNames.COLOR)]
         public Color Color { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-
+using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects
 {
@@ -11,7 +11,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// <summary>
         /// Colorresponse of the appliance. 
         /// </summary>
-        [JsonProperty("color")]
+        [JsonProperty(PropertyNames.COLOR)]
         [JsonRequired]
         public Color Color { get; set; }
 
