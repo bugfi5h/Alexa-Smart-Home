@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects
@@ -18,15 +19,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// Can be CLESIUS, FAHRENHEIT or KELVIN
         /// </summary>
         [JsonProperty("scale")]
-        public string Scale { get;private set; }
-
-        /// <summary>
-        /// Sets valid Scale
-        /// </summary>
-        /// <param name="scale"></param>
-        public void SetScale(Scale scale)
-        {
-            Scale = scale.ToString();
-        }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Scale Scale { get; set; }
     }
 }

@@ -24,4 +24,13 @@ namespace RKon.Alexa.NET.Types
     {
         ON, OFF
     }
+
+    /// <summary>
+    /// List of all ErrorColorTemperature modes
+    /// </summary>
+    public enum ColorTemperatureModes
+    {
+        AUTO, AWAY, COLOR, ASLEEP, NOT_PROVISIONED, COOL, HEAT, OTHER
+    }
+
 }

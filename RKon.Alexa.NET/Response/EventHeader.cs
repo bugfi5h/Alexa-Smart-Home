@@ -1,4 +1,5 @@
-﻿using RKon.Alexa.NET.Request;
+﻿using System;
+using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Response
@@ -21,7 +22,23 @@ namespace RKon.Alexa.NET.Response
         }
 
         /// <summary>
-        /// Standardconstructor
+        /// Creates a header for a ErrorResponse
+        /// </summary>
+        /// <param name="correlationToken"></param>
+        /// <returns></returns>
+        public static EventHeader CreateErrorHeader(string correlationToken)
+        {
+            EventHeader e = new EventHeader();
+            e.MessageId = System.Guid.NewGuid().ToString();
+            e.PayloadVersion = "3";
+            e.Namespace = Namespaces.ALEXA;
+            e.Name = HeaderNames.V3.ERROR_RESPONSE;
+            e.CorrelationToken = correlationToken;
+            return e;
+        }
+
+        /// <summary>
+        /// Standartconstructor
         /// </summary>
         public EventHeader()
         {
