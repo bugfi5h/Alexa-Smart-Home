@@ -72,8 +72,9 @@ namespace RKon.Alexa.NET.JsonObjects
                 case PropertyNames.INPUT:
                 case PropertyNames.POWER_STATE:
                 case PropertyNames.THERMOSTATMODE:
-                case PropertyNames.CONNECTIVITY:
                     return String.Empty;
+                case PropertyNames.CONNECTIVITY:
+                    return new ConnectivityProperty();
                 case PropertyNames.VOLUME:
                 case PropertyNames.BRIGHTNESS:
                 case PropertyNames.POWER_LEVEL:

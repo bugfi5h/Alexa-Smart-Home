@@ -21,5 +21,12 @@ namespace RKon.Alexa.NET.Request
         {
             return Directive?.Payload?.GetType();
         }
+
+        /// <summary>
+        /// Basic Constructor
+        /// </summary>
+        public SmartHomeRequest()
+        {
+        }
     }
 }
