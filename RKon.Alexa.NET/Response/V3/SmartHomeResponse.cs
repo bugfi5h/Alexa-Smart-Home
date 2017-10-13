@@ -31,5 +31,23 @@ namespace RKon.Alexa.NET.Response.V3
             Event = new Event(requestHeader);
         }
 
+        /// <summary>
+        /// Basic Constructor
+        /// </summary>
+        public SmartHomeResponse()
+        {
+        }
+
+        /// <summary>
+        /// Creates a ChangeReportEvent.
+        /// </summary>
+        /// <returns></returns>
+        public static SmartHomeResponse CreateChangeReportEvent()
+        {
+            SmartHomeResponse sResponse = new SmartHomeResponse();
+            sResponse.Event = new Event();
+            return sResponse;
+        }
+
     }
 }

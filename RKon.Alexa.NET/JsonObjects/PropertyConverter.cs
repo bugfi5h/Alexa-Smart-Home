@@ -2,9 +2,8 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RKon.Alexa.NET.Types;
-using RKon.Alexa.NET.JsonObjects;
 
-namespace RKon.Alexa.NET.Response.V3
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// Readconverter for Cotextproperties
@@ -25,7 +24,7 @@ namespace RKon.Alexa.NET.Response.V3
             return objectType == typeof(Property);
         }
         /// <summary>
-        /// Reads Json in a Objekt und creates a SmartHomeRequest
+        /// Reads Json in a Objekt und creates a Property
         /// </summary>
         /// <param name="reader"></param>
         /// <param name="objectType"></param>
@@ -36,7 +35,7 @@ namespace RKon.Alexa.NET.Response.V3
         {
             var jObject = JObject.Load(reader);
             string name = jObject["name"]?.Value<string>();
-            Property prop = null;
+            Property prop = new Property();
             if (!String.IsNullOrEmpty(name))
             {
                 prop.Value = CreateValue(name);

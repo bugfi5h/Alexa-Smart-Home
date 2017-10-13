@@ -151,6 +151,19 @@ namespace RKon.Alexa.NET.Types
             /// </summary>
             public const string RESPONSE = "Response";
 
+            /// <summary>
+            /// Header Name for Discover Resposes;
+            /// </summary>
+            public const string DISCOVERY_RESPONSE = "Discover.Response";
+            /// <summary>
+            /// Header Name for StateReport
+            /// </summary>
+            public const string STATE_REPORT = "StateReport";
+            /// <summary>
+            /// Header Name for ChangeReport
+            /// </summary>
+            public const string CHANGE_REPORT = "ChangeReport";
+
             #endregion
         }
         #region ERROR_NAMES

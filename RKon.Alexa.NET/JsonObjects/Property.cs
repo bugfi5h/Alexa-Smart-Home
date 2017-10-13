@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Response.V3
+namespace RKon.Alexa.NET.JsonObjects
 {
     /// <summary>
     /// Descripes a Property in Context Objects

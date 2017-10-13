@@ -21,11 +21,25 @@ namespace RKon.Alexa.NET.Response.V3
         }
 
         /// <summary>
-        /// Standartconstructor
+        /// Standardconstructor
         /// </summary>
         public EventHeader()
         {
 
+        }
+
+        /// <summary>
+        /// Creates a header for a Changereport
+        /// </summary>
+        /// <returns></returns>
+        public static EventHeader CreateChangeReportHeader()
+        {
+            EventHeader e = new EventHeader();
+            e.MessageId = System.Guid.NewGuid().ToString();
+            e.PayloadVersion = "3";
+            e.Namespace = Namespaces.ALEXA;
+            e.Name = HeaderNames.V3.CHANGE_REPORT;
+            return e;
         }
 
         private string _GetNamespace(DirectiveHeader reqHeader)
@@ -46,11 +60,11 @@ namespace RKon.Alexa.NET.Response.V3
             string name = HeaderNames.V3.RESPONSE;
             if(reqHeader.Name == HeaderNames.V3.REPORT_STATE)
             {
-                name = "StateReport"; //TODO
+                name = HeaderNames.V3.STATE_REPORT;
             }
             if (reqHeader.Name == HeaderNames.V3.DISCOVERY_REQUEST)
             {
-                name = "Discover.Response";
+                name = HeaderNames.V3.DISCOVERY_RESPONSE;
             }
             return name;
         }

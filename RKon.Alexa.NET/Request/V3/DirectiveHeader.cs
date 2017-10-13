@@ -12,7 +12,7 @@ namespace RKon.Alexa.NET.Request.V3
         ///- A directive from Alexa to the skill.
         ///- An event in response to a directive.
         /// </summary>
-        [JsonProperty("correlationToken")]
+        [JsonProperty("correlationToken", NullValueHandling = NullValueHandling.Ignore)]
         public string CorrelationToken { get; set; }
     }
 }

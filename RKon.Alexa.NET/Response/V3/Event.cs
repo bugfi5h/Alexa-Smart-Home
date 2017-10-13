@@ -24,6 +24,7 @@ namespace RKon.Alexa.NET.Response.V3
     /// <summary>
     /// Response of Directives
     /// </summary>
+    [JsonConverter(typeof(EventConverter))]
     public class Event
     {
         /// <summary>
@@ -60,13 +61,38 @@ namespace RKon.Alexa.NET.Response.V3
                 throw new ArgumentOutOfRangeException(nameof(Type), $"Not supported Payload Version: {requestHeader.PayloadVersion}. Only Version 3 is supported");
             }
             Header = new EventHeader(requestHeader);
-            Payload = _GetPayloadForEvent(requestHeader);
+            Payload = _GetPayloadForEvent(requestHeader.Namespace);
             
         }
-
-        private Payload _GetPayloadForEvent(DirectiveHeader requestHeader)
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
+        public Event()
         {
-            switch (requestHeader.Namespace)
+        }
+
+        /// <summary>
+        /// Creates a Event For a ChangeReport. 
+        /// </summary>
+        /// <param name="usePayload">Determines if a empty Payload is initialized or a ChangeReportPayload</param>
+        /// <returns></returns>
+        public static Event CreateChangeReportEvent(bool usePayload)
+        {
+            Event _event = new Event();
+            _event.Header = EventHeader.CreateChangeReportHeader();
+            if (usePayload)
+            {
+                _event.Payload = new ChangeReportPayload();
+            }else
+            {
+                _event.Payload = new Payload();
+            }
+            return _event;
+        }
+
+        internal Payload _GetPayloadForEvent(string _namespace)
+        {
+            switch (_namespace)
             {
                 case Namespaces.ALEXA_DISCOVERY:
                     return new DisoveryPayload();
@@ -85,7 +111,7 @@ namespace RKon.Alexa.NET.Response.V3
                 case Namespaces.ALEXA:
                     return new Payload();
                 default:
-                    throw new UnknownHeaderException(requestHeader.Namespace);
+                    throw new UnknownHeaderException(_namespace);
             }
         }
     }
