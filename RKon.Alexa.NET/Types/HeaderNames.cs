@@ -1,17 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace RKon.Alexa.NET.Types
+﻿namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Smarthomerequest, -response, and -errorresponse Headernames
     /// </summary>
     public class HeaderNames
     {
-        /// <summary>
-        /// Headernames in V3
-        /// </summary>
-        public static class V3
-        {
             #region HeaderNames
             /// <summary>
             /// Header Name for the DiscoverAppliance Requests.
@@ -171,96 +164,11 @@ namespace RKon.Alexa.NET.Types
             /// Header Name for ErrorResponse
             /// </summary>
             public const string ERROR_RESPONSE = "ErrorResponse";
+            /// <summary>
+            /// Header Name for SetThermostatMode
+            /// </summary>
+            public const string SET_THERMOSTATMODE = "SetThermostatMode";
+
             #endregion
-        }
-        #region ERROR_NAMES
-        /// <summary>
-        /// Error Header Name if value out of range
-        /// </summary>
-        public const string VALUE_OUT_OF_RANGE_ERROR = "ValueOutOfRangeError";
-        /// <summary>
-        /// Error Header Name if the target is offline
-        /// </summary>
-        public const string TARGET_OFFLINE_ERROR = "TargetOfflineError";
-        /// <summary>
-        /// Error Header Name if the Bridge or the Hub for the device is offline
-        /// </summary>
-        public const string BRIDGE_OFFLINE_ERROR = "BridgeOfflineError";
-        /// <summary>
-        /// Error Header Name if the target does not exist
-        /// </summary>
-        public const string NO_SUCH_TARGET_ERROR = "NoSuchTargetError";
-        /// <summary>
-        /// Error Header Name for runtime erros
-        /// </summary>
-        public const string DRIVER_INTERNAL_ERROR = "DriverInternalError";
-        /// <summary>
-        /// Error Header Name if a dependent service is unavailable
-        /// </summary>
-        public const string DEPENDENT_SERVICE_UNAVAILABLE_ERROR = "DependentServiceUnavailableError";
-        /// <summary>
-        /// Error Header Name if the target connectivity is unstable
-        /// </summary>
-        public const string TARGET_CONNECTIVITY_UNSTABLE_ERROR = "TargetConnectivityUnstableError";
-        /// <summary>
-        /// Error Header Name if the connection to the Bridge or Hub dis unstable
-        /// </summary>
-        public const string TARGET_BRIDGE_CONNECTIVITY_UNSTABLE_ERROR = "TargetBridgeConnectivityUnstableError";
-        /// <summary>
-        /// Error Header Name if the firmware of the appliance is outdated 
-        /// </summary>
-        public const string TARGET_FIRMWARE_OUTDATED_ERROR = "TargetFirmwareOutdatedError";
-        /// <summary>
-        /// Error Header Name if the Firmware of the Bridge or Hub is outdated 
-        /// </summary>
-        public const string TARGET_BRIDGE_FIRMWARE_OUTDATED_ERROR = "TargetBridgeFirmwareOutdatedError";
-        /// <summary>
-        /// Error Header Name if the appliance has a hardware malfunction
-        /// </summary>
-        public const string TARGET_HARDWARE_MALFUNCTION_ERROR = "TargetHardwareMalfunctionError";
-        /// <summary>
-        /// Error Header Name if the Hub or the Bridge has a hardware malfunction
-        /// </summary>
-        public const string TARGET_BRIDGE_HARDWARE_MALFUNCTION_ERROR = "TargetBridgetHardwareMalfunctionError";
-        /// <summary>
-        /// Error Header Name if the target is unwilling to set the value
-        /// </summary>
-        public const string UNWILLING_TO_SET_VALUE_ERROR = "UnwillingToSetValueError";
-        /// <summary>
-        /// Error Header Name if the Requestlimit is exseeded
-        /// </summary>
-        public const string RATE_LIMIT_EXCEEDED_ERROR = "RateLimitExceededError";
-        /// <summary>
-        /// Error Header Name if the action is not supported in the current mode
-        /// </summary>
-        public const string NOT_SUPPORTED_IN_CURRENT_MODE_ERROR = "NotSupportedInCurrentModeError";
-
-        /// <summary>
-        /// Error Header Name if the Access Token is exspired.
-        /// </summary>
-        public const string EXSPIRED_ACCESS_TOKEN_ERROR = "ExpiredAccessTokenError";
-        /// <summary>
-        /// Error Header Name if the übergebene Access Token is invalid.
-        /// </summary>
-        public const string INVALID_ACCESS_TOKEN_ERROR = "InvalidAccessTokenError";
-        /// <summary>
-        /// Error Header Name the target is not supported by the skill adapter
-        /// </summary>
-        public const string UNSUPPORTED_TARGET_ERROR = "UnsupportedTargetError";
-        /// <summary>
-        /// Error Header Name if the operation is not supported by the appliance.
-        /// </summary>
-        public const string UNSUPPORTED_OPERATION_ERROR = "UnsupportedOperationError";
-        /// <summary>
-        /// Error Header Name if the setting is not supported by the appliance.
-        /// </summary>
-        public const string UNSUPPORTED_TARGET_SETTING_ERROR = "UnsupportedTargetSettingError";
-        /// <summary>
-        /// Error Header Name if a parameter has a unecpeted information
-        /// </summary>
-        public const string UNEXCEPTED_INFORMATION_RECEIVED_ERROR = "UnexpectedInformationReceivedError";
-
-        #endregion
-
     }
 }

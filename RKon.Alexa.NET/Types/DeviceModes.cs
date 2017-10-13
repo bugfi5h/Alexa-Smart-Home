@@ -1,13 +1,34 @@
-﻿using System.Collections.Generic;
-
-namespace RKon.Alexa.NET.Types
+﻿namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// List of all ThermostatModes
     /// </summary>
     public enum ThermostatModes
     {
-        AUTO, HEAT, COOL, OFF, ECO
+        /// <summary>
+        ///  	Automatic heat or cool selection based on the temperature reading and the setpoint
+        /// </summary>
+        AUTO,
+        /// <summary>
+        /// cooling mode
+        /// </summary>
+        COOL,
+        /// <summary>
+        ///  	heating mode
+        /// </summary>
+        HEAT,
+        /// <summary>
+        /// economical mode
+        /// </summary>
+        ECO,
+        /// <summary>
+        /// heating/cooling is turned off, but the device may still have power
+        /// </summary>
+        OFF,
+        /// <summary>
+        ///  	A custom mode specified by an additional field customName
+        /// </summary>
+        CUSTOM
     }
     /// <summary>
     ///List of all Lockstates

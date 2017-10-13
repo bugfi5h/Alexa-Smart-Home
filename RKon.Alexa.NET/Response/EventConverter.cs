@@ -42,7 +42,7 @@ namespace RKon.Alexa.NET.Response
             Event e = new Event();
             if (!String.IsNullOrEmpty(_namespace) && !String.IsNullOrEmpty(name))
             {
-                if(name == HeaderNames.V3.CHANGE_REPORT)
+                if(name == HeaderNames.CHANGE_REPORT)
                 {
                     if(jObject["payload"] != null && jObject["payload"].HasValues)
                     {
@@ -53,7 +53,7 @@ namespace RKon.Alexa.NET.Response
                         e.Payload = new Payload();
                     }
                 }
-                if (name == HeaderNames.V3.DEFFERED_RESPONSE)
+                if (name == HeaderNames.DEFFERED_RESPONSE)
                 {
                     e.Payload = new DefferedResponsePayload();
                 }

@@ -73,7 +73,7 @@ namespace RKon.Alexa.NET.Response
         /// <returns></returns>
         public static SmartHomeResponse CreateErrorResponse(DirectiveHeader header, ErrorTypes type)
         {
-            if(header.Name == HeaderNames.V3.DISCOVERY_REQUEST)
+            if(header.Name == HeaderNames.DISCOVERY_REQUEST)
             {
                 throw new UnvalidDiscoveryResponseException();
             }

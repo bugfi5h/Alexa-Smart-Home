@@ -56,7 +56,12 @@ namespace RKon.Alexa.NET.Response
 
             return e;
         }
-
+        /// <summary>
+        /// Not implemented
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="value"></param>
+        /// <param name="serializer"></param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();

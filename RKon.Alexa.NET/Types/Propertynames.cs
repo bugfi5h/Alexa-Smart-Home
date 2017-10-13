@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RKon.Alexa.NET.Types
+﻿namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Property names for Context

@@ -38,7 +38,7 @@ namespace RKon.Alexa.NET.Response
             SmartHomeResponse e = new SmartHomeResponse();
             if (!String.IsNullOrEmpty(name))
             {
-                if (name == Types.HeaderNames.V3.ERROR_RESPONSE)
+                if (name == Types.HeaderNames.ERROR_RESPONSE)
                 {
                     e.Event = new ErrorResponseEvent();
                 }

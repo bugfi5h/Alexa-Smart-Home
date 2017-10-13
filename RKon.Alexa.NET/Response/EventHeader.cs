@@ -32,7 +32,7 @@ namespace RKon.Alexa.NET.Response
             e.MessageId = System.Guid.NewGuid().ToString();
             e.PayloadVersion = "3";
             e.Namespace = Namespaces.ALEXA;
-            e.Name = HeaderNames.V3.ERROR_RESPONSE;
+            e.Name = HeaderNames.ERROR_RESPONSE;
             e.CorrelationToken = correlationToken;
             return e;
         }
@@ -55,7 +55,7 @@ namespace RKon.Alexa.NET.Response
             e.MessageId = System.Guid.NewGuid().ToString();
             e.PayloadVersion = "3";
             e.Namespace = Namespaces.ALEXA;
-            e.Name = HeaderNames.V3.CHANGE_REPORT;
+            e.Name = HeaderNames.CHANGE_REPORT;
             return e;
         }
 
@@ -69,7 +69,7 @@ namespace RKon.Alexa.NET.Response
             e.MessageId = System.Guid.NewGuid().ToString();
             e.PayloadVersion = "3";
             e.Namespace = Namespaces.ALEXA;
-            e.Name = HeaderNames.V3.DEFFERED_RESPONSE;
+            e.Name = HeaderNames.DEFFERED_RESPONSE;
             return e;
         }
         
@@ -88,14 +88,14 @@ namespace RKon.Alexa.NET.Response
 
         private string _GetName(DirectiveHeader reqHeader)
         {
-            string name = HeaderNames.V3.RESPONSE;
-            if(reqHeader.Name == HeaderNames.V3.REPORT_STATE)
+            string name = HeaderNames.RESPONSE;
+            if(reqHeader.Name == HeaderNames.REPORT_STATE)
             {
-                name = HeaderNames.V3.STATE_REPORT;
+                name = HeaderNames.STATE_REPORT;
             }
-            if (reqHeader.Name == HeaderNames.V3.DISCOVERY_REQUEST)
+            if (reqHeader.Name == HeaderNames.DISCOVERY_REQUEST)
             {
-                name = HeaderNames.V3.DISCOVERY_RESPONSE;
+                name = HeaderNames.DISCOVERY_RESPONSE;
             }
             return name;
         }
