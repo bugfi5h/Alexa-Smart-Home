@@ -2,8 +2,8 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using RKon.Alexa.NET.Request.V3;
-using RKon.Alexa.NET.Request.V3.Payloads;
+using RKon.Alexa.NET.Payloads;
+using RKon.Alexa.NET.Payloads.Request;
 
 namespace RKon.Alexa.NET.Request
 {
@@ -86,7 +86,7 @@ namespace RKon.Alexa.NET.Request
                 case HeaderNames.V3.ADJUSTTARGETTEMPERATURE:
                     return new AdjustTargetTemperatureRequestPayload();
                 case HeaderNames.V3.SET_PERCENTAGE:
-                    return new V3.Payloads.SetPercentageRequestPayload();
+                    return new SetPercentageRequestPayload();
                 case HeaderNames.V3.ADJUST_PERCENTAGE:
                     return new AdjustPercentageRequestPayload();
                 case HeaderNames.V3.SET_BRIGHTNESS:
@@ -94,7 +94,7 @@ namespace RKon.Alexa.NET.Request
                 case HeaderNames.V3.ADJUST_BRIGHTNESS:
                     return new AdjustBrightnessRequestPayload();
                 case HeaderNames.V3.SET_COLOR:
-                    return new V3.Payloads.SetColorRequestPayload();
+                    return new SetColorRequestPayload();
                 case HeaderNames.V3.SET_COLORTEMPERATURE:
                     return new SetColorTemperatureRequestPayload();
                 case HeaderNames.V3.INIT_CAMERA_STREAMS:

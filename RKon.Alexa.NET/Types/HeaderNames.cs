@@ -167,6 +167,10 @@ namespace RKon.Alexa.NET.Types
             /// Header Name for DeferredResponse
             /// </summary>
             public const string DEFFERED_RESPONSE = "DeferredResponse";
+            /// <summary>
+            /// Header Name for ErrorResponse
+            /// </summary>
+            public const string ERROR_RESPONSE = "ErrorResponse";
             #endregion
         }
         #region ERROR_NAMES
