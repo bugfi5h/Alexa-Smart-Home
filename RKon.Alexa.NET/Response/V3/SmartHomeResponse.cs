@@ -17,7 +17,7 @@ namespace RKon.Alexa.NET.Response.V3
         /// System.Type of the Payloads
         /// </summary>
         /// <returns>System.Type of the Payloads</returns>
-        public System.Type GetResponsePayloadType()
+        public System.Type GetPayloadType()
         {
             return Event?.Payload?.GetType();
         }

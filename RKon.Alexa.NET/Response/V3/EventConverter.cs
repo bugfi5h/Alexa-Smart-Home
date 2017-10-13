@@ -48,7 +48,16 @@ namespace RKon.Alexa.NET.Response.V3
                     {
                         e.Payload = new ChangeReportPayload();
                     }
-                }else
+                    else
+                    {
+                        e.Payload = new Payload();
+                    }
+                }
+                if (name == HeaderNames.V3.DEFFERED_RESPONSE)
+                {
+                    e.Payload = new DefferedResponsePayload();
+                }
+                else
                 {
                     e.Payload = e._GetPayloadForEvent(_namespace);
                 }

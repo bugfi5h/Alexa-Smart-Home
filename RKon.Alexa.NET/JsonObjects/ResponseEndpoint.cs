@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 using System.Collections.Generic;
 
@@ -37,8 +38,9 @@ namespace RKon.Alexa.NET.JsonObjects
         /// Indicates the group name where the device should display in the Alexa app. Current supported values are ‘LIGHT’, ‘SMARTPLUG’, ‘SWITCH’, ‘CAMERA’, ‘DOOR’, “TEMPERATURE_SENSOR”, ‘THERMOSTAT’, ‘SMARTLOCK’, ‘SCENE_TRIGGER’, ‘ACTIVITY_TRIGGER’, ‘OTHER’
         /// </summary>
         [JsonProperty("displayCategories")]
+        [JsonConverter(typeof(StringEnumConverter))]
         [JsonRequired]
-        private List<string> DisplayCategories;
+        public List<DisplayCategory> DisplayCategories { get; set; }
         /// <summary>
         /// String name/value pairs that provide additional information about a device for use by the skill. The contents of this property cannot exceed 5000 bytes. The API doesn’t use or understand this data.
         /// </summary>
@@ -52,34 +54,12 @@ namespace RKon.Alexa.NET.JsonObjects
         [JsonRequired]
         public List<Capability> Capability { get; set; }
 
-
-        /// <summary>
-        /// Valid Types can be found in RKon.Alexa.NET.Types.DisplayCategories
-        /// </summary>
-        /// <param name="category"></param>
-        /// <returns></returns>
-        public void AddDisplayCategory(DisplayCategory category)
-        {
-            DisplayCategories.Add(category.ToString());
-        }
-
-        /// <summary>
-        /// Copy of DisplayCategories
-        /// </summary>
-        /// <returns></returns>
-        public List<string> CloneDisplayCategories()
-        {
-            List<string> copy = new List<string>();
-            copy.AddRange(DisplayCategories);
-            return copy;
-        }
-
         /// <summary>
         /// Standartconstructor
         /// </summary>
         public ResponseEndpoint()
         {
-            DisplayCategories = new List<string>();
+            DisplayCategories = new List<DisplayCategory>();
             Capability = new List<Capability>();
         }
     }

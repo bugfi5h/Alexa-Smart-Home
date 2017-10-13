@@ -42,6 +42,20 @@ namespace RKon.Alexa.NET.Response.V3
             return e;
         }
 
+        /// <summary>
+        /// Creates a header for a DefferedResponses
+        /// </summary>
+        /// <returns></returns>
+        public static EventHeader CreateDefferedResponseHeader()
+        {
+            EventHeader e = new EventHeader();
+            e.MessageId = System.Guid.NewGuid().ToString();
+            e.PayloadVersion = "3";
+            e.Namespace = Namespaces.ALEXA;
+            e.Name = HeaderNames.V3.DEFFERED_RESPONSE;
+            return e;
+        }
+        
         private string _GetNamespace(DirectiveHeader reqHeader)
         {
             string name_space = Namespaces.ALEXA;

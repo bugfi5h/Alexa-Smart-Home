@@ -90,6 +90,18 @@ namespace RKon.Alexa.NET.Response.V3
             return _event;
         }
 
+        /// <summary>
+        /// Creates a Event For a DefferedResponse. 
+        /// </summary>
+        /// <returns></returns>
+        public static Event CreateDefferedResponse()
+        {
+            Event _event = new Event();
+            _event.Header = EventHeader.CreateDefferedResponseHeader();
+            _event.Payload = new DefferedResponsePayload();
+            return _event;
+        }
+
         internal Payload _GetPayloadForEvent(string _namespace)
         {
             switch (_namespace)

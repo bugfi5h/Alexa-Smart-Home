@@ -163,7 +163,10 @@ namespace RKon.Alexa.NET.Types
             /// Header Name for ChangeReport
             /// </summary>
             public const string CHANGE_REPORT = "ChangeReport";
-
+            /// <summary>
+            /// Header Name for DeferredResponse
+            /// </summary>
+            public const string DEFFERED_RESPONSE = "DeferredResponse";
             #endregion
         }
         #region ERROR_NAMES
