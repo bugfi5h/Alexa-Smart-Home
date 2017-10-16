@@ -1,29 +1,59 @@
 # Alexa-Smart-Home
 =============
 
-Nuget package will be available soon..
-private try on creating a c# framework for the alexa smart home API.
+RKon is a dotNet Core Framework for Alexa's Smart Home API. With Version 1.1 it will only support Payloadversion 3.
+If you want to use it for the deprecated Payloadversion 2 you need to get Version 1.0.20
 
-It will only work with Payload Version 2 at the moment.
 
-UPDATE:
-Now supports Lock, GetTemperature, and Color requests. Carefull still only available in US.
-There is a error in the smart home api for GetockStateResponses so i am unsure if it is implemented really. Can not try it out so use it with caution!
+Version 1.1 (Payloadversion 3)
+=============
 
-Documentation will be tanslated as soon as possible.
+With payloadversion 3 all requests and responses had to be updated. More informations can be found in the API reference on Amazon's developer page.
+Incoming Requests can be read with Newtonsoft.Json like this:
+```csharp
+        public SmartHomeRequest FunctionHandler(string jsonString)
+        {
+            SmartHomeRequest request = JsonConvert.DeserializeObject<SmartHomeRequest>(jsonString);
+            return request;
+        }
+```
 
-In Deutsch:
--------
+Responses can be build from the Header of the request. 
+```csharp
+            SmartHomeResponse response = new SmartHomeResponse(request.Directive.Header);
+```
 
-C# Framework zur Verwendung für Smart Home Skill Adapter.
+If you want to create a ChangeReport you can decide if it should be initialised with a empty payload, or if you want to put the changes into the payload. (See API Reference)
 
-Momentan werden alle Requests und Responses der Payload Version 2 unterstützt, die im deutschen Raum verfügbar sind. Nähere Infos zu der API findet man unter alexa/smart-home auf der Amazon Developer Seite.
+```csharp
+			bool usePayload = false;
+            SmartHomeResponse changeReportResponse = SmartHomeResponse.CreateChangeReportEvent(usePayload);
+```
 
-UPDATE: 
-Unterstüzt nun Lock, GetTemperature, und Color requests. Diese sind aber nur in US verfügbar!
-In der Smart Home API von Amazon ist eine Unklarheit bei GetockStateResponses. Ich bin nicht sicher ob der AccessToken nun zwingend mitgesendet werden muss oder nicht. Da ich es nicht ausprobieren kann sollten diese Requests mit Vorsicht verwendet werden.
+To create error responses you, you can use SmartHomeResponse.CreateErrorResponse. It will throw an exception if you try to use it for a discovery request.
 
-Nutzung:
+```csharp
+            SmartHomeResponse bridgeUnreachableResponse = SmartHomeResponse.CreateErrorResponse(request.Directive.Header, ErrorTypes.BRIDGE_UNREACHABLE);
+```
+
+If you need to send a deffered response to alexa you can create one like this:
+
+```csharp
+            SmartHomeResponse defferedResponse = SmartHomeResponse.CreateDefferedResponse();
+```
+
+You can ask for the PayloadType of incoming requests by using request.GetPayloadType(). It will return the System.Type of the payload.
+
+Under Rkon.Alexa.Net.Types you find multiple enums for specific values like errortypes, display categories or device modes.
+
+
+Version 1.0 (Payloadversion 2):
+=============
+
+
+Every request and response of payloadversion 2 is supported. More informations can be found in the API reference on Amazon's developer page.
+
+Usage:
 -------
 
 Handler:
@@ -56,7 +86,7 @@ Handler:
         }
 ```
 
-Für jeden Fehler in der API, gib es eine passende Error Response. Zum Beispiel für Unexpeceted Information Received:
+Every error in the api has it's own error response. For examle the "unexpected information received" error response:
 ```csharp
         private ISmartHomeResponse handleUnknownNamespaceError(SmartHomeRequest input, ILambdaContext context)
         {
@@ -64,7 +94,7 @@ Für jeden Fehler in der API, gib es eine passende Error Response. Zum Beispiel 
         }
 ```
 
-Discovery Response mit Dummy Gerät:
+Discovery Response for a test device:
 ```csharp
         private ISmartHomeResponse handleDiscovery(SmartHomeRequest input, ILambdaContext context)
         {

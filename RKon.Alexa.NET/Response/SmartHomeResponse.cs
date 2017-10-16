@@ -58,10 +58,10 @@ namespace RKon.Alexa.NET.Response
         /// Creates a ChangeReportEvent.
         /// </summary>
         /// <returns></returns>
-        public static SmartHomeResponse CreateChangeReportEvent()
+        public static SmartHomeResponse CreateChangeReportEvent(bool usePayload)
         {
             SmartHomeResponse sResponse = new SmartHomeResponse();
-            sResponse.Event = new Event();
+            sResponse.Event = Response.Event.CreateChangeReportEvent(usePayload);
             return sResponse;
         }
 
@@ -82,5 +82,15 @@ namespace RKon.Alexa.NET.Response
             return sResponse;
         }
 
+        /// <summary>
+        /// Creates a Deffered SmarthomeResponse
+        /// </summary>
+        /// <returns></returns>
+        public static SmartHomeResponse CreateDefferedResponse()
+        {
+            SmartHomeResponse sResponse = new SmartHomeResponse();
+            sResponse.Event = Response.Event.CreateDefferedResponse();
+            return sResponse;
+        }
     }
 }
