@@ -78,9 +78,9 @@ namespace RKon.Alexa.NET46.Request
                 case HeaderNames.DISCOVERY_REQUEST:
                     return new RequestPayloadWithScope();
                 case HeaderNames.SET_POWER_LEVEL:
-                    return new PowerLeverRequestPayload();
+                    return new PowerLevelRequestPayload();
                 case HeaderNames.ADJUST_POWER_LEVEL:
-                    return new AdjustPowerLeverRequestPayload();
+                    return new AdjustPowerLevelRequestPayload();
                 case HeaderNames.SETTARGETTEMPERATURE:
                     return new SetTargetTemperatureRequestPayload();
                 case HeaderNames.ADJUSTTARGETTEMPERATURE:

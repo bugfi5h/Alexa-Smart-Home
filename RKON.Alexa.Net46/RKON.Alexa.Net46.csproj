@@ -77,11 +77,11 @@
     <Compile Include="Payloads\Payload.cs" />
     <Compile Include="Payloads\Request\AdjustBrightnessRequestPayload.cs" />
     <Compile Include="Payloads\Request\AdjustPercentageRequestPayload.cs" />
-    <Compile Include="Payloads\Request\AdjustPowerLeverRequestPayload.cs" />
+    <Compile Include="Payloads\Request\AdjustPowerLevelRequestPayload.cs" />
     <Compile Include="Payloads\Request\AdjustTargetTemperatureRequestPayload.cs" />
     <Compile Include="Payloads\Request\ChangeChannelRequestPayload.cs" />
     <Compile Include="Payloads\Request\InitializeCameraRequestPayload.cs" />
-    <Compile Include="Payloads\Request\PowerLeverRequestPayload.cs" />
+    <Compile Include="Payloads\Request\PowerLevelRequestPayload.cs" />
     <Compile Include="Payloads\Request\RequestPayloadWithScope.cs" />
     <Compile Include="Payloads\Request\SelectInputRequestPayload.cs" />
     <Compile Include="Payloads\Request\SetBrightnessRequestPayload.cs" />

@@ -78,9 +78,9 @@ namespace RKon.Alexa.NET.Request
                 case HeaderNames.DISCOVERY_REQUEST:
                     return new RequestPayloadWithScope();
                 case HeaderNames.SET_POWER_LEVEL:
-                    return new PowerLeverRequestPayload();
+                    return new PowerLevelRequestPayload();
                 case HeaderNames.ADJUST_POWER_LEVEL:
-                    return new AdjustPowerLeverRequestPayload();
+                    return new AdjustPowerLevelRequestPayload();
                 case HeaderNames.SETTARGETTEMPERATURE:
                     return new SetTargetTemperatureRequestPayload();
                 case HeaderNames.ADJUSTTARGETTEMPERATURE:
@@ -126,6 +126,8 @@ namespace RKon.Alexa.NET.Request
                 case HeaderNames.UNLOCK:
                 case HeaderNames.INCREASE_COLORTEMPERATURE:
                 case HeaderNames.DECREASE_COLORTEMPERATURE:
+                case HeaderNames.ACTIVATE:
+                case HeaderNames.DEACTIVATE:
                     return new Payload();
                 case HeaderNames.ADJUST_VOLUME:
                     if (namespaceType == Namespaces.ALEXA_STEPSPEAKER)

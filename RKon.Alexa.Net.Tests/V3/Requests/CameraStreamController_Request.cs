@@ -3,6 +3,7 @@ using RKon.Alexa.Net.Tests.V3.TestFunctions;
 using RKon.Alexa.NET.Payloads.Request;
 using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Types;
+using System.IO;
 using Xunit;
 
 namespace RKon.Alexa.Net.Tests.V3.Requests

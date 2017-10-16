@@ -78,5 +78,9 @@ namespace RKon.Alexa.NET.Types
         /// Header Namespace for EndpointHealth
         /// </summary>
         public const string ALEXA_ENDPOINTHEALTH = "Alexa.EndpointHealth";
+        /// <summary>
+        /// Header Namespace for SceneController
+        /// </summary>
+        public const string ALEXA_SCENECONTROLLER = "Alexa.SceneController";
     }
 }

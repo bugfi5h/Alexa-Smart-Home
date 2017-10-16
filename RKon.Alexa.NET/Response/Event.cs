@@ -105,6 +105,8 @@ namespace RKon.Alexa.NET.Response
                     return new DisoveryPayload();
                 case Namespaces.ALEXA_CAMERASTREAMCONTROLLER:
                     return new ResponseCameraStreamsPayload();
+                case Namespaces.ALEXA_SCENECONTROLLER:
+                    return new SceneStartedResponsePayload();
                 case Namespaces.ALEXA_BRIGHTNESSCONTROLLER:
                 case Namespaces.ALEXA_CHANNELCONTROLLER:
                 case Namespaces.ALEXA_COLORCONTROLLER:
