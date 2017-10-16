@@ -32,7 +32,7 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// Indicates the uncertainty of the reported property in milliseconds of elapsed time since the property value was retrieved. For example, if you obtain this value by polling a hardware device every 60 seconds, then the uncertainty in the time of the sampled value would be 60000 in milliseconds.
         /// </summary>
         [JsonProperty("uncertaintyInMilliseconds")]
-        public string UncertaintyInMilliseconds { get; set; }
+        public int UncertaintyInMilliseconds { get; set; }
         /// <summary>
         /// String indicating a custom mode or friendly name specific to the endpoint or manufacturer. Is required when value is set to CUSTOM, optional otherwise.
         /// </summary>

@@ -28,11 +28,6 @@ namespace RKon.Alexa.NET.Response
     public class Event : IEvent
     {
         /// <summary>
-        /// Context of the event. Can be null
-        /// </summary>
-        [JsonProperty("context",NullValueHandling =NullValueHandling.Ignore)]
-        public Context Context { get; set; }
-        /// <summary>
         /// Eventheader
         /// </summary>
         [JsonProperty("header")]

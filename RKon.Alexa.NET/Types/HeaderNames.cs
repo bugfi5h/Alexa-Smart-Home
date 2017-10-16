@@ -169,6 +169,7 @@
             /// </summary>
             public const string SET_THERMOSTATMODE = "SetThermostatMode";
 
+        
             #endregion
     }
 }

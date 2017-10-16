@@ -24,6 +24,11 @@ namespace RKon.Alexa.NET46.Response
     public class SmartHomeResponse
     {
         /// <summary>
+        /// Context of the event. Can be null
+        /// </summary>
+        [JsonProperty("context", NullValueHandling = NullValueHandling.Ignore)]
+        public Context Context { get; set; }
+        /// <summary>
         /// The Event that get send to Alexa
         /// </summary>
         [JsonProperty("event")]

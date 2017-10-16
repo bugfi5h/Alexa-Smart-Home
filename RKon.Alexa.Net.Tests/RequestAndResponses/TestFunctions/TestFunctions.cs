@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿/*using Newtonsoft.Json;
 using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Request.RequestPayloads;
 using RKon.Alexa.NET.Response;
@@ -118,3 +118,4 @@ namespace RKon.Alexa.Net.Tests
         }
     }
 }
+*/

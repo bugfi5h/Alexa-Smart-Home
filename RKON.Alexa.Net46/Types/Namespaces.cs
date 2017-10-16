@@ -74,5 +74,10 @@ namespace RKon.Alexa.NET46.Types
         /// Header Namespace for PlaybackController
         /// </summary>
         public const string ALEXA_PLAYBACKCONTROLLER = "Alexa.PlaybackController";
+        /// <summary>
+        /// Header Namespace for EndpointHealth
+        /// </summary>
+        public const string ALEXA_ENDPOINTHEALTH = "Alexa.EndpointHealth";
+
     }
 }

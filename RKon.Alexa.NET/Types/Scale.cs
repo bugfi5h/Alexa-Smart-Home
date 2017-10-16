@@ -5,6 +5,17 @@
     /// </summary>
     public enum Scale
     {
-        CELSIUS, FAHRENHEIT, KELVIN
+        /// <summary>
+        /// °C
+        /// </summary>
+        CELSIUS,
+        /// <summary>
+        /// °F
+        /// </summary>
+        FAHRENHEIT,
+        /// <summary>
+        /// °K
+        /// </summary>
+        KELVIN
     }
 }
