@@ -1,5 +1,4 @@
 # Alexa-Smart-Home
-=============
 
 RKon is a dotNet Core Framework for Alexa's Smart Home API. With Version 1.1 it will only support Payloadversion 3.
 If you want to use it for the deprecated Payloadversion 2 you need to get Version 1.0.20
