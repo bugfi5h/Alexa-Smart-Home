@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Requestpayload for an incremental channel adjustment in discrete steps using a positive number for a step up, or negative number for a step down.

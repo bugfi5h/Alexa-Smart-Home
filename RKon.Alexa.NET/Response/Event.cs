@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using RKon.Alexa.NET.Types;
 using RKon.Alexa.NET.JsonObjects;
 using RKon.Alexa.NET.Payloads;
-using RKon.Alexa.NET.Payloads.Response;
 using RKon.Alexa.NET.Request;
 
 namespace RKon.Alexa.NET.Response

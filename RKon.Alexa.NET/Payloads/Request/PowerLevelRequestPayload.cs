@@ -1,7 +1,7 @@
 ﻿
 using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload class for power level requests

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// A request to mute or unmute an endpoint.

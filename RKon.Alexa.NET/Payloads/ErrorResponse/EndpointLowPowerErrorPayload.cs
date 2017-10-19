@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Payloads.ErrorResponse
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload for EnpointLowPower Errors

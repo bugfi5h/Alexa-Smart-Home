@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RKon.Alexa.NET.Types;
 using RKon.Alexa.NET.Payloads;
-using RKon.Alexa.NET.Payloads.Response;
 
 namespace RKon.Alexa.NET.Response
 {
@@ -64,7 +63,7 @@ namespace RKon.Alexa.NET.Response
             }
             else
             {
-                throw new InvalidOperationException("Empty request type.");
+                throw new InvalidOperationException("(EventResponeConverter)Empty Headername. Object: " + jObject.ToString());
             }
             serializer.Populate(jObject.CreateReader(), e);
 

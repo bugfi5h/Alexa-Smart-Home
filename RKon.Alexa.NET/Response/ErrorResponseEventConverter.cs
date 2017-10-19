@@ -50,7 +50,7 @@ namespace RKon.Alexa.NET.Response
             }
             else
             {
-                throw new InvalidOperationException("Empty request type.");
+                throw new InvalidOperationException("(ErrorResponeConverter)Empty Headername. Object: " + jObject.ToString());
             }
             serializer.Populate(jObject.CreateReader(), e);
 

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// A request to perform a relative volume adjustment. A positive value increases the value, a negative value reduces the volume.

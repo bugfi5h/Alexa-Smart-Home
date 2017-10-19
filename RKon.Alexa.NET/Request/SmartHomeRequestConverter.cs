@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using RKon.Alexa.NET.Payloads;
-using RKon.Alexa.NET.Payloads.Request;
 
 namespace RKon.Alexa.NET.Request
 {
@@ -64,7 +63,7 @@ namespace RKon.Alexa.NET.Request
             }
             else
             {
-                throw new InvalidOperationException("Empty request type.");
+                throw new InvalidOperationException("(SmartHomeRequestConverter)Empty Headername. Object: " + jObject.ToString());
             }
             serializer.Populate(jObject.CreateReader(), req);
 
@@ -137,7 +136,7 @@ namespace RKon.Alexa.NET.Request
                     else
                         throw new JsonSerializationException("Namespace not valid for AdjustVolume Requestname.");
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
+                    throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown Header name: {requestType}.");
             }
         }
     }

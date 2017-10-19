@@ -49,7 +49,7 @@ namespace RKon.Alexa.NET.Response
             }
             else
             {
-                throw new InvalidOperationException("Empty request type.");
+                throw new InvalidOperationException("(SmartHomeResponseConverter)Empty Headername. Object: " + jObject.ToString());
             }
             serializer.Populate(jObject.CreateReader(), e);
 

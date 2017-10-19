@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
-namespace RKon.Alexa.NET.Payloads.ErrorResponse
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload for a NOT_SUPPORTED_IN_CURRENT_MODE error

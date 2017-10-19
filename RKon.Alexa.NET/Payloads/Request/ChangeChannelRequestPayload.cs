@@ -2,7 +2,7 @@
 using RKon.Alexa.NET.JsonObjects;
 using RKon.Alexa.NET.Types;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Requestpayload for a channel change by specifying a channel number or call sign.

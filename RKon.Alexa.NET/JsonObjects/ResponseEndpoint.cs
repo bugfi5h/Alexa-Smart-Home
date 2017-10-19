@@ -59,6 +59,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// </summary>
         public ResponseEndpoint()
         {
+            Cookies = new Dictionary<string, string>();
             DisplayCategories = new List<DisplayCategory>();
             Capability = new List<Capability>();
         }

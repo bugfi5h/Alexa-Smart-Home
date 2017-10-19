@@ -2,7 +2,7 @@
 using RKon.Alexa.NET.JsonObjects;
 using System.Collections.Generic;
 
-namespace RKon.Alexa.NET.Payloads.Response
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Responsepayload for Camerastream events

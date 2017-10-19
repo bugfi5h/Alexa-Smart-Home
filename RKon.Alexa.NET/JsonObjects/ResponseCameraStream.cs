@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace RKon.Alexa.NET.JsonObjects
 {
@@ -17,7 +18,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// A date in ISO 8601 format indicating the expiration time of the stream. Should be specified in UTC. Can be null
         /// </summary>
         [JsonProperty("expirationTime",NullValueHandling =NullValueHandling.Ignore)]
-        public string ExpirationTime { get; set; }
+        public DateTime ExpirationTime { get; set; }
         /// <summary>
         /// Indicates the timeout value for the stream.. Can be null
         /// </summary>

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace RKon.Alexa.NET.JsonObjects
 {
@@ -27,7 +28,7 @@ namespace RKon.Alexa.NET.JsonObjects
         /// The time at which the property value was provided in ISO 8601 format, and specified in UTC
         /// </summary>
         [JsonProperty("timeOfSample")]
-        public string TimeOfSample { get; set; }
+        public DateTime TimeOfSample { get; set; }
         /// <summary>
         /// Indicates the uncertainty of the reported property in milliseconds of elapsed time since the property value was retrieved. For example, if you obtain this value by polling a hardware device every 60 seconds, then the uncertainty in the time of the sampled value would be 60000 in milliseconds.
         /// </summary>

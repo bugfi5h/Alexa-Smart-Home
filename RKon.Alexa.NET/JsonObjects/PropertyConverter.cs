@@ -46,6 +46,16 @@ namespace RKon.Alexa.NET.JsonObjects
             }
             serializer.Populate(jObject.CreateReader(), prop);
 
+            if(prop.Value is long)
+            {
+                if((long)prop.Value  >= Int32.MinValue && (long)prop.Value <= Int32.MaxValue)
+                {
+                    int value = (int)(long)prop.Value;
+                    prop.Value = new Int32();
+                    prop.Value = value;
+                }
+            }
+
             return prop;
         }
         /// <summary>
@@ -62,27 +72,14 @@ namespace RKon.Alexa.NET.JsonObjects
                 case PropertyNames.UPPER_SETPOINT:
                 case PropertyNames.TEMPERATURE:
                     return new Setpoint();
-                case PropertyNames.MUTED:
-                    return new Boolean();
                 case PropertyNames.CHANNEL:
                     return new Channel();
                 case PropertyNames.COLOR:
                     return new Color();
-                case PropertyNames.LOCK_STATE:
-                case PropertyNames.INPUT:
-                case PropertyNames.POWER_STATE:
-                case PropertyNames.THERMOSTATMODE:
-                    return String.Empty;
                 case PropertyNames.CONNECTIVITY:
                     return new ConnectivityProperty();
-                case PropertyNames.VOLUME:
-                case PropertyNames.BRIGHTNESS:
-                case PropertyNames.POWER_LEVEL:
-                case PropertyNames.COLOR_TEMPERATURE_IN_KELVIN:
-                case PropertyNames.PERCENTAGE:
-                     return new Int32();
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown property name: {name}.");
+                    return new object();
             }
            
         }

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.Types;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload for SetPercentage Requests

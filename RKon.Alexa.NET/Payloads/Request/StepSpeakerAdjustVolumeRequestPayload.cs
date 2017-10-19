@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// A Requestpayload for a relative volume adjustment. The AdjustVolume directive is always relative to the current volume setting and can be positive to increase volume, or negative to reduce volume.

@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.JsonObjects;
 
-namespace RKon.Alexa.NET.Payloads.Response
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload fo Deactivation and activation started Responses

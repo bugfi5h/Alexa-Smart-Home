@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.Payloads.Response
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload of a DefferedResponse

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
-namespace RKon.Alexa.NET.Payloads.ErrorResponse
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Basispayload for Errorresponses

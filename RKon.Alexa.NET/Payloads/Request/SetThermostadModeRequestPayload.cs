@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.JsonObjects;
-using RKon.Alexa.NET.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace RKon.Alexa.NET.Payloads.Request
+namespace RKon.Alexa.NET.Payloads
 {
     /// <summary>
     /// Payload for ThemostadModeRequests
