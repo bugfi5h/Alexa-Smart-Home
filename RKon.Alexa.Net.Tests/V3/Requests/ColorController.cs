@@ -125,21 +125,11 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal(350.5, color.Hue);
             Assert.Equal(0.7138, color.Saturation);
             // Property 2
-            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[1], PropertyNames.CONNECTIVITY, Namespaces.ALEXA_ENDPOINTHEALTH, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(typeof(ConnectivityProperty), responseFromString.Context.Properties[1].Value.GetType());
-            ConnectivityProperty conn = responseFromString.Context.Properties[1].Value as ConnectivityProperty;
-            Assert.Equal(ConnectivityModes.OK, conn.Value);
+            TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check
-            Assert.NotNull(responseFromString.Event);
-            Assert.Equal(typeof(Event), responseFromString.Event.GetType());
-            //Header Check
-            TestFunctionsV3.TestHeaderV3(responseFromString.Event.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.RESPONSE);
-            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", responseFromString.Event.Header.CorrelationToken);
-            //Endpoint Check
-            Event e = responseFromString.Event as Event;
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
-            //Payload Check
-            Assert.Equal(typeof(Payload), responseFromString.GetPayloadType());
+            TestFunctionsV3.TestBasicEventWithEmptyPayload(responseFromString, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4",
+                "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", "BearerToken",
+                 "access-token-from-Amazon", "endpoint-001");
         }
         #endregion
     }

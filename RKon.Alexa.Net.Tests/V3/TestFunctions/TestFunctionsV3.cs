@@ -1,5 +1,7 @@
 ﻿using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.Payloads;
 using RKon.Alexa.NET.Request;
+using RKon.Alexa.NET.Response;
 using RKon.Alexa.NET.Types;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,28 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
 {
     public class TestFunctionsV3
     {
+        public static void TestBasicHealthCheckProperty(Property p, ConnectivityModes expectedMode, DateTime dateTime)
+        {
+            TestFunctionsV3.TestContextProperty(p, PropertyNames.CONNECTIVITY, Namespaces.ALEXA_ENDPOINTHEALTH, dateTime, 200, null);
+            Assert.Equal(typeof(ConnectivityProperty), p.Value.GetType());
+            ConnectivityProperty conn = p.Value as ConnectivityProperty;
+            Assert.Equal(expectedMode, conn.Value);
+        }
+
+        public static void TestBasicEventWithEmptyPayload(SmartHomeResponse repo, string accessToken, string correlationToken, string endpointType, string endpointToken, string endpointID)
+        {
+            Assert.NotNull(repo.Event);
+            Assert.Equal(typeof(Event), repo.Event.GetType());
+            //Header Check
+            TestFunctionsV3.TestHeaderV3(repo.Event.Header, accessToken, Namespaces.ALEXA, HeaderNames.RESPONSE);
+            Assert.Equal(correlationToken, repo.Event.Header.CorrelationToken);
+            //Endpoint Check
+            Event e = repo.Event as Event;
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, endpointType, endpointToken, endpointID);
+            //Payload Check
+            Assert.Equal(typeof(Payload), repo.GetPayloadType());
+        }
+
         public static void TestHeaderV3(DirectiveHeader header, string guid, string strNamespace, string strRequestName)
         {
             Assert.True(header != null);
