@@ -105,8 +105,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal(2, responseFromString.Context.Properties.Count);
             // Property 1
             TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.POWER_STATE, Namespaces.ALEXA_POWERCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(typeof(string), responseFromString.Context.Properties[0].Value.GetType());
-            Assert.Equal(PowerStates.OFF.ToString(), responseFromString.Context.Properties[0].Value);
+            Assert.Equal(typeof(PowerStates), responseFromString.Context.Properties[0].Value.GetType());
+            Assert.Equal(PowerStates.OFF, responseFromString.Context.Properties[0].Value);
             // Property 2
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check
@@ -209,8 +209,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal(2, responseFromString.Context.Properties.Count);
             // Property 1
             TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.POWER_STATE, Namespaces.ALEXA_POWERCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(typeof(string), responseFromString.Context.Properties[0].Value.GetType());
-            Assert.Equal(PowerStates.ON.ToString(), responseFromString.Context.Properties[0].Value);
+            Assert.Equal(typeof(PowerStates), responseFromString.Context.Properties[0].Value.GetType());
+            Assert.Equal(PowerStates.ON, responseFromString.Context.Properties[0].Value);
             // Property 2
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check

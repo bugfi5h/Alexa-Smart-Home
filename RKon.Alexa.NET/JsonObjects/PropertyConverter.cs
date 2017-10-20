@@ -46,6 +46,26 @@ namespace RKon.Alexa.NET.JsonObjects
             }
             serializer.Populate(jObject.CreateReader(), prop);
 
+            System.Type type = null;
+            if (prop.Name == PropertyNames.THERMOSTATMODE)
+            {
+                type = typeof(ThermostatModes);
+            } else if (prop.Name == PropertyNames.POWER_STATE)
+            {
+                type = typeof(PowerStates);
+            } else if (prop.Name == PropertyNames.LOCK_STATE)
+            {
+                type = typeof(LockModes);
+            }
+
+            if (type != null)
+            {
+                if (prop.Value is string)
+                {
+                    prop.Value = Enum.Parse(type, (string)prop.Value);
+                }
+            }
+
             if(prop.Value is long)
             {
                 if((long)prop.Value  >= Int32.MinValue && (long)prop.Value <= Int32.MaxValue)

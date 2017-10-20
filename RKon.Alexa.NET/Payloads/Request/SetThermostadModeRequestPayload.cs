@@ -13,11 +13,5 @@ namespace RKon.Alexa.NET.Payloads
         /// </summary>
         [JsonProperty("thermostatMode")]
         public ThermoMode ThermostatMode { get; set; }
-
-        /// <summary>
-        /// String indicating a custom mode or friendly name specific to the endpoint or manufacturer. Is required when value is set to CUSTOM, optional otherwise.
-        /// </summary>
-        [JsonProperty("customName", NullValueHandling = NullValueHandling.Ignore)]
-        public string CustomName { get; set; }
     }
 }
