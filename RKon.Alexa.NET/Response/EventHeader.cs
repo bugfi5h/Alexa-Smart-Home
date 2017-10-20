@@ -25,13 +25,20 @@ namespace RKon.Alexa.NET.Response
         /// Creates a header for a ErrorResponse
         /// </summary>
         /// <param name="correlationToken"></param>
+        /// <param name="specialNameSpace"></param>
         /// <returns></returns>
-        public static EventHeader CreateErrorHeader(string correlationToken)
+        public static EventHeader CreateErrorHeader(string correlationToken, string specialNameSpace)
         {
             EventHeader e = new EventHeader();
             e.MessageId = System.Guid.NewGuid().ToString();
             e.PayloadVersion = "3";
-            e.Namespace = Namespaces.ALEXA;
+            if(specialNameSpace == null)
+            {
+                e.Namespace = Namespaces.ALEXA;
+            }else
+            {
+                e.Namespace = specialNameSpace;
+            }
             e.Name = HeaderNames.ERROR_RESPONSE;
             e.CorrelationToken = correlationToken;
             return e;

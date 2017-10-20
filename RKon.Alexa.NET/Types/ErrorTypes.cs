@@ -81,6 +81,30 @@ namespace RKon.Alexa.NET.Types
         /// Indicates a directive contains a value that is outside the numerical range accepted for the target endpoint.
         /// For example, use to respond to a request to set a percentage value over 100 percent. For temperature values, use TEMPERATURE_VALUE_OUT_OF_RANGE
         /// </summary>
-        VALUE_OUT_OF_RANGE
+        VALUE_OUT_OF_RANGE,
+        /// <summary>
+        ///  	Thermostat is off and cannot be turned on.
+        /// </summary>
+        THERMOSTAT_IS_OFF,
+        /// <summary>
+        /// Setpoints are too close together.
+        /// </summary>
+        REQUESTED_SETPOINTS_TOO_CLOSE,
+        /// <summary>
+        /// The thermostat doesn’t support the specified mode.
+        /// </summary>
+        UNSUPPORTED_THERMOSTAT_MODE,
+        /// <summary>
+        /// The thermostat doesn’t support dual setpoints in the current mode.
+        /// </summary>
+        DUAL_SETPOINTS_UNSUPPORTED,
+        /// <summary>
+        /// The thermostat doesn’t support triple setpoints in the current mode.
+        /// </summary>
+        TRIPLE_SETPOINTS_UNSUPPORTED,
+        /// <summary>
+        /// You cannot set the value because it may cause damage to the device or appliance.
+        /// </summary>
+        UNWILLING_TO_SET_VALUE
     }
 }

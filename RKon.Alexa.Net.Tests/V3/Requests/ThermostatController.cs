@@ -539,6 +539,57 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Null(payload.ThermostatMode.CustomName);
         }
         #endregion
+        #region ErrorResponses
+        private const string GENERAL_ERROR = @"
+        {
+            'event': {
+                'header': {
+                    'namespace': 'Alexa.ThermostatController',
+                    'name': 'ErrorResponse',
+                    'payloadVersion': '3',
+                    'messageId': '5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4',
+                    'correlationToken': 'dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg=='
+                },
+                'endpoint': {
+                    'scope': {
+                        'type': 'BearerToken',
+                        'token': 'access-token-from-Amazon'
+                    },
+                    'endpointId': 'endpoint-001'
+                },
+                'payload': {
+                    'type': 'THERMOSTAT_IS_OFF',
+                    'message': 'The thermostat is off, cannot turn on due to safety reasons'
+                }
+            }
+        }
+        ";
+
+        [Fact]
+        public void TestGeneralErrorResponse()
+        {
+            {
+                SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(GENERAL_ERROR);
+                //Context check
+                Assert.Null(responseFromString.Context);
+                //Event Check
+                Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
+                ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+                TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_THERMOSTATCONTROLLER, HeaderNames.ERROR_RESPONSE);
+                Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
+                //Endpoint
+                TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+                //Payload
+                Assert.Equal(typeof(ErrorPayload), responseFromString.GetPayloadType());
+                ErrorPayload p = e.Payload as ErrorPayload;
+                Assert.Equal(ErrorTypes.THERMOSTAT_IS_OFF, p.Type);
+                Assert.Equal("The thermostat is off, cannot turn on due to safety reasons", p.Message);
+            }
+        }
+        #endregion
+
+
+
         private void TestSetpoint(Setpoint s, double value, Scale scale)
         {
             Assert.Null(s);
