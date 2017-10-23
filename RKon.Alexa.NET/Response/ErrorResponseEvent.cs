@@ -55,6 +55,8 @@ namespace RKon.Alexa.NET.Response
                     return new NotSupportedInCurrentModeErrorPayload();
                 case ErrorTypes.ENDPOINT_LOW_POWER:
                     return new EndpointLowPowerErrorPayload();
+                case ErrorTypes.REQUESTED_SETPOINTS_TOO_CLOSE:
+                    return new RequestedSetpointsTooCloseErrorPayload();
                 default:
                     return new ErrorPayload();
             }

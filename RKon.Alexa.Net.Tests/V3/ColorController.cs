@@ -10,14 +10,15 @@ using Xunit;
 
 namespace RKon.Alexa.Net.Tests.V3.Requests
 {
-    public class InputController
+    public class ColorController
     {
-        private const string SELECT_INPUT_REQUEST = @"
+        #region SetColor
+        private const string SET_COLOR_REQUEST = @"
         {
             'directive': {
                 'header': {
-                    'namespace': 'Alexa.InputController',
-                    'name': 'SelectInput',
+                    'namespace': 'Alexa.ColorController',
+                    'name': 'SetColor',
                     'payloadVersion': '3',
                     'messageId': '1bd5d003-31b9-476f-ad03-71d471922820',
                     'correlationToken': 'dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg=='
@@ -31,20 +32,28 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                     'cookie': {}
                 },
                 'payload': {
-                    'input': 'HDMI1'
+                    'color': {
+                        'hue': 350.5,
+                        'saturation': 0.7138,
+                        'brightness': 0.6524
+                    }
                 }
             }
         }
         ";
 
-        private const string SELECT_INPUT_RESPONSE = @"
+        private const string SET_COLOR_RESPONSE = @"
         {
             'context': {
                 'properties': [
                     {
-                        'namespace': 'Alexa.InputController',
-                        'name': 'input',
-                        'value': 'HDMI1',
+                        'namespace': 'Alexa.ColorController',
+                        'name': 'color',
+                        'value': {
+                            'hue': 350.5,
+                            'saturation': 0.7138,
+                            'brightness': 0.6524
+                        },
                         'timeOfSample': '2017-09-27T18:30:30.45Z',
                         'uncertaintyInMilliseconds': 200
                     },
@@ -79,37 +88,42 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         }
         ";
 
+
         [Fact]
-        public void RequestCreation_SelectInput_Request_Test()
+        public void RequestCreation_SetColor_Test()
         {
-            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(SELECT_INPUT_REQUEST);
+            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(SET_COLOR_REQUEST);
             //Directive Check
             Assert.NotNull(requestFromString.Directive);
             //Header Check
-            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_INPUTCONTROLLER, HeaderNames.SELECT_INPUT);
-            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
+            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_COLORCONTROLLER, HeaderNames.SET_COLOR);
+            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==",requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
             TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
             //Payload Check
-            Assert.Equal(typeof(SelectInputRequestPayload), requestFromString.GetPayloadType());
-            SelectInputRequestPayload payload = (requestFromString.Directive.Payload as SelectInputRequestPayload);
-            //Channel
-            Assert.NotNull(payload);
-            Assert.Equal("HDMI1", payload.Input);
+            Assert.Equal(typeof(SetColorRequestPayload),requestFromString.GetPayloadType());
+            SetColorRequestPayload payload = (requestFromString.Directive.Payload as SetColorRequestPayload);
+            Assert.NotNull(payload.Color);
+            Assert.Equal(350.5,payload.Color.Hue);
+            Assert.Equal(0.7138,payload.Color.Saturation);
+            Assert.Equal(0.6524,payload.Color.Brightness);
         }
 
         [Fact]
-        public void ResponseCreation_SelectInput_Test()
+        public void ResponseParse_SetColor_Test()
         {
-            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(SELECT_INPUT_RESPONSE);
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(SET_COLOR_RESPONSE);
             //Context check
             Assert.NotNull(responseFromString.Context);
             Assert.NotNull(responseFromString.Context.Properties);
             Assert.Equal(2, responseFromString.Context.Properties.Count);
             // Property 1
-            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.INPUT, Namespaces.ALEXA_INPUTCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(typeof(System.Int32), responseFromString.Context.Properties[0].Value.GetType());
-            Assert.Equal(75, responseFromString.Context.Properties[0].Value);
+            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.COLOR, Namespaces.ALEXA_COLORCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
+            Assert.Equal(typeof(Color), responseFromString.Context.Properties[0].Value.GetType());
+            Color color = responseFromString.Context.Properties[0].Value as Color;
+            Assert.Equal(0.6524, color.Brightness);
+            Assert.Equal(350.5, color.Hue);
+            Assert.Equal(0.7138, color.Saturation);
             // Property 2
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check
@@ -117,6 +131,6 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                 "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", "BearerToken",
                  "access-token-from-Amazon", "endpoint-001");
         }
-
+        #endregion
     }
 }

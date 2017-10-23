@@ -114,7 +114,8 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
             Assert.NotNull(endpointCookies);
             if (Cookie == null)
             {
-                Assert.Equal(0, endpointCookies.Count);
+                if(endpointCookies != null)
+                    Assert.Equal(0, endpointCookies.Count);
             }
             else
             {

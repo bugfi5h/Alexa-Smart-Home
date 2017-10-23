@@ -181,7 +181,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void ResponseCreation_SetTemperatureDualMode_Test()
+        public void ResponseParse_SetTemperatureDualMode_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(SET_T_TEMPERATURE_DUALMODE_RESPONSE);
             //Context check
@@ -309,7 +309,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void ResponseCreation_SetTemperatureSingleMode_Test()
+        public void ResponseParse_SetTemperatureSingleMode_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(SET_T_TEMPERATURE_SINGLEMODE_RESPONSE);
             //Context check
@@ -462,7 +462,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void ResponseCreation_SetTemperatureTripleMode_Test()
+        public void ResponseParse_SetTemperatureTripleMode_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(SET_T_TEMPERATURE_TRIPLEMODE_RESPONSE);
             //Context check
@@ -568,27 +568,137 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         [Fact]
         public void TestGeneralErrorResponse()
         {
-            {
-                SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(GENERAL_ERROR);
-                //Context check
-                Assert.Null(responseFromString.Context);
-                //Event Check
-                Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
-                ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
-                TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_THERMOSTATCONTROLLER, HeaderNames.ERROR_RESPONSE);
-                Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-                //Endpoint
-                TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
-                //Payload
-                Assert.Equal(typeof(ErrorPayload), responseFromString.GetPayloadType());
-                ErrorPayload p = e.Payload as ErrorPayload;
-                Assert.Equal(ErrorTypes.THERMOSTAT_IS_OFF, p.Type);
-                Assert.Equal("The thermostat is off, cannot turn on due to safety reasons", p.Message);
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(GENERAL_ERROR);
+            //Context check
+            Assert.Null(responseFromString.Context);
+            //Event Check
+            Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
+            ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+            TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_THERMOSTATCONTROLLER, HeaderNames.ERROR_RESPONSE);
+            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
+            //Endpoint
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            //Payload
+            Assert.Equal(typeof(ErrorPayload), responseFromString.GetPayloadType());
+            ErrorPayload p = e.Payload as ErrorPayload;
+            Assert.Equal(ErrorTypes.THERMOSTAT_IS_OFF, p.Type);
+            Assert.Equal("The thermostat is off, cannot turn on due to safety reasons", p.Message);
+        }
+
+
+        private const string ERROR_RESPONSE_SETPOINTS_TOO_CLOSE = @"
+        {
+            'event': {
+                'header': {
+                    'namespace': 'Alexa.ThermostatController',
+                    'name': 'ErrorResponse',
+                    'payloadVersion': '3',
+                    'messageId': '5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4',
+                    'correlationToken': 'dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg=='
+                },
+                'endpoint': {
+                    'scope': {
+                        'type': 'BearerToken',
+                        'token': 'access-token-from-Amazon'
+                    },
+                    'endpointId': 'endpoint-001'
+                },
+                'payload': {
+                    'type': 'REQUESTED_SETPOINTS_TOO_CLOSE',
+                    'message': 'The requested temperature results in setpoints too close',
+                    'minimumTemperatureDelta': {
+                        'value': 2.0,
+                        'scale': 'CELSIUS'
+                    }
+                }
             }
         }
+        ";
+
+        [Fact]
+        public void TestRequestetSetpointErrorResponse()
+        {
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(ERROR_RESPONSE_SETPOINTS_TOO_CLOSE);
+            //Context check
+            Assert.Null(responseFromString.Context);
+            //Event Check
+            Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
+            ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+            TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_THERMOSTATCONTROLLER, HeaderNames.ERROR_RESPONSE);
+            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
+            //Endpoint
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            //Payload
+            Assert.Equal(typeof(RequestedSetpointsTooCloseErrorPayload), responseFromString.GetPayloadType());
+            RequestedSetpointsTooCloseErrorPayload p = e.Payload as RequestedSetpointsTooCloseErrorPayload;
+            Assert.Equal(ErrorTypes.REQUESTED_SETPOINTS_TOO_CLOSE, p.Type);
+            Assert.Equal("The requested temperature results in setpoints too close", p.Message);
+            Assert.NotNull(p.MinimumTemperatureDelta);
+            Assert.Equal(2.0, p.MinimumTemperatureDelta.Value);
+            Assert.Equal(Scale.CELSIUS, p.MinimumTemperatureDelta.Scale);
+        }
+
+        private const string ERROR_RESPONSE_TEMPERATURE_VALUE_OOR = @"
+        {
+            'event': {
+                'header': {
+                    'namespace': 'Alexa.ThermostatController',
+                    'name': 'ErrorResponse',
+                    'payloadVersion': '3',
+                    'messageId': '5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4',
+                    'correlationToken': 'dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg=='
+                },
+                'endpoint': {
+                    'scope': {
+                        'type': 'BearerToken',
+                        'token': 'access-token-from-Amazon'
+                    },
+                    'endpointId': 'endpoint-001'
+                },
+                'payload': {
+                    'type': 'TEMPERATURE_VALUE_OUT_OF_RANGE',
+                    'message': 'The requested temperature of -15 is out of range',
+                    'validRange': {
+                        'minimumValue': {
+                            'value': 15.0,
+                            'scale': 'CELSIUS'
+                        },
+                        'maximumValue': {
+                            'value': 30.0,
+                            'scale': 'CELSIUS'
+                        }
+                    }
+                }
+            }
+        }
+        ";
+        [Fact]
+        public void TestTemperatureOORErrorResponse()
+        {
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(ERROR_RESPONSE_TEMPERATURE_VALUE_OOR);
+            //Context check
+            Assert.Null(responseFromString.Context);
+            //Event Check
+            Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
+            ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+            TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_THERMOSTATCONTROLLER, HeaderNames.ERROR_RESPONSE);
+            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
+            //Endpoint
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            //Payload
+            Assert.Equal(typeof(TemperatureOutOfRangeErrorPayload), responseFromString.GetPayloadType());
+            TemperatureOutOfRangeErrorPayload p = e.Payload as TemperatureOutOfRangeErrorPayload;
+            Assert.Equal(ErrorTypes.TEMPERATURE_VALUE_OUT_OF_RANGE, p.Type);
+            Assert.Equal("The requested temperature of -15 is out of range", p.Message);
+            Assert.NotNull(p.ValidRange);
+            Assert.NotNull(p.ValidRange.MinimumValue);
+            Assert.NotNull(p.ValidRange.MaximumValue);
+            Assert.Equal(15.0, p.ValidRange.MinimumValue.Value);
+            Assert.Equal(Scale.CELSIUS, p.ValidRange.MinimumValue.Scale);
+            Assert.Equal(30.0, p.ValidRange.MinimumValue.Value);
+            Assert.Equal(Scale.CELSIUS, p.ValidRange.MinimumValue.Scale);
+        }
         #endregion
-
-
 
         private void TestSetpoint(Setpoint s, double value, Scale scale)
         {

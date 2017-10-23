@@ -379,7 +379,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void ResponseCreation_PlaybackResponse_Test()
+        public void ResponseParse_PlaybackResponse_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(PLAYBACK_RESPONSE);
             //Context check

@@ -6,7 +6,6 @@ using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Response;
 using RKon.Alexa.NET.Types;
 using System;
-using System.IO;
 using Xunit;
 
 namespace RKon.Alexa.Net.Tests.V3.Requests
@@ -158,7 +157,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         }
 
         [Fact]
-        public void ResponseCreation_CameraStream_Test()
+        public void ResponseParse_CameraStream_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(CAMERA_STREAM_RESPONSE);
             //Context check

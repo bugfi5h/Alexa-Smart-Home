@@ -649,7 +649,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                                 {
                                     'type': 'AlexaInterface',
                                     'interface': 'Alexa.ChannelController',
-                                    'version': '1.0',
+                                    'version': '3',
                                     'properties': {
                                         'supported': [
                                             {
@@ -663,7 +663,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                                 {
                                     'type': 'AlexaInterface',
                                     'interface': 'Alexa.InputController',
-                                    'version': '1.0',
+                                    'version': '3',
                                     'properties': {
                                         'supported': [
                                             {
@@ -677,7 +677,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                                 {
                                     'type': 'AlexaInterface',
                                     'interface': 'Alexa.Speaker',
-                                    'version': '1.0',
+                                    'version': '3',
                                     'properties': {
                                         'supported': [
                                             {
@@ -714,7 +714,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void ResponseCreation_Discovery_Test()
+        public void ResponseParse_Discovery_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(DISCOVERY_RESPONSE);
             //Context check
@@ -872,9 +872,9 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             capabilities = new List<Capability>()
             {
                 new AlexaInterface("Alexa","3",null,null,null),
-                new AlexaInterface("Alexa.ChannelController", "1.0", new List<string>() {"channel"},true,true),
-                new AlexaInterface("Alexa.InputController", "1.0", new List<string>() {"input"},true,true),
-                new AlexaInterface("Alexa.Speaker", "1.0", new List<string>() {"volume","muted"},true,true),
+                new AlexaInterface("Alexa.ChannelController", "3", new List<string>() {"channel"},true,true),
+                new AlexaInterface("Alexa.InputController", "3", new List<string>() {"input"},true,true),
+                new AlexaInterface("Alexa.Speaker", "3", new List<string>() {"volume","muted"},true,true),
                 new AlexaInterface("Alexa.EndpointHealth", "3", new List<string>() {"connectivity"},true,true)
             };
             TestFunctionsV3.TestResponseEndpointV3(payload.Endpoints[9], "Sample Manufacturer", "TV", "009 TV that supports various entertainment controllers",

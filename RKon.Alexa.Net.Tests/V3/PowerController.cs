@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.Net.Tests.V3.TestFunctions;
-using RKon.Alexa.NET.JsonObjects;
 using RKon.Alexa.NET.Payloads;
 using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Response;
@@ -10,15 +9,15 @@ using Xunit;
 
 namespace RKon.Alexa.Net.Tests.V3.Requests
 {
-    public class LockController
+    public class PowerController
     {
-        #region Lock
-        private const string LOCK_REQUEST = @"
+        #region TurnOff
+        private const string TURN_OFF_REQUEST = @"
         {
             'directive': {
                 'header': {
-                    'namespace': 'Alexa.LockController',
-                    'name': 'Lock',
+                    'namespace': 'Alexa.PowerController',
+                    'name': 'TurnOff',
                     'payloadVersion': '3',
                     'messageId': '1bd5d003-31b9-476f-ad03-71d471922820',
                     'correlationToken': 'dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg=='
@@ -36,14 +35,14 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         }
         ";
 
-        private const string LOCK_RESPONSE = @"
+        private const string TURN_OFF_RESPONSE = @"
         {
             'context': {
                 'properties': [
                     {
-                        'namespace': 'Alexa.LockController',
-                        'name': 'lockState',
-                        'value': 'LOCKED',
+                        'namespace': 'Alexa.PowerController',
+                        'name': 'powerState',
+                        'value': 'OFF',
                         'timeOfSample': '2017-09-27T18:30:30.45Z',
                         'uncertaintyInMilliseconds': 200
                     },
@@ -79,39 +78,35 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void RequestCreation_Lock_Test()
+        public void RequestCreation_TurnOff_Test()
         {
-            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(LOCK_REQUEST);
+            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(TURN_OFF_REQUEST);
             //Directive Check
             Assert.NotNull(requestFromString.Directive);
             //Header Check
-            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_LOCKCONTROLLER, HeaderNames.LOCK);
+            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_POWERCONTROLLER, HeaderNames.TURN_OFF_REQUEST);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
             TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
-
-
-            /*
-            Assert.True(requestFromString.GetPayloadType() == typeof(TurnOnOffRequestPayload));
-            TurnOnOffRequestPayload payload = requestFromString.Payload as TurnOnOffRequestPayload;
-            TestFunctionsV3.TestRequestApplianceAndAccessToken(payload, "accessToken", "appId", null);
-            */
+            Payload payload = (requestFromString.Directive.Payload as Payload);
+            //Channel
+            Assert.NotNull(payload);
         }
 
         [Fact]
-        public void ResponseCreation_Lock_Test()
+        public void ResponseParse_TurnOff_Test()
         {
-            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(LOCK_RESPONSE);
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(TURN_OFF_RESPONSE);
             //Context check
             Assert.NotNull(responseFromString.Context);
             Assert.NotNull(responseFromString.Context.Properties);
             Assert.Equal(2, responseFromString.Context.Properties.Count);
             // Property 1
-            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.LOCK_STATE, Namespaces.ALEXA_LOCKCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(typeof(LockModes), responseFromString.Context.Properties[0].Value.GetType());
-            Assert.Equal(LockModes.LOCKED, responseFromString.Context.Properties[0].Value);
+            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.POWER_STATE, Namespaces.ALEXA_POWERCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
+            Assert.Equal(typeof(PowerStates), responseFromString.Context.Properties[0].Value.GetType());
+            Assert.Equal(PowerStates.OFF, responseFromString.Context.Properties[0].Value);
             // Property 2
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check
@@ -120,13 +115,13 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                  "access-token-from-Amazon", "endpoint-001");
         }
         #endregion
-        #region Unlock
-        private const string UNLOCK_REQUEST = @"
+        #region TurnOn
+        private const string TURN_ON_REQUEST = @"
         {
             'directive': {
                 'header': {
-                    'namespace': 'Alexa.LockController',
-                    'name': 'Unlock',
+                    'namespace': 'Alexa.PowerController',
+                    'name': 'TurnOn',
                     'payloadVersion': '3',
                     'messageId': '1bd5d003-31b9-476f-ad03-71d471922820',
                     'correlationToken': 'dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg=='
@@ -144,14 +139,14 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         }
         ";
 
-        private const string UNLOCK_RESPONSE = @"
+        private const string TURN_ON_RESPONSE = @"
         {
             'context': {
                 'properties': [
                     {
-                        'namespace': 'Alexa.LockController',
-                        'name': 'lockState',
-                        'value': 'UNLOCKED',
+                        'namespace': 'Alexa.PowerController',
+                        'name': 'powerState',
+                        'value': 'ON',
                         'timeOfSample': '2017-09-27T18:30:30.45Z',
                         'uncertaintyInMilliseconds': 200
                     },
@@ -187,32 +182,35 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void RequestCreation_Unlock_Test()
+        public void RequestCreation_TurnOn_Test()
         {
-            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(UNLOCK_REQUEST);
+            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(TURN_ON_REQUEST);
             //Directive Check
             Assert.NotNull(requestFromString.Directive);
             //Header Check
-            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_LOCKCONTROLLER, HeaderNames.UNLOCK);
+            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_POWERCONTROLLER, HeaderNames.TURN_ON_REQUEST);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
             TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
+            Payload payload = (requestFromString.Directive.Payload as Payload);
+            //Channel
+            Assert.NotNull(payload);
         }
 
         [Fact]
-        public void ResponseCreation_Unlock_Test()
+        public void ResponseParse_TurnOn_Test()
         {
-            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(UNLOCK_RESPONSE);
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(TURN_ON_RESPONSE);
             //Context check
             Assert.NotNull(responseFromString.Context);
             Assert.NotNull(responseFromString.Context.Properties);
             Assert.Equal(2, responseFromString.Context.Properties.Count);
             // Property 1
-            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.LOCK_STATE, Namespaces.ALEXA_LOCKCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(typeof(LockModes), responseFromString.Context.Properties[0].Value.GetType());
-            Assert.Equal(LockModes.UNLOCKED, responseFromString.Context.Properties[0].Value);
+            TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.POWER_STATE, Namespaces.ALEXA_POWERCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
+            Assert.Equal(typeof(PowerStates), responseFromString.Context.Properties[0].Value.GetType());
+            Assert.Equal(PowerStates.ON, responseFromString.Context.Properties[0].Value);
             // Property 2
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check

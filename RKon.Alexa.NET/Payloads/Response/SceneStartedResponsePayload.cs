@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.JsonObjects;
+using System;
 
 namespace RKon.Alexa.NET.Payloads
 {
@@ -21,6 +22,6 @@ namespace RKon.Alexa.NET.Payloads
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonRequired]
-        public string Timestamp { get; set; }
+        public DateTime Timestamp { get; set; }
     }
 }

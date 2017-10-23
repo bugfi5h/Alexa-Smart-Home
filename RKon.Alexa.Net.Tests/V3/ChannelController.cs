@@ -168,7 +168,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         ";
 
         [Fact]
-        public void ResponseCreation_ChannelResponse_Test()
+        public void ResponseParse_ChannelResponse_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(CHANNEL_RESPONSE);
             //Context check

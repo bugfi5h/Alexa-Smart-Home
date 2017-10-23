@@ -97,7 +97,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         }
 
         [Fact]
-        public void ResponseCreation_AdjustBrightness_Test()
+        public void ResponseParse_AdjustBrightness_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(ADJUST_BRIGHTNESS_RESPONSE);
             //Context check
@@ -200,7 +200,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
         }
 
         [Fact]
-        public void ResponseCreation_SetBrightness_Test()
+        public void ResponseParse_SetBrightness_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(SET_BRIGHTNESS_RESPONSE);
             //Context check
