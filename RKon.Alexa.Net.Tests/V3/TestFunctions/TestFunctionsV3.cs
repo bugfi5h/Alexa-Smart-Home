@@ -109,6 +109,22 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
             }
         }
 
+        /// <summary>
+        /// HeaderNamespace and Name can be left null. Namespaces.Alexa and HeaderNames.Response will be used
+        /// </summary>
+        /// <param name="h"></param>
+        /// <param name="source"></param>
+        /// <param name="headerNamespace"></param>
+        /// <param name="headerName"></param>
+        public static void CheckResponseCreatedBaseHeader(EventHeader h, DirectiveHeader source, string headerNamespace = Namespaces.ALEXA, string headerName = HeaderNames.RESPONSE)
+        {
+            Assert.NotNull(h);
+            Assert.Equal(headerNamespace, h.Namespace);
+            Assert.Equal(headerName, h.Name);
+            Assert.Equal("3", h.PayloadVersion);
+            Assert.Equal(source.CorrelationToken, h.CorrelationToken);
+        }
+
         private static void CheckCookieDictionary(Dictionary<string, string> Cookie, Dictionary<string, string> endpointCookies)
         {
             Assert.NotNull(endpointCookies);

@@ -22,5 +22,6 @@ namespace RKon.Alexa.NET.Payloads
         [JsonProperty("imageUri")]
         [JsonRequired]
         public string ImageURI { get; set; }
+
     }
 }

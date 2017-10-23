@@ -190,6 +190,28 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal("https://username:password@link.to.image/image.jpg", payload.ImageURI);
         }
 
+        [Fact]
+        public void ResponseCreation_CameraStream_Test()
+        {
+            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(INIT_CAMERA_STREAMS_REQUEST);
+            SmartHomeResponse response = new SmartHomeResponse(requestFromString.Directive.Header);
+            Assert.NotNull(response);
+            Assert.Null(response.Context);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, requestFromString.Directive.Header, Namespaces.ALEXA_CAMERASTREAMCONTROLLER);
+            Assert.Null(e.Endpoint);
+            Assert.NotNull(e.Payload);
+            Assert.Equal(typeof(ResponseCameraStreamsPayload), response.GetPayloadType());
+            ResponseCameraStreamsPayload p = e.Payload as ResponseCameraStreamsPayload;
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(response));
+            p.CameraStreams = new System.Collections.Generic.List<ResponseCameraStream>();
+            p.ImageURI = "http://test.de/image.img";
+            Assert.NotNull(JsonConvert.SerializeObject(response));
+            Util.Util.WriteJsonToConsole("CameraStream", response);
+        }
+
         private void TestResponseCameraStream(ResponseCameraStream s, string uri, DateTime expirationTime, int idleTimeout, 
             string protocol, int width, int height, string authorizationType, string videoCodec, string audioCodec)
         {

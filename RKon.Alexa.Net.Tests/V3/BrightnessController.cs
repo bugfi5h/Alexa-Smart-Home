@@ -92,7 +92,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             //Endpoint Check
             TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
             //Payload Check
-            Assert.Equal(typeof(AdjustBrightnessRequestPayload), requestFromString.GetPayloadType());
+            Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
             Assert.Equal(-25, (requestFromString.Directive.Payload as AdjustBrightnessRequestPayload).BrightnessDelta);
         }
 
@@ -114,6 +114,22 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestBasicEventWithEmptyPayload(responseFromString, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4",
                 "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", "BearerToken",
                  "access-token-from-Amazon", "endpoint-001");
+        }
+
+        [Fact]
+        public void ResponseCreation_AdjustBrightness_Test()
+        {
+            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(ADJUST_BRIGHTNESS_REQUEST);
+            SmartHomeResponse response = new SmartHomeResponse(requestFromString.Directive.Header);
+            Assert.NotNull(response);
+            Assert.Null(response.Context);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, requestFromString.Directive.Header);
+            Assert.Null(e.Endpoint);
+            Assert.NotNull(e.Payload);
+            Util.Util.WriteJsonToConsole("AdjustBrightness", response);
         }
 #endregion
         #region SetBrightness
@@ -218,6 +234,22 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
                 "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", "BearerToken",
                  "access-token-from-Amazon", "endpoint-001");
         }
-#endregion
+
+        [Fact]
+        public void ResponseCreation_SetBrightness_Test()
+        {
+            SmartHomeRequest requestFromString = JsonConvert.DeserializeObject<SmartHomeRequest>(SET_BRIGHTNESS_REQUEST);
+            SmartHomeResponse response = new SmartHomeResponse(requestFromString.Directive.Header);
+            Assert.NotNull(response);
+            Assert.Null(response.Context);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, requestFromString.Directive.Header);
+            Assert.Null(e.Endpoint);
+            Assert.NotNull(e.Payload);
+            Util.Util.WriteJsonToConsole("SetBrightness", response);
+        }
+        #endregion
     }
 }
