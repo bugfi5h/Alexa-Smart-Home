@@ -3,29 +3,30 @@
 namespace RKon.Alexa.NET46.Request
 {
     /// <summary>
-    /// SmartHomeRequest Class 
+    /// Directive send from Alexa
     /// </summary>
-    [JsonConverter(typeof(RequestPayloads.SmartHomeRequestConverter))]
     public class SmartHomeRequest
     {
         /// <summary>
-        /// Headerinformations
+        /// Request messages called directives
         /// </summary>
-        [JsonProperty("header")]
-        public RequestHeader Header { get; set; }
-        /// <summary>
-        /// Payloadinformations
-        /// </summary>
-        [JsonProperty("payload")]
-        public RequestPayload Payload { get; set; }
+        [JsonProperty("directive")]
+        public Directive Directive { get; set; }
 
         /// <summary>
-        /// returns the type of the payload
+        /// System.Type of the Payloads
         /// </summary>
-        /// <returns>System.Type Payloadtype</returns>
-        public System.Type GetRequestPayloadType()
+        /// <returns>System.Type of the Payloads</returns>
+        public System.Type GetPayloadType()
         {
-            return Payload?.GetType();
+            return Directive?.Payload?.GetType();
+        }
+
+        /// <summary>
+        /// Basic Constructor
+        /// </summary>
+        public SmartHomeRequest()
+        {
         }
     }
 }

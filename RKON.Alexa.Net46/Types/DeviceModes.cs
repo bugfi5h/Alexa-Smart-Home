@@ -1,87 +1,57 @@
-﻿using System.Collections.Generic;
-
-namespace RKon.Alexa.NET46.Types
+﻿namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
-    /// Class of Device modes
+    /// List of all ThermostatModes
     /// </summary>
-    public class DeviceModes
+    public enum ThermostatModes
     {
         /// <summary>
-        /// String for the AUTO Mode
+        ///  	Automatic heat or cool selection based on the temperature reading and the setpoint
         /// </summary>
-        public const string AUTO = "AUTO";
+        AUTO,
         /// <summary>
-        /// String for the HEAT Mode
+        /// cooling mode
         /// </summary>
-        public const string HEAT = "HEAT";
+        COOL,
         /// <summary>
-        /// String for the COOL Mode
+        ///  	heating mode
         /// </summary>
-        public const string COOL = "COOL";
+        HEAT,
         /// <summary>
-        /// String for the AWAY Mode
+        /// economical mode
         /// </summary>
-        public const string AWAY = "AWAY";
+        ECO,
         /// <summary>
-        /// String for the OTHER Mode
+        /// heating/cooling is turned off, but the device may still have power
         /// </summary>
-        public const string OTHER = "OTHER";
-
+        OFF,
         /// <summary>
-        /// String for the CUSTOM Mode
+        ///  	A custom mode specified by an additional field customName
         /// </summary>
-        public const string CUSTOM = "CUSTOM";
-
-        /// <summary>
-        /// String for the ECO Mode
-        /// </summary>
-        public const string ECO = "ECO";
-
-        /// <summary>
-        /// String for the OFF Mode
-        /// </summary>
-        public const string OFF = "OFF";
-
-        /// <summary>
-        /// String for LOCKED
-        /// </summary>
-        public const string LOCKED = "LOCKED";
-
-        /// <summary>
-        /// String for UNLOCKED
-        /// </summary>
-        public const string UNLOCKED = "UNLOCKED";
-
-
-        /// <summary>
-        /// List of all device modes
-        /// </summary>
-        public static readonly List<string> Modes = new List<string>()
-        {
-            AUTO,HEAT,COOL,AWAY,OTHER
-        };
-        /// <summary>
-        /// List of all Temperature modes
-        /// </summary>
-        public static readonly List<string> TemperatureModes = new List<string>()
-        {
-            AUTO,HEAT,COOL
-        };
-        /// <summary>
-        /// List of all GetTemperature modes
-        /// </summary>
-        public static readonly List<string> GetTemperatureModes = new List<string>()
-        {
-            AUTO,HEAT,COOL,OFF,CUSTOM,ECO
-        };
-        /// <summary>
-        ///List of all Lockstates
-        /// </summary>
-        public static readonly List<string> LockModes = new List<string>()
-        {
-            LOCKED, UNLOCKED
-        };
-
+        CUSTOM
     }
+    /// <summary>
+    ///List of all Lockstates
+    /// </summary>
+    public enum LockModes
+    {
+        LOCKED, UNLOCKED, JAMMED
+    }
+
+    /// <summary>
+    /// List of all Powerstates
+    /// </summary>
+    public enum PowerStates
+    {
+        ON, OFF
+    }
+
+    /// <summary>
+    /// List of all ErrorColorTemperature modes
+    /// </summary>
+    public enum ColorTemperatureModes
+    {
+        AUTO, AWAY, COLOR, ASLEEP, NOT_PROVISIONED, COOL, HEAT, OTHER
+    }
+
 }

@@ -1,0 +1,21 @@
+﻿using Newtonsoft.Json;
+
+namespace RKon.Alexa.NET46.JsonObjects
+{
+    /// <summary>
+    /// Resolution for a CameraStream
+    /// </summary>
+    public class Resolution
+    {
+        /// <summary>
+        /// Describes the width of the video stream.
+        /// </summary>
+        [JsonProperty("width")]
+        public int Width { get; set; }
+        /// <summary>
+        /// Describes the height of the video stream.
+        /// </summary>
+        [JsonProperty("height")]
+        public int Height { get; set; }
+    }
+}
