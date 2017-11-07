@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 
 namespace RKon.Alexa.NET46.JsonObjects
 {
@@ -27,7 +28,7 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// The time at which the property value was provided in ISO 8601 format, and specified in UTC
         /// </summary>
         [JsonProperty("timeOfSample")]
-        public string TimeOfSample { get; set; }
+        public DateTime TimeOfSample { get; set; }
         /// <summary>
         /// Indicates the uncertainty of the reported property in milliseconds of elapsed time since the property value was retrieved. For example, if you obtain this value by polling a hardware device every 60 seconds, then the uncertainty in the time of the sampled value would be 60000 in milliseconds.
         /// </summary>
@@ -38,5 +39,32 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// </summary>
         [JsonProperty("customName",NullValueHandling = NullValueHandling.Ignore)]
         public string CustomName { get; set; }
+
+        /// <summary>
+        /// Standartconstructor
+        /// </summary>
+        public Property()
+        {
+
+        }
+
+        /// <summary>
+        /// Initialises Property
+        /// </summary>
+        /// <param name="nameSpace"></param>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <param name="timeOfSample"></param>
+        /// <param name="uncertainty"></param>
+        /// <param name="customName">Is needed, if Calue is set to CUSTOM</param>
+        public Property(string nameSpace, string name, object value, DateTime timeOfSample, int uncertainty, string customName = null)
+        {
+            Namespace = nameSpace;
+            Name = name;
+            Value = value;
+            TimeOfSample = timeOfSample;
+            UncertaintyInMilliseconds = uncertainty;
+            CustomName = customName;
+        }
     }
 }

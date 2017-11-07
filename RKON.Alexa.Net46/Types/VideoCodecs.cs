@@ -1,21 +1,25 @@
 ﻿namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
-    /// Indicates the temperature scale for the temperature value
+    /// The video codec for the stream.
     /// </summary>
-    public enum Scale
+    public enum VideoCodecs
     {
         /// <summary>
-        /// °C
+        /// 
         /// </summary>
-        CELSIUS,
+        H264,
         /// <summary>
-        /// °F
+        /// 
         /// </summary>
-        FAHRENHEIT,
+        MPEG2,
         /// <summary>
-        /// °K
+        /// 
         /// </summary>
-        KELVIN
+        MJPEG,
+        /// <summary>
+        /// 
+        /// </summary>
+        JPG
     }
 }

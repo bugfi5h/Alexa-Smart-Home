@@ -19,5 +19,24 @@ namespace RKon.Alexa.NET46.JsonObjects
         [JsonProperty("maximumValue")]
         [JsonRequired]
         public Setpoint MaximumValue { get; set; }
+
+        /// <summary>
+        /// StandardConstructor
+        /// </summary>
+        public TemperatureValidRange()
+        {
+
+        }
+
+        /// <summary>
+        /// Initialise TemperatureValidRange
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        public TemperatureValidRange(Setpoint min, Setpoint max)
+        {
+            MinimumValue = min;
+            MaximumValue = max;
+        }
     }
 }

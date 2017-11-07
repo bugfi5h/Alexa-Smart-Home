@@ -35,7 +35,18 @@
     /// </summary>
     public enum LockModes
     {
-        LOCKED, UNLOCKED, JAMMED
+        /// <summary>
+        /// Indicates that the appliance is currently locked.
+        /// </summary>
+        LOCKED,
+        /// <summary>
+        /// Indicates that the appliances is currently unlocked.
+        /// </summary>
+        UNLOCKED,
+        /// <summary>
+        /// Indicates that the lock cannot complete its transition to “LOCKED” or “UNLOCKED” because the locking mechanism is jammed.
+        /// </summary>
+        JAMMED
     }
 
     /// <summary>
@@ -43,7 +54,14 @@
     /// </summary>
     public enum PowerStates
     {
-        ON, OFF
+        /// <summary>
+        /// turned od
+        /// </summary>
+        ON,
+        /// <summary>
+        /// turned off
+        /// </summary>
+        OFF
     }
 
     /// <summary>
@@ -51,7 +69,38 @@
     /// </summary>
     public enum ColorTemperatureModes
     {
-        AUTO, AWAY, COLOR, ASLEEP, NOT_PROVISIONED, COOL, HEAT, OTHER
+        /// <summary>
+        ///  	Automatic heat or cool selection based on the temperature reading and the setpoint
+        /// </summary>
+        AUTO,
+        /// <summary>
+        ///  Away Mode
+        /// </summary>
+        AWAY,
+        /// <summary>
+        /// Color Mode
+        /// </summary>
+        COLOR,
+        /// <summary>
+        /// Asleep mode
+        /// </summary>
+        ASLEEP,
+        /// <summary>
+        /// Not proisioned mode
+        /// </summary>
+        NOT_PROVISIONED,
+        /// <summary>
+        /// cooling mode
+        /// </summary>
+        COOL,
+        /// <summary>
+        /// heating mode
+        /// </summary>
+        HEAT,
+        /// <summary>
+        /// other mode
+        /// </summary>
+        OTHER
     }
 
 }

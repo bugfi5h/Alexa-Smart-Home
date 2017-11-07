@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-namespace RKon.Alexa.NET46.Payloads.Request
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Payload for AdjustBrightnessRequests

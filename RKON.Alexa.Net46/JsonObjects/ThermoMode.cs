@@ -4,6 +4,9 @@ using RKon.Alexa.NET46.Types;
 
 namespace RKon.Alexa.NET46.JsonObjects
 {
+    /// <summary>
+    /// Contains the desired thermostat mode for the device. Supported values: “AUTO”, “COOL”, “ECO”, “HEAT” and “OFF”
+    /// </summary>
     public class ThermoMode
     {
         /// <summary>

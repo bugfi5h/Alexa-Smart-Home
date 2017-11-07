@@ -2,7 +2,7 @@
 using RKon.Alexa.NET46.JsonObjects;
 using System.Collections.Generic;
 
-namespace RKon.Alexa.NET46.Payloads.Response
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Responsepayload for Camerastream events
@@ -22,5 +22,6 @@ namespace RKon.Alexa.NET46.Payloads.Response
         [JsonProperty("imageUri")]
         [JsonRequired]
         public string ImageURI { get; set; }
+
     }
 }

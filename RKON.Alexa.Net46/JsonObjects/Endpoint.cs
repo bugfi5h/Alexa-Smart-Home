@@ -23,7 +23,7 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// <summary>
         /// Additional Informations
         /// </summary>
-        [JsonProperty("cookie")]
+        [JsonProperty("cookie", NullValueHandling =NullValueHandling.Ignore)]
         public Dictionary<string,string> Cookie { get; set; }
 
         /// <summary>
@@ -31,7 +31,19 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// </summary>
         public Endpoint()
         {
-            Cookie = new Dictionary<string, string>();
+        }
+
+        /// <summary>
+        /// Initialises Endpoint with Values
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="scope"></param>
+        /// <param name="cookies"></param>
+        public Endpoint(string id, Scope scope, Dictionary<string, string> cookies = null)
+        {
+            Scope = scope;
+            EndpointID = id;
+            Cookie = cookies;
         }
     }
 }

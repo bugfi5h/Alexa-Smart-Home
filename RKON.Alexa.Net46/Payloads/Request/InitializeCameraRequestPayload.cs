@@ -3,7 +3,7 @@ using RKon.Alexa.NET46.JsonObjects;
 using System.Collections.Generic;
 
 
-namespace RKon.Alexa.NET46.Payloads.Request
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Payload for InitializeCameraRequests

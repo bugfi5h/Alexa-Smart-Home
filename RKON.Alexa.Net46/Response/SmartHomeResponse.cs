@@ -20,7 +20,6 @@ namespace RKon.Alexa.NET46.Response
     /// <summary>
     /// SmartHome Response
     /// </summary>
-    [JsonConverter(typeof(SmartHomeResponseConverter))]
     public class SmartHomeResponse
     {
         /// <summary>
@@ -28,11 +27,12 @@ namespace RKon.Alexa.NET46.Response
         /// </summary>
         [JsonProperty("context", NullValueHandling = NullValueHandling.Ignore)]
         public Context Context { get; set; }
+
         /// <summary>
         /// The Event that get send to Alexa
         /// </summary>
         [JsonProperty("event")]
-        public IEvent Event { get; set; }
+        public Event Event { get; set; }
         
         /// <summary>
         /// System.Type of the Payloads
@@ -71,7 +71,7 @@ namespace RKon.Alexa.NET46.Response
         }
 
         /// <summary>
-        /// Creates a ErrorResponse with given RequestHeader and the Error Type
+        /// Creates a ErrorResponse with given RequestHeader and the Error Type. If needed a special Namespace can be given.
         /// </summary>
         /// <param name="header"></param>
         /// <param name="type"></param>
@@ -83,7 +83,7 @@ namespace RKon.Alexa.NET46.Response
                 throw new UnvalidDiscoveryResponseException();
             }
             SmartHomeResponse sResponse = new SmartHomeResponse();
-            sResponse.Event = new ErrorResponseEvent(header.CorrelationToken, type);
+            sResponse.Event = RKon.Alexa.NET46.Response.Event.CreateErrorEvent(header.CorrelationToken, type, header.Namespace);
             return sResponse;
         }
 

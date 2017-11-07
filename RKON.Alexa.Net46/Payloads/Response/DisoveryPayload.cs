@@ -2,12 +2,12 @@
 using RKon.Alexa.NET46.JsonObjects;
 using System.Collections.Generic;
 
-namespace RKon.Alexa.NET46.Payloads.Response
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Discoverypayload for response event
     /// </summary>
-    public class DisoveryPayload : Payload
+    public class DiscoveryPayload : Payload
     {
         /// <summary>
         /// Discovered Endpoints
@@ -19,7 +19,7 @@ namespace RKon.Alexa.NET46.Payloads.Response
         /// <summary>
         /// Standartconstructor
         /// </summary>
-        public DisoveryPayload()
+        public DiscoveryPayload()
         {
             Endpoints = new List<ResponseEndpoint>();
         }

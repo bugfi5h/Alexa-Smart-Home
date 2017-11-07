@@ -2,7 +2,7 @@
 using RKon.Alexa.NET46.JsonObjects;
 using RKon.Alexa.NET46.Types;
 
-namespace RKon.Alexa.NET46.Payloads.Request
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Payload for a SetColorRequest

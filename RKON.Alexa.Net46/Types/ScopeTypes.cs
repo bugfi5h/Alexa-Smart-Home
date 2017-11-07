@@ -1,5 +1,5 @@
 ﻿
-namespace RKON.Alexa.Net46.Types
+namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// Supported Types of Scopes

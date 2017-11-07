@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RKon.Alexa.NET46.Types;
 using RKon.Alexa.NET46.Payloads;
-using RKon.Alexa.NET46.Payloads.Response;
 
 namespace RKon.Alexa.NET46.Response
 {
@@ -52,10 +51,21 @@ namespace RKon.Alexa.NET46.Response
                     {
                         e.Payload = new Payload();
                     }
-                }
-                if (name == HeaderNames.DEFFERED_RESPONSE)
+                }else if (name == HeaderNames.DEFFERED_RESPONSE)
                 {
                     e.Payload = new DefferedResponsePayload();
+                }else if(name == HeaderNames.ERROR_RESPONSE)
+                {
+                    string type = jObject["payload"]?["type"]?.Value<string>();
+                    ErrorTypes enumType;
+                    if (Enum.TryParse(type, out enumType))
+                    {
+                        e.Payload = e._GetPayloadForErrorType(enumType);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Can not parse ErrorType");
+                    }
                 }
                 else
                 {
@@ -64,7 +74,7 @@ namespace RKon.Alexa.NET46.Response
             }
             else
             {
-                throw new InvalidOperationException("Empty request type.");
+                throw new InvalidOperationException("(EventResponeConverter)Empty Headername. Object: " + jObject.ToString());
             }
             serializer.Populate(jObject.CreateReader(), e);
 

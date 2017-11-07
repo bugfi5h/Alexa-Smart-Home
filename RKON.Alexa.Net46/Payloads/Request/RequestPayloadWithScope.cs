@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using RKon.Alexa.NET46.JsonObjects;
 
-namespace RKon.Alexa.NET46.Payloads.Request
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Requestpalyoud containing a Scope

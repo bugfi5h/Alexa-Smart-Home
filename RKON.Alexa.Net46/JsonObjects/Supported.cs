@@ -14,5 +14,22 @@ namespace RKon.Alexa.NET46.JsonObjects
         [JsonProperty("name")]
         [JsonRequired]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
+        public Supported()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructor to initialize name
+        /// </summary>
+        /// <param name="name"></param>
+        public Supported(string name)
+        {
+            Name = name;
+        }
     }
 }

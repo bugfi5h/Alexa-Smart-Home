@@ -17,5 +17,23 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// </summary>
         [JsonProperty("height")]
         public int Height { get; set; }
+
+        /// <summary>
+        /// Standardconstructor
+        /// </summary>
+        public Resolution()
+        {
+        }
+
+        /// <summary>
+        /// Initializes Width and Height
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public Resolution(int width, int height)
+        {
+            Width = width;
+            Height = height;
+        }
     }
 }

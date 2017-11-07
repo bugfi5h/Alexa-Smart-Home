@@ -1,21 +1,21 @@
 ﻿namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
-    /// Indicates the temperature scale for the temperature value
+    /// The audio code for the stream
     /// </summary>
-    public enum Scale
+    public enum AudioCodecs
     {
         /// <summary>
-        /// °C
+        /// 
         /// </summary>
-        CELSIUS,
+        G711,
         /// <summary>
-        /// °F
+        /// 
         /// </summary>
-        FAHRENHEIT,
+        AAC,
         /// <summary>
-        /// °K
+        /// 
         /// </summary>
-        KELVIN
+        NONE
     }
 }

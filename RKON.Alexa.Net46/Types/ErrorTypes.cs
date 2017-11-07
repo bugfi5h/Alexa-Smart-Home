@@ -10,7 +10,7 @@ namespace RKon.Alexa.NET46.Types
         /// <summary>
         /// Indicates the target bridge endpoint is currently unreachable or offline.
         /// For example, the bridge might be turned off, 
-        /// disconnected from the customer's local area network, or connectivity between the bridge and the device cloud might have been lost.
+        /// disconnected from the customer's local area NET46work, or connectivity between the bridge and the device cloud might have been lost.
         /// </summary>
         BRIDGE_UNREACHABLE,
         /// <summary>
@@ -24,7 +24,7 @@ namespace RKon.Alexa.NET46.Types
         /// <summary>
         /// Indicates the target endpoint is currently unreachable or offline. 
         /// For example, the endpoint might be turned off, 
-        /// disconnected from the customer's local area network, or connectivity between the endpoint and 
+        /// disconnected from the customer's local area NET46work, or connectivity between the endpoint and 
         /// bridge or the endpoint and the device cloud might have been lost.
         /// </summary>
         ENDPOINT_UNREACHABLE,
@@ -81,6 +81,30 @@ namespace RKon.Alexa.NET46.Types
         /// Indicates a directive contains a value that is outside the numerical range accepted for the target endpoint.
         /// For example, use to respond to a request to set a percentage value over 100 percent. For temperature values, use TEMPERATURE_VALUE_OUT_OF_RANGE
         /// </summary>
-        VALUE_OUT_OF_RANGE
+        VALUE_OUT_OF_RANGE,
+        /// <summary>
+        ///  	Thermostat is off and cannot be turned on.
+        /// </summary>
+        THERMOSTAT_IS_OFF,
+        /// <summary>
+        /// Setpoints are too close together.
+        /// </summary>
+        REQUESTED_SETPOINTS_TOO_CLOSE,
+        /// <summary>
+        /// The thermostat doesn’t support the specified mode.
+        /// </summary>
+        UNSUPPORTED_THERMOSTAT_MODE,
+        /// <summary>
+        /// The thermostat doesn’t support dual setpoints in the current mode.
+        /// </summary>
+        DUAL_SETPOINTS_UNSUPPORTED,
+        /// <summary>
+        /// The thermostat doesn’t support triple setpoints in the current mode.
+        /// </summary>
+        TRIPLE_SETPOINTS_UNSUPPORTED,
+        /// <summary>
+        /// You cannot set the value because it may cause damage to the device or appliance.
+        /// </summary>
+        UNWILLING_TO_SET_VALUE
     }
 }

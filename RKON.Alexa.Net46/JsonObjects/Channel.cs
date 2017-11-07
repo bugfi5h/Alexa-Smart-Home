@@ -9,6 +9,28 @@ namespace RKon.Alexa.NET46.JsonObjects
     public class Channel
     {
         /// <summary>
+        /// Standardconstructor
+        /// </summary>
+        public Channel()
+        {
+        }
+
+        /// <summary>
+        /// Initializes Channel
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="callSign"></param>
+        /// <param name="affiliateCallSign"></param>
+        /// <param name="uri"></param>
+        public Channel(string number, string callSign, string affiliateCallSign, string uri = null)
+        {
+            this.Number = number;
+            this.CallSign = callSign;
+            this.AffiliateCallSign = affiliateCallSign;
+            Uri = uri;
+        }
+
+        /// <summary>
         ///  A number that identifies the specified channel such as 5 or 12.1. Can be Null, but channel.number, channelMetadata.name, channel.callSign,
         /// affiliateCallSign or uri must be specified.
         /// </summary>

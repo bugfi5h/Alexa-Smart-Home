@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET46.Types;
 
-namespace RKon.Alexa.NET46.Payloads.Request
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Requestpayload to set volume to the specified value, which is the absolute volume level scaled from 0 to 100.

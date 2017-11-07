@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET46.JsonObjects;
 
-namespace RKon.Alexa.NET46.Payloads.ErrorResponse
+namespace RKon.Alexa.NET46.Payloads
 {
     /// <summary>
     /// Payload for ValueOutRange Errors

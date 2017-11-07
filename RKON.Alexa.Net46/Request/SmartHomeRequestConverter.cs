@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using RKon.Alexa.NET46.Payloads;
-using RKon.Alexa.NET46.Payloads.Request;
 
 namespace RKon.Alexa.NET46.Request
 {
@@ -64,7 +63,7 @@ namespace RKon.Alexa.NET46.Request
             }
             else
             {
-                throw new InvalidOperationException("Empty request type.");
+                throw new InvalidOperationException("(SmartHomeRequestConverter)Empty Headername. Object: " + jObject.ToString());
             }
             serializer.Populate(jObject.CreateReader(), req);
 
@@ -126,6 +125,8 @@ namespace RKon.Alexa.NET46.Request
                 case HeaderNames.UNLOCK:
                 case HeaderNames.INCREASE_COLORTEMPERATURE:
                 case HeaderNames.DECREASE_COLORTEMPERATURE:
+                case HeaderNames.ACTIVATE:
+                case HeaderNames.DEACTIVATE:
                     return new Payload();
                 case HeaderNames.ADJUST_VOLUME:
                     if (namespaceType == Namespaces.ALEXA_STEPSPEAKER)
@@ -135,7 +136,7 @@ namespace RKon.Alexa.NET46.Request
                     else
                         throw new JsonSerializationException("Namespace not valid for AdjustVolume Requestname.");
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown request type: {requestType}.");
+                    throw new ArgumentOutOfRangeException(nameof(Type), $"Unknown Header name: {requestType}.");
             }
         }
     }

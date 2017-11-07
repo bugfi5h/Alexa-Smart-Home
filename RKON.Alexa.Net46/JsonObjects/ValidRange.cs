@@ -19,5 +19,24 @@ namespace RKon.Alexa.NET46.JsonObjects
         [JsonProperty("maximumValue")]
         [JsonRequired]
         public double MaximumValue { get; set; }
+
+        /// <summary>
+        /// Standardconstructor
+        /// </summary>
+        public ValidRange()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes ValidRange
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        public ValidRange(double min, double max)
+        {
+            MinimumValue = min;
+            MaximumValue = max;
+        }
     }
 }

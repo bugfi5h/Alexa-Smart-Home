@@ -25,13 +25,20 @@ namespace RKon.Alexa.NET46.Response
         /// Creates a header for a ErrorResponse
         /// </summary>
         /// <param name="correlationToken"></param>
+        /// <param name="hNamespace"></param>
         /// <returns></returns>
-        public static EventHeader CreateErrorHeader(string correlationToken)
+        public static EventHeader CreateErrorHeader(string correlationToken, string hNamespace)
         {
             EventHeader e = new EventHeader();
             e.MessageId = System.Guid.NewGuid().ToString();
             e.PayloadVersion = "3";
-            e.Namespace = Namespaces.ALEXA;
+            if(hNamespace == Namespaces.ALEXA_THERMOSTATCONTROLLER)
+            {
+                e.Namespace = Namespaces.ALEXA_THERMOSTATCONTROLLER;
+            }else
+            {
+                e.Namespace = Namespaces.ALEXA;
+            }
             e.Name = HeaderNames.ERROR_RESPONSE;
             e.CorrelationToken = correlationToken;
             return e;
@@ -82,6 +89,9 @@ namespace RKon.Alexa.NET46.Response
             }else if(reqHeader.Namespace == Namespaces.ALEXA_CAMERASTREAMCONTROLLER)
             {
                 name_space = Namespaces.ALEXA_CAMERASTREAMCONTROLLER;
+            }else if(reqHeader.Namespace == Namespaces.ALEXA_SCENECONTROLLER)
+            {
+                name_space = Namespaces.ALEXA_SCENECONTROLLER;
             }
             return name_space;
         }
@@ -89,6 +99,17 @@ namespace RKon.Alexa.NET46.Response
         private string _GetName(DirectiveHeader reqHeader)
         {
             string name = HeaderNames.RESPONSE;
+            if(reqHeader.Namespace == Namespaces.ALEXA_SCENECONTROLLER)
+            {
+                if (reqHeader.Name == HeaderNames.ACTIVATE)
+                {
+                    name = HeaderNames.ACTIVATION_STARTED;
+                }
+                if (reqHeader.Name == HeaderNames.DEACTIVATE)
+                {
+                    name = HeaderNames.DEACTIVATION_STARTED;
+                }
+            }
             if(reqHeader.Name == HeaderNames.REPORT_STATE)
             {
                 name = HeaderNames.STATE_REPORT;
