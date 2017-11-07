@@ -38,7 +38,6 @@ namespace RKon.Alexa.NET.JsonObjects
         /// Indicates the group name where the device should display in the Alexa app. Current supported values are ‘LIGHT’, ‘SMARTPLUG’, ‘SWITCH’, ‘CAMERA’, ‘DOOR’, “TEMPERATURE_SENSOR”, ‘THERMOSTAT’, ‘SMARTLOCK’, ‘SCENE_TRIGGER’, ‘ACTIVITY_TRIGGER’, ‘OTHER’
         /// </summary>
         [JsonProperty("displayCategories")]
-        [JsonConverter(typeof(StringEnumConverter))]
         [JsonRequired]
         public List<DisplayCategory> DisplayCategories { get; set; }
         /// <summary>
@@ -62,6 +61,28 @@ namespace RKon.Alexa.NET.JsonObjects
             Cookies = new Dictionary<string, string>();
             DisplayCategories = new List<DisplayCategory>();
             Capability = new List<Capability>();
+        }
+
+        /// <summary>
+        /// Initialise ResponseEndpoint
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="manufacturer"></param>
+        /// <param name="friendlyName"></param>
+        /// <param name="description"></param>
+        /// <param name="cookies"></param>
+        /// <param name="displayCategories"></param>
+        /// <param name="capabilities"></param>
+        public ResponseEndpoint(string id, string manufacturer, string friendlyName, string description, Dictionary<string,string> cookies, 
+            List<DisplayCategory> displayCategories, List<Capability> capabilities)
+        {
+            EndpointID = id;
+            ManufacturerName = manufacturer;
+            FriendlyName = friendlyName;
+            Description = description;
+            Cookies = cookies;
+            DisplayCategories = displayCategories;
+            Capability = capabilities;
         }
     }
 }

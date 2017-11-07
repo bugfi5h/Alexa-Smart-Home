@@ -97,7 +97,7 @@ namespace RKon.Alexa.NET.JsonObjects
                 case PropertyNames.COLOR:
                     return new Color();
                 case PropertyNames.CONNECTIVITY:
-                    return new ConnectivityProperty();
+                    return new ConnectivityPropertyValue();
                 default:
                     return new object();
             }

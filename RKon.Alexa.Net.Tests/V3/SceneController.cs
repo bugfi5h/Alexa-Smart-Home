@@ -46,7 +46,7 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.ACTIVATE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
         }
@@ -107,15 +107,42 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.ACTIVATION_STARTED);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(SceneStartedResponsePayload), responseFromString.GetPayloadType());
-            SceneStartedResponsePayload p = new SceneStartedResponsePayload();
+            SceneStartedResponsePayload p = e.Payload as SceneStartedResponsePayload;
             Assert.NotNull(p.Cause);
             Assert.Equal(CauseTypes.VOICE_INTERACTION, p.Cause.Type);
             Assert.Equal(DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), p.Timestamp);
         }
 
+        [Fact]
+        public void ResponseCreation_Activate_Test()
+        {
+            SmartHomeRequest request = JsonConvert.DeserializeObject<SmartHomeRequest>(ACTIVATE);
+            SmartHomeResponse response = new SmartHomeResponse(request.Directive.Header);
+            Assert.Null(response.Context);
+            response.Context = new Context();
+            ConnectivityPropertyValue value = new ConnectivityPropertyValue(ConnectivityModes.OK);
+            Property p2 = new Property(Namespaces.ALEXA_ENDPOINTHEALTH, PropertyNames.CONNECTIVITY, value,
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200);
+            response.Context.Properties.Add(p2);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header,Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.ACTIVATION_STARTED);
+            Assert.Null(e.Endpoint);
+            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            Assert.NotNull(e.Payload);
+            Assert.Equal(typeof(SceneStartedResponsePayload), response.GetPayloadType());
+            SceneStartedResponsePayload p = response.Event.Payload as SceneStartedResponsePayload;
+            Assert.Null(p.Cause);
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(response));
+            p.Cause = new Cause(CauseTypes.VOICE_INTERACTION); 
+            p.Timestamp = DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime();
+            Assert.NotNull(JsonConvert.SerializeObject(response));
+            Util.Util.WriteJsonToConsole("Activate", response);
+        }
         #endregion
         #region Deactivate
         private const string DEACTIVATE = @"
@@ -151,7 +178,7 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.DEACTIVATE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
         }
@@ -212,13 +239,41 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.DEACTIVATION_STARTED);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(SceneStartedResponsePayload), responseFromString.GetPayloadType());
-            SceneStartedResponsePayload p = new SceneStartedResponsePayload();
+            SceneStartedResponsePayload p = e.Payload as SceneStartedResponsePayload;
             Assert.NotNull(p.Cause);
             Assert.Equal(CauseTypes.APP_INTERACTION, p.Cause.Type);
             Assert.Equal(DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), p.Timestamp);
+        }
+
+        [Fact]
+        public void ResponseCreation_Deactivate_Test()
+        {
+            SmartHomeRequest request = JsonConvert.DeserializeObject<SmartHomeRequest>(DEACTIVATE);
+            SmartHomeResponse response = new SmartHomeResponse(request.Directive.Header);
+            Assert.Null(response.Context);
+            response.Context = new Context();
+            ConnectivityPropertyValue value = new ConnectivityPropertyValue(ConnectivityModes.OK);
+            Property p2 = new Property(Namespaces.ALEXA_ENDPOINTHEALTH, PropertyNames.CONNECTIVITY, value,
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200);
+            response.Context.Properties.Add(p2);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header, Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.DEACTIVATION_STARTED);
+            Assert.Null(e.Endpoint);
+            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            Assert.NotNull(e.Payload);
+            Assert.Equal(typeof(SceneStartedResponsePayload), response.GetPayloadType());
+            SceneStartedResponsePayload p = response.Event.Payload as SceneStartedResponsePayload;
+            Assert.Null(p.Cause);
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(response));
+            p.Cause = new Cause(CauseTypes.APP_INTERACTION);
+            p.Timestamp = DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime();
+            Assert.NotNull(JsonConvert.SerializeObject(response));
+            Util.Util.WriteJsonToConsole("Deactivate", response);
         }
         #endregion
     }

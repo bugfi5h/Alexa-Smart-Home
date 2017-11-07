@@ -66,5 +66,26 @@ namespace RKon.Alexa.NET.JsonObjects
                 }
             }
         }
+
+        /// <summary>
+        /// Standardconstructor
+        /// </summary>
+        public Color()
+        {
+
+        }
+
+        /// <summary>
+        /// Inintialises Colorelement
+        /// </summary>
+        /// <param name="hue"></param>
+        /// <param name="saturation"></param>
+        /// <param name="brightness"></param>
+        public Color(double hue, double saturation, double brightness)
+        {
+            Hue = hue;
+            Saturation = saturation;
+            Brightness = brightness;
+        }
     }
 }

@@ -14,12 +14,12 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
         public static void TestBasicHealthCheckProperty(Property p, ConnectivityModes expectedMode, DateTime dateTime)
         {
             TestFunctionsV3.TestContextProperty(p, PropertyNames.CONNECTIVITY, Namespaces.ALEXA_ENDPOINTHEALTH, dateTime, 200, null);
-            Assert.Equal(typeof(ConnectivityProperty), p.Value.GetType());
-            ConnectivityProperty conn = p.Value as ConnectivityProperty;
+            Assert.Equal(typeof(ConnectivityPropertyValue), p.Value.GetType());
+            ConnectivityPropertyValue conn = p.Value as ConnectivityPropertyValue;
             Assert.Equal(expectedMode, conn.Value);
         }
 
-        public static void TestBasicEventWithEmptyPayload(SmartHomeResponse repo, string accessToken, string correlationToken, string endpointType, string endpointToken, string endpointID)
+        public static void TestBasicEventWithEmptyPayload(SmartHomeResponse repo, string accessToken, string correlationToken, ScopeTypes endpointType, string endpointToken, string endpointID)
         {
             Assert.NotNull(repo.Event);
             Assert.Equal(typeof(Event), repo.Event.GetType());
@@ -42,7 +42,7 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
             Assert.Equal("3",header.PayloadVersion);
         }
 
-        public static void TestEndpointV3(Endpoint endpoint, string type, string token, string endpointId, Dictionary<string,string> Cookie = null)
+        public static void TestEndpointV3(Endpoint endpoint, ScopeTypes type, string token, string endpointId, Dictionary<string,string> Cookie = null)
         {
             Assert.True(endpoint != null);
             Assert.True(endpoint.Scope != null);
@@ -127,7 +127,6 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
 
         private static void CheckCookieDictionary(Dictionary<string, string> Cookie, Dictionary<string, string> endpointCookies)
         {
-            Assert.NotNull(endpointCookies);
             if (Cookie == null)
             {
                 if(endpointCookies != null)
@@ -135,6 +134,7 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
             }
             else
             {
+                Assert.NotNull(endpointCookies);
                 Assert.Equal(Cookie.Count, endpointCookies.Count);
                 foreach (string key in Cookie.Keys)
                 {

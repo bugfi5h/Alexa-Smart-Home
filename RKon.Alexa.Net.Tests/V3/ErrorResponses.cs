@@ -42,12 +42,12 @@ namespace RKon.Alexa.Net.Tests.V3
                 //Context check
                 Assert.Null(responseFromString.Context);
                 //Event Check
-                Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
-                ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+                Assert.Equal(typeof(Event), responseFromString.Event.GetType());
+                Event e = responseFromString.Event as Event;
                 TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
                 Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
                 //Endpoint
-                TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+                TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
                 //Payload
                 Assert.Equal(typeof(ErrorPayload), responseFromString.GetPayloadType());
                 ErrorPayload p = e.Payload as ErrorPayload;
@@ -89,12 +89,12 @@ namespace RKon.Alexa.Net.Tests.V3
             //Context check
             Assert.Null(responseFromString.Context);
             //Event Check
-            Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
-            ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+            Assert.Equal(typeof(Event), responseFromString.Event.GetType());
+            Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
             //Endpoint
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             //Payload
             Assert.Equal(typeof(EndpointLowPowerErrorPayload), responseFromString.GetPayloadType());
             EndpointLowPowerErrorPayload p = e.Payload as EndpointLowPowerErrorPayload;
@@ -146,12 +146,12 @@ namespace RKon.Alexa.Net.Tests.V3
             //Context check
             Assert.Null(responseFromString.Context);
             //Event Check
-            Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
-            ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+            Assert.Equal(typeof(Event), responseFromString.Event.GetType());
+            Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
             //Endpoint
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             //Payload
             Assert.Equal(typeof(TemperatureOutOfRangeErrorPayload), responseFromString.GetPayloadType());
             TemperatureOutOfRangeErrorPayload p = e.Payload as TemperatureOutOfRangeErrorPayload;
@@ -159,10 +159,10 @@ namespace RKon.Alexa.Net.Tests.V3
             Assert.Equal("The requested temperature of -15 is out of range", p.Message);
             Assert.NotNull(p.ValidRange);
             Assert.NotNull(p.ValidRange.MaximumValue);
-            Assert.Equal(15.0, p.ValidRange.MaximumValue.Value);
+            Assert.Equal(30.0, p.ValidRange.MaximumValue.Value);
             Assert.Equal(Scale.CELSIUS, p.ValidRange.MaximumValue.Scale);
             Assert.NotNull(p.ValidRange.MinimumValue);
-            Assert.Equal(30.0, p.ValidRange.MinimumValue.Value);
+            Assert.Equal(15.0, p.ValidRange.MinimumValue.Value);
             Assert.Equal(Scale.CELSIUS, p.ValidRange.MinimumValue.Scale);
         }
         #endregion
@@ -185,17 +185,11 @@ namespace RKon.Alexa.Net.Tests.V3
                     'endpointId': 'endpoint-001'
                 },
                 'payload': {
-                    'type': 'TEMPERATURE_VALUE_OUT_OF_RANGE',
-                    'message': 'The requested temperature of -15 is out of range',
+                    'type': 'VALUE_OUT_OF_RANGE',
+                    'message': 'The color temperature cannot be set to 500',
                     'validRange': {
-                        'minimumValue': {
-                            'value': 15.0,
-                            'scale': 'CELSIUS'
-                        },
-                        'maximumValue': {
-                            'value': 30.0,
-                            'scale': 'CELSIUS'
-                        }
+                        'minimumValue': 1000,
+                        'maximumValue': 10000
                     }
                 }
             }
@@ -209,17 +203,17 @@ namespace RKon.Alexa.Net.Tests.V3
             //Context check
             Assert.Null(responseFromString.Context);
             //Event Check
-            Assert.Equal(typeof(ErrorResponseEvent), responseFromString.Event.GetType());
-            ErrorResponseEvent e = responseFromString.Event as ErrorResponseEvent;
+            Assert.Equal(typeof(Event), responseFromString.Event.GetType());
+            Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
             //Endpoint
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             //Payload
             Assert.Equal(typeof(ValueOutRangeErrorPayload), responseFromString.GetPayloadType());
             ValueOutRangeErrorPayload p = e.Payload as ValueOutRangeErrorPayload;
             Assert.Equal(ErrorTypes.VALUE_OUT_OF_RANGE, p.Type);
-            Assert.Equal("The requested temperature of -15 is out of range", p.Message);
+            Assert.Equal("The color temperature cannot be set to 500", p.Message);
             Assert.NotNull(p.ValidRange);
             Assert.Equal(1000, p.ValidRange.MinimumValue);
             Assert.Equal(10000, p.ValidRange.MaximumValue);

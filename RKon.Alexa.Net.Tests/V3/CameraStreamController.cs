@@ -134,18 +134,18 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_CAMERASTREAMCONTROLLER, HeaderNames.INIT_CAMERA_STREAMS);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(InitializeCameraRequestPayload),requestFromString.GetPayloadType());
             InitializeCameraRequestPayload payload = (requestFromString.Directive.Payload as InitializeCameraRequestPayload);
             Assert.NotNull(payload.CameraStreams);
             Assert.Equal(2, payload.CameraStreams.Count);
-            TestRequestCameraStream(payload.CameraStreams[0], "RTSP", 1920, 1080, "BASIC", "H264", "AAC");
-            TestRequestCameraStream(payload.CameraStreams[1], "RTSP", 1280, 720, "BEARER", "MPEG2", "G711");
+            TestRequestCameraStream(payload.CameraStreams[0], CameraProtocols.RTSP, 1920, 1080, CameraAuthorizationTypes.BEARER, VideoCodecs.H264, AudioCodecs.AAC);
+            TestRequestCameraStream(payload.CameraStreams[1], CameraProtocols.RTSP, 1280, 720, CameraAuthorizationTypes.BEARER, VideoCodecs.MPEG2, AudioCodecs.G711);
         }
 
-        private void TestRequestCameraStream(CameraStream s, string protocol, int width, int height, 
-            string authorizationType, string videoCodec, string audioCodec )
+        private void TestRequestCameraStream(CameraStream s, CameraProtocols protocol, int width, int height, 
+            CameraAuthorizationTypes authorizationType, VideoCodecs videoCodec, AudioCodecs audioCodec )
         {
             Assert.Equal(protocol, s.Protocol);
             Assert.NotNull(s.Resolution);
@@ -166,8 +166,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal(1, responseFromString.Context.Properties.Count);
             // Property 1
             TestFunctionsV3.TestContextProperty(responseFromString.Context.Properties[0], PropertyNames.CONNECTIVITY, Namespaces.ALEXA_ENDPOINTHEALTH, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
-            Assert.Equal(responseFromString.Context.Properties[0].Value.GetType(), typeof(ConnectivityProperty));
-            ConnectivityProperty conn = responseFromString.Context.Properties[0].Value as ConnectivityProperty;
+            Assert.Equal(responseFromString.Context.Properties[0].Value.GetType(), typeof(ConnectivityPropertyValue));
+            ConnectivityPropertyValue conn = responseFromString.Context.Properties[0].Value as ConnectivityPropertyValue;
             Assert.Equal(ConnectivityModes.OK, conn.Value);
             //Event Check
             Assert.NotNull(responseFromString.Event);
@@ -177,16 +177,16 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", responseFromString.Event.Header.CorrelationToken);
             //Endpoint Check
             Event e = responseFromString.Event as Event;
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(ResponseCameraStreamsPayload), responseFromString.GetPayloadType());
             ResponseCameraStreamsPayload payload = responseFromString.Event.Payload as ResponseCameraStreamsPayload;
             Assert.NotNull(payload.CameraStreams);
             Assert.Equal(2, payload.CameraStreams.Count);
             TestResponseCameraStream(payload.CameraStreams[0], "rtsp://username:password@link.to.video:443/feed1.mp4",
-                DateTime.Parse("2017-09-27T20:30:30.45Z"), 30, "RTSP", 1920, 1080, "BASIC", "H264", "AAC");
+                DateTime.Parse("2017-09-27T20:30:30.45Z"), 30, CameraProtocols.RTSP, 1920, 1080, CameraAuthorizationTypes.BASIC, VideoCodecs.H264, AudioCodecs.AAC);
             TestResponseCameraStream(payload.CameraStreams[1], "rtsp://username:password@link.to.video:443/feed2.mp4",
-                DateTime.Parse("2017-09-27T20:30:30.45Z"), 60, "RTSP", 1280, 720, "DIGEST", "MPEG2", "G711");
+                DateTime.Parse("2017-09-27T20:30:30.45Z"), 60, CameraProtocols.RTSP, 1280, 720, CameraAuthorizationTypes.DIGEST, VideoCodecs.MPEG2, AudioCodecs.G711);
             Assert.Equal("https://username:password@link.to.image/image.jpg", payload.ImageURI);
         }
 
@@ -197,23 +197,33 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             SmartHomeResponse response = new SmartHomeResponse(requestFromString.Directive.Header);
             Assert.NotNull(response);
             Assert.Null(response.Context);
+            response.Context = new Context();
+            response.Context.Properties.Add(new Property(Namespaces.ALEXA_ENDPOINTHEALTH,PropertyNames.CONNECTIVITY, new ConnectivityPropertyValue(ConnectivityModes.OK),
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(),200));
             Assert.NotNull(response.Event);
             Assert.Equal(typeof(Event), response.Event.GetType());
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, requestFromString.Directive.Header, Namespaces.ALEXA_CAMERASTREAMCONTROLLER);
             Assert.Null(e.Endpoint);
+            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(ResponseCameraStreamsPayload), response.GetPayloadType());
             ResponseCameraStreamsPayload p = e.Payload as ResponseCameraStreamsPayload;
             Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(response));
             p.CameraStreams = new System.Collections.Generic.List<ResponseCameraStream>();
-            p.ImageURI = "http://test.de/image.img";
+            p.CameraStreams.Add(new ResponseCameraStream("rtsp://username:password@link.to.video:443/feed1.mp4",CameraProtocols.RTSP,
+                new Resolution(1920,1080),CameraAuthorizationTypes.BASIC,VideoCodecs.H264,AudioCodecs.AAC,30,
+                DateTime.Parse("2017-09-27T20:30:30.45Z").ToUniversalTime()));
+            p.CameraStreams.Add(new ResponseCameraStream("rtsp://username:password@link.to.video:443/feed2.mp4", CameraProtocols.RTSP,
+                new Resolution(1280, 720), CameraAuthorizationTypes.DIGEST, VideoCodecs.MPEG2, AudioCodecs.G711,
+                30, DateTime.Parse("2017-09-27T20:30:30.45Z").ToUniversalTime()));
+            p.ImageURI = "https://username:password@link.to.image/image.jpg";
             Assert.NotNull(JsonConvert.SerializeObject(response));
             Util.Util.WriteJsonToConsole("CameraStream", response);
         }
 
         private void TestResponseCameraStream(ResponseCameraStream s, string uri, DateTime expirationTime, int idleTimeout, 
-            string protocol, int width, int height, string authorizationType, string videoCodec, string audioCodec)
+            CameraProtocols protocol, int width, int height, CameraAuthorizationTypes authorizationType, VideoCodecs videoCodec, AudioCodecs audioCodec)
         {
             Assert.Equal(uri, s.URI);
             Assert.Equal(expirationTime.ToUniversalTime(), s.ExpirationTime);

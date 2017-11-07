@@ -15,7 +15,6 @@ namespace RKon.Alexa.NET.Payloads
         /// </summary>
         [JsonProperty("cause")]
         [JsonRequired]
-        [JsonConverter(typeof(StringEnumConverter))]
         public Cause Cause { get; set; }
         /// <summary>
         /// When the activation event occurred.

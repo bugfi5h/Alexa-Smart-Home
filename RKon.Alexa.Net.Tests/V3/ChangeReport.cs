@@ -5,6 +5,8 @@ using RKon.Alexa.NET.Response;
 using RKon.Alexa.NET.Types;
 using System;
 using Xunit;
+using System.Collections.Generic;
+using RKon.Alexa.NET.JsonObjects;
 
 namespace RKon.Alexa.Net.Tests.V3
 {
@@ -67,7 +69,7 @@ namespace RKon.Alexa.Net.Tests.V3
         ";
 
         [Fact]
-        public void ResponseParse_SetBrightness_Test()
+        public void ResponseParse_ChangeReport_Test()
         {
             SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(CHANGE_REPORT);
             //Context check
@@ -85,7 +87,7 @@ namespace RKon.Alexa.Net.Tests.V3
             Assert.Equal(typeof(Event), responseFromString.Event.GetType());
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.CHANGE_REPORT);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, "BearerToken", "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(ChangeReportPayload), e.Payload.GetType());
             ChangeReportPayload p = e.Payload as ChangeReportPayload;
@@ -97,6 +99,46 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestContextProperty(p.Change.Properties[0], PropertyNames.POWER_STATE, Namespaces.ALEXA_POWERCONTROLLER, DateTime.Parse("2017-09-27T18:30:30.45Z"), 200, null);
             Assert.Equal(typeof(PowerStates), p.Change.Properties[0].Value.GetType());
             Assert.Equal(PowerStates.ON, p.Change.Properties[0].Value);
+        }
+
+        [Fact]
+        public void ResponseCreation_ChangeReport_Test()
+        {
+            SmartHomeResponse response = SmartHomeResponse.CreateChangeReportEvent(true);
+            Assert.NotNull(response.Event);
+            Assert.Null(response.Context);
+            response.Context = new Context();
+            Property p1 = new Property(Namespaces.ALEXA_BRIGHTNESSCONTROLLER, PropertyNames.BRIGHTNESS, 85, 
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200);
+            Property p2 = new Property(Namespaces.ALEXA_ENDPOINTHEALTH, PropertyNames.CONNECTIVITY, new ConnectivityPropertyValue(ConnectivityModes.OK),
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200);
+            response.Context.Properties.Add(p1);
+            response.Context.Properties.Add(p2);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            //Header
+            Assert.NotNull(e.Header);
+            Assert.Equal(Namespaces.ALEXA, e.Header.Namespace);
+            Assert.Equal(HeaderNames.CHANGE_REPORT, e.Header.Name);
+            e.Header.MessageId = "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4";
+            //Payload
+            Assert.NotNull(e.Payload);
+            Assert.Equal(typeof(ChangeReportPayload), e.Payload.GetType());
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(response));
+            ChangeReportPayload p = e.Payload as ChangeReportPayload;
+            p.Change = new Change();
+            Assert.Throws<JsonSerializationException>(() => JsonConvert.SerializeObject(response));
+            p.Change.Cause = new Cause(CauseTypes.PHYSICAL_INTERACTION);
+            p.Change.Properties.Add(new Property(Namespaces.ALEXA_POWERCONTROLLER, PropertyNames.POWER_STATE, PowerStates.ON, 
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200));
+            //Endpoint
+            Assert.Null(e.Endpoint);
+            //Diffrent Response
+            SmartHomeResponse responseWithOutPayload = SmartHomeResponse.CreateChangeReportEvent(false);
+            Assert.NotNull(responseWithOutPayload.Event.Payload);
+            Assert.Equal(typeof(Payload), responseWithOutPayload.GetPayloadType());
+            Assert.NotNull(JsonConvert.SerializeObject(response));
+            Util.Util.WriteJsonToConsole("ChangeReport", response);
         }
     }
 }

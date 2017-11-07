@@ -42,5 +42,27 @@ namespace RKon.Alexa.Net.Tests.V3
             DefferedResponsePayload p = e.Payload as DefferedResponsePayload;
             Assert.Equal(20, p.EstimatedDeferralInSeconds);
         }
+
+        [Fact]
+        public void ResponseCreation_DefferedResponse_Test()
+        {
+            SmartHomeResponse response = SmartHomeResponse.CreateDefferedResponse();
+            Assert.Null(response.Context);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            Assert.NotNull(e.Header);
+            Assert.Equal(Namespaces.ALEXA, e.Header.Namespace);
+            Assert.Equal(HeaderNames.DEFFERED_RESPONSE, e.Header.Name);
+            Assert.Null(e.Header.CorrelationToken);
+            Assert.NotNull(e.Header.MessageId);
+            //Payload
+            Assert.NotNull(e.Payload);
+            Assert.Equal(typeof(DefferedResponsePayload), e.Payload.GetType());
+            DefferedResponsePayload p = e.Payload as DefferedResponsePayload;
+            p.EstimatedDeferralInSeconds = 20;
+            Assert.NotNull(JsonConvert.SerializeObject(response));
+            Util.Util.WriteJsonToConsole("Deffered", response);
+        }
     }
 }

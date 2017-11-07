@@ -122,6 +122,7 @@
     <Compile Include="Types\Namespaces.cs" />
     <Compile Include="Types\Propertynames.cs" />
     <Compile Include="Types\Scale.cs" />
+    <Compile Include="Types\ScopeTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -177,13 +177,13 @@
         /// </summary>
         public const string DEACTIVATION_STARTED = "DeactivationStarted";
         /// <summary>
-        /// Header Name for Deactivate for a scene
-        /// </summary>
-        public const string ACTIVATE = "Deactivate";
-        /// <summary>
         /// Header Name for Activate for a scene
         /// </summary>
-        public const string DEACTIVATE = "Activate";
+        public const string ACTIVATE = "Activate";
+        /// <summary>
+        /// Header Name for Deactivate for a scene
+        /// </summary>
+        public const string DEACTIVATE = "Deactivate";
 
 
 

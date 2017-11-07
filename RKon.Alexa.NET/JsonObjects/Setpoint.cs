@@ -21,5 +21,24 @@ namespace RKon.Alexa.NET.JsonObjects
         [JsonProperty("scale")]
         [JsonConverter(typeof(StringEnumConverter))]
         public Scale Scale { get; set; }
+
+        /// <summary>
+        /// Standard constructor
+        /// </summary>
+        public Setpoint()
+        {
+
+        }
+
+        /// <summary>
+        /// Initializes Setpoint
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="scale"></param>
+        public Setpoint(double value, Scale scale)
+        {
+            Value = value;
+            Scale = scale;
+        }
     }
 }

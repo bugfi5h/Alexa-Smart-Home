@@ -90,9 +90,9 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_BRIGHTNESSCONTROLLER, HeaderNames.ADJUST_BRIGHTNESS);
             Assert.Equal(requestFromString.Directive.Header.CorrelationToken, "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==");
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
             //Payload Check
-            Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
+            Assert.Equal(typeof(AdjustBrightnessRequestPayload), requestFromString.GetPayloadType());
             Assert.Equal(-25, (requestFromString.Directive.Payload as AdjustBrightnessRequestPayload).BrightnessDelta);
         }
 
@@ -112,7 +112,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check
             TestFunctionsV3.TestBasicEventWithEmptyPayload(responseFromString, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4",
-                "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", "BearerToken",
+                "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", ScopeTypes.BearerToken,
                  "access-token-from-Amazon", "endpoint-001");
         }
 
@@ -206,10 +206,11 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             //Directive Check
             Assert.NotNull(requestFromString.Directive);
             //Header Check
-            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_BRIGHTNESSCONTROLLER, HeaderNames.SET_BRIGHTNESS);
+            TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_BRIGHTNESSCONTROLLER,
+                HeaderNames.SET_BRIGHTNESS);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "BearerToken", "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
             //Payload Check
             Assert.Equal(typeof(SetBrightnessRequestPayload), requestFromString.GetPayloadType());
             Assert.Equal(75, (requestFromString.Directive.Payload as SetBrightnessRequestPayload).Brightness);
@@ -231,7 +232,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestBasicHealthCheckProperty(responseFromString.Context.Properties[1], ConnectivityModes.OK, DateTime.Parse("2017-09-27T18:30:30.45Z"));
             //Event Check
             TestFunctionsV3.TestBasicEventWithEmptyPayload(responseFromString, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4",
-                "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", "BearerToken",
+                "dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", ScopeTypes.BearerToken,
                  "access-token-from-Amazon", "endpoint-001");
         }
 
@@ -242,12 +243,19 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             SmartHomeResponse response = new SmartHomeResponse(requestFromString.Directive.Header);
             Assert.NotNull(response);
             Assert.Null(response.Context);
+            response.Context = new Context();
+            response.Context.Properties.Add(new Property(Namespaces.ALEXA_BRIGHTNESSCONTROLLER, PropertyNames.BRIGHTNESS, 75,
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200));
+            response.Context.Properties.Add(new Property(Namespaces.ALEXA_ENDPOINTHEALTH, PropertyNames.CONNECTIVITY, new ConnectivityPropertyValue(ConnectivityModes.OK),
+                DateTime.Parse("2017-09-27T18:30:30.45Z").ToUniversalTime(), 200));
             Assert.NotNull(response.Event);
-            Assert.Equal(typeof(Event), response.Event.GetType());
-            Event e = response.Event as Event;
+            Event e = response.Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, requestFromString.Directive.Header);
             Assert.Null(e.Endpoint);
+            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
+            Assert.Equal(typeof(Payload), e.Payload.GetType());
+            Assert.NotNull(JsonConvert.SerializeObject(response));
             Util.Util.WriteJsonToConsole("SetBrightness", response);
         }
         #endregion

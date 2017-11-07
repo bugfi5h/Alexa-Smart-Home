@@ -45,7 +45,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             RequestPayloadWithScope payload = (requestFromString.Directive.Payload as RequestPayloadWithScope);
             Assert.NotNull(payload);
             Assert.NotNull(payload.Scope);
-            Assert.Equal("BearerToken", payload.Scope.Type);
+            Assert.Equal(ScopeTypes.BearerToken, payload.Scope.Type);
             Assert.Equal("access-token-from-skill", payload.Scope.Token);
         }
         #endregion
@@ -729,8 +729,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Event e = responseFromString.Event as Event;
             Assert.Null(e.Endpoint);
             //Payload Check
-            Assert.Equal(typeof(DisoveryPayload), responseFromString.GetPayloadType());
-            DisoveryPayload payload = e.Payload as DisoveryPayload;
+            Assert.Equal(typeof(DiscoveryPayload), responseFromString.GetPayloadType());
+            DiscoveryPayload payload = e.Payload as DiscoveryPayload;
             Assert.NotNull(payload.Endpoints);
             Assert.Equal(10, payload.Endpoints.Count);
             #region Endpoint1
@@ -880,6 +880,35 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestResponseEndpointV3(payload.Endpoints[9], "Sample Manufacturer", "TV", "009 TV that supports various entertainment controllers",
                 "endpoint-009", cookies, capabilities, categories);
             #endregion
+        }
+
+        [Fact]
+        public void ResponseCreation_Discovery_Test()
+        {
+            SmartHomeRequest request = JsonConvert.DeserializeObject<SmartHomeRequest>(DISCOVERY_REQUEST);
+            SmartHomeResponse response = new SmartHomeResponse(request.Directive.Header);
+            Assert.Null(response.Context);
+            Assert.NotNull(response.Event);
+            Assert.Equal(typeof(Event), response.Event.GetType());
+            Event e = response.Event as Event;
+            TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header, Namespaces.ALEXA_DISCOVERY, HeaderNames.DISCOVERY_RESPONSE);
+            Assert.NotNull(e.Payload);
+            Assert.Null(e.Endpoint);
+            Assert.Equal(typeof(DiscoveryPayload), e.Payload.GetType());
+            DiscoveryPayload p = e.Payload as DiscoveryPayload;
+            Assert.NotNull(p.Endpoints);
+            Dictionary<string, string> cookies = new Dictionary<string, string>()
+            {
+                { "detail1","For simplicity, this is the only appliance" }
+            };
+            List<DisplayCategory> categories = new List<DisplayCategory>() { DisplayCategory.SWITCH };
+            List<Capability> capabilities = new List<Capability>();
+            capabilities.Add(new AlexaInterface("Alexa","3",null,null,null,null));
+            capabilities.Add(new AlexaInterface(Namespaces.ALEXA_POWERCONTROLLER, "3", new List<string>() { PropertyNames.POWER_STATE }, true, true));
+            capabilities.Add(new AlexaInterface(Namespaces.ALEXA_ENDPOINTHEALTH, "3", new List<string>() { PropertyNames.CONNECTIVITY }, true, true));
+            p.Endpoints.Add(new ResponseEndpoint("endpoint-001","Sample Manufacturer","Switch","001 Switch",cookies,categories,capabilities));
+            Assert.NotNull(JsonConvert.SerializeObject(response));
+            Util.Util.WriteJsonToConsole("DiscoveryResponse", response);
         }
         #endregion
     }

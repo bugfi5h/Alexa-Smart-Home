@@ -15,5 +15,21 @@ namespace RKon.Alexa.NET.JsonObjects
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CauseTypes Type { get; set; }
+
+        /// <summary>
+        /// Standartconstructor
+        /// </summary>
+        public Cause()
+        {
+        }
+
+        /// <summary>
+        /// Initializes Cause
+        /// </summary>
+        /// <param name="type"></param>
+        public Cause(CauseTypes type)
+        {
+            Type = type;
+        }
     }
 }

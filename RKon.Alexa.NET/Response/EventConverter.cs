@@ -51,10 +51,21 @@ namespace RKon.Alexa.NET.Response
                     {
                         e.Payload = new Payload();
                     }
-                }
-                if (name == HeaderNames.DEFFERED_RESPONSE)
+                }else if (name == HeaderNames.DEFFERED_RESPONSE)
                 {
                     e.Payload = new DefferedResponsePayload();
+                }else if(name == HeaderNames.ERROR_RESPONSE)
+                {
+                    string type = jObject["payload"]?["type"]?.Value<string>();
+                    ErrorTypes enumType;
+                    if (Enum.TryParse(type, out enumType))
+                    {
+                        e.Payload = e._GetPayloadForErrorType(enumType);
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("Can not parse ErrorType");
+                    }
                 }
                 else
                 {

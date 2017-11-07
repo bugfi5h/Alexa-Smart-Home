@@ -39,5 +39,32 @@ namespace RKon.Alexa.NET.JsonObjects
         /// </summary>
         [JsonProperty("customName",NullValueHandling = NullValueHandling.Ignore)]
         public string CustomName { get; set; }
+
+        /// <summary>
+        /// Standartconstructor
+        /// </summary>
+        public Property()
+        {
+
+        }
+
+        /// <summary>
+        /// Initialises Property
+        /// </summary>
+        /// <param name="nameSpace"></param>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <param name="timeOfSample"></param>
+        /// <param name="uncertainty"></param>
+        /// <param name="customName">Is needed, if Calue is set to CUSTOM</param>
+        public Property(string nameSpace, string name, object value, DateTime timeOfSample, int uncertainty, string customName = null)
+        {
+            Namespace = nameSpace;
+            Name = name;
+            Value = value;
+            TimeOfSample = timeOfSample;
+            UncertaintyInMilliseconds = uncertainty;
+            CustomName = customName;
+        }
     }
 }

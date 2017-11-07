@@ -7,7 +7,7 @@ namespace RKon.Alexa.NET.Payloads
     /// <summary>
     /// Discoverypayload for response event
     /// </summary>
-    public class DisoveryPayload : Payload
+    public class DiscoveryPayload : Payload
     {
         /// <summary>
         /// Discovered Endpoints
@@ -19,7 +19,7 @@ namespace RKon.Alexa.NET.Payloads
         /// <summary>
         /// Standartconstructor
         /// </summary>
-        public DisoveryPayload()
+        public DiscoveryPayload()
         {
             Endpoints = new List<ResponseEndpoint>();
         }
