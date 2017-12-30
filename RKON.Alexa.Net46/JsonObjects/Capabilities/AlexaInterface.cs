@@ -25,16 +25,6 @@ namespace RKon.Alexa.NET46.JsonObjects
         /// </summary>
         [JsonProperty("properties", NullValueHandling =NullValueHandling.Ignore)]
         public Properties Properties { get; set; }
-        /// <summary>
-        /// Indicates whether the properties listed for this endpoint generate Change.Report events.
-        /// </summary>
-        [JsonProperty("proactivelyReported", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? ProactivelyReported { get; set; }
-        /// <summary>
-        /// Indicates whether the properties listed for this endpoint can be retrieved for state reporting.
-        /// </summary>
-        [JsonProperty("retrievable",NullValueHandling =NullValueHandling.Ignore)]
-        public bool? Retrieveable { get; set; }
 
         /// <summary>
         /// An array of cameraStream structures that provide information about the stream.
