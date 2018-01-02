@@ -74,6 +74,8 @@ namespace RKon.Alexa.NET.Request
         {
             switch (requestType)
             {
+                case HeaderNames.ACCEPT_GRANT:
+                    return new AcceptGrantRequestPayload();
                 case HeaderNames.DISCOVERY_REQUEST:
                     return new RequestPayloadWithScope();
                 case HeaderNames.SET_POWER_LEVEL:

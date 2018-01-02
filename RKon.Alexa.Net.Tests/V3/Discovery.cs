@@ -742,9 +742,9 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             };
             List<Capability> capabilities = new List<Capability>()
             {
-                new AlexaInterface("Alexa","3",null,null,null),
-                new AlexaInterface("Alexa.PowerController", "3", new List<string>() {"powerState"},true,true),
-                new AlexaInterface("Alexa.EndpointHealth", "3", new List<string>() {"connectivity"},true,true)
+                new AlexaInterface("Alexa","3",null, null, null),
+                new AlexaInterface("Alexa.PowerController", "3", new List<string>() {"powerState"}, true, true),
+                new AlexaInterface("Alexa.EndpointHealth", "3", new List<string>() {"connectivity"}, true, true)
             };
             TestFunctionsV3.TestResponseEndpointV3(payload.Endpoints[0], "Sample Manufacturer", "Switch", "001 Switch that can only be turned on/off",
                 "endpoint-001", cookies, capabilities, categories);

@@ -137,6 +137,7 @@ namespace RKon.Alexa.NET.Response
                 case Namespaces.ALEXA_THERMOSTATCONTROLLER:
                 case Namespaces.ALEXA_TEMPERATURESENSOR:
                 case Namespaces.ALEXA_PERCENTAGECONTROLLER:
+                case Namespaces.ALEXA_AUTHORIZATION:
                     return new Payload();
                 default:
                     throw new UnknownHeaderException(_namespace);

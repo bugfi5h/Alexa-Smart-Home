@@ -46,9 +46,9 @@ namespace RKon.Alexa.NET.JsonObjects
         /// <param name="version"></param>
         /// <param name="propertyNames"></param>
         /// <param name="proactivelyReported"></param>
-        /// <param name="retrieveable"></param>
-        /// /// <param name="cameraStreamConfiguration"></param>
-        public AlexaInterface(string interfaceName, string version, List<string> propertyNames, bool? proactivelyReported, bool? retrieveable, List<CameraStreamConfigurations> cameraStreamConfiguration = null)
+        /// <param name="retrievable"></param>
+        /// <param name="cameraStreamConfiguration"></param>
+        public AlexaInterface(string interfaceName, string version, List<string> propertyNames, bool? proactivelyReported, bool? retrievable, List<CameraStreamConfigurations> cameraStreamConfiguration = null)
         {
             Type = Types.CapabilitiyTypes.AlexaInterface;
             Interface = interfaceName;
@@ -60,9 +60,9 @@ namespace RKon.Alexa.NET.JsonObjects
                 {
                     Properties.Supported.Add(new Supported(propertyName));
                 }
+                Properties.ProactivelyReported = proactivelyReported;
+                Properties.Retrieveable = retrievable;
             }
-            ProactivelyReported = proactivelyReported;
-            Retrieveable = retrieveable;
             CameraStreamConfiguration = cameraStreamConfiguration;
         }
     }

@@ -80,20 +80,6 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
                     AlexaInterface endpointAlexaInterface = endpointCapability as AlexaInterface;
                     Assert.Equal(alexaInterface.Interface, endpointAlexaInterface.Interface);
                     Assert.Equal(alexaInterface.Version, endpointAlexaInterface.Version);
-                    if(alexaInterface.Retrieveable != null)
-                    {
-                        Assert.Equal(alexaInterface.Retrieveable, endpointAlexaInterface.Retrieveable);
-                    }else
-                    {
-                        Assert.Null(endpointAlexaInterface.Retrieveable);
-                    }
-                    if(alexaInterface.ProactivelyReported != null)
-                    {
-                        Assert.Equal(alexaInterface.ProactivelyReported, endpointAlexaInterface.ProactivelyReported);
-                    }else
-                    {
-                        Assert.Null(endpointAlexaInterface.ProactivelyReported);
-                    }
                     if(alexaInterface.Properties != null)
                     {
                         Assert.Equal(alexaInterface.Properties.Supported.Count, endpointAlexaInterface.Properties.Supported.Count);
@@ -101,7 +87,24 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
                         {
                             Assert.Equal(alexaInterface.Properties.Supported[i].Name, endpointAlexaInterface.Properties.Supported[i].Name);
                         }
-                    }else
+                        if (alexaInterface.Properties.Retrieveable != null)
+                        {
+                            Assert.Equal(alexaInterface.Properties.Retrieveable, endpointAlexaInterface.Properties.Retrieveable);
+                        }
+                        else
+                        {
+                            Assert.Null(endpointAlexaInterface.Properties.Retrieveable);
+                        }
+                        if (alexaInterface.Properties.ProactivelyReported != null)
+                        {
+                            Assert.Equal(alexaInterface.Properties.ProactivelyReported, endpointAlexaInterface.Properties.ProactivelyReported);
+                        }
+                        else
+                        {
+                            Assert.Null(endpointAlexaInterface.Properties.ProactivelyReported);
+                        }
+                    }
+                    else
                     {
                         Assert.Null(endpointAlexaInterface.Properties);
                     }

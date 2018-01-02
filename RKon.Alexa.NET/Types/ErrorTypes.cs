@@ -105,6 +105,13 @@ namespace RKon.Alexa.NET.Types
         /// <summary>
         /// You cannot set the value because it may cause damage to the device or appliance.
         /// </summary>
-        UNWILLING_TO_SET_VALUE
+        UNWILLING_TO_SET_VALUE,
+        /// <summary>
+        /// If an error occurs for one of the following reasons, you should return an ACCEPT_GRANT_FAILED error type with a message that describes the error in more detail.
+        ///   You were unable to call Login with Amazon to exchange the authorization code for access and refresh tokens
+        ///  You were trying to store the access and refresh tokens for the customer, but were unable to complete the operation for some reason
+        ///  Any other errors that occurred while trying to retrieve and store the access and refresh tokens
+        /// </summary>
+        ACCEPT_GRANT_FAILED
     }
 }

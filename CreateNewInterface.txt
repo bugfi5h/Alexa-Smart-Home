@@ -1,0 +1,11 @@
+Add new Interface:
+
+1. Add const variables for header names and namepaces.
+2. Create Request Payload which implements Payload. In Payloads->Request
+2.5 Add new JsonObjects if necessary
+3. Add new case in CreateV3Payload in the class SmartHomeRequestConverter.cs
+4. Create Response Payload if necessary
+5. Edit _getNamespace and _GetName in EventHeader
+6. Edit _GetPayloadForEvent in Event.cs
+7. Add New Error_Type if necessary
+8. Edit _GetPayloadForErrorType in Event if necessary

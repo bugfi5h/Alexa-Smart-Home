@@ -82,5 +82,9 @@ namespace RKon.Alexa.NET46.Types
         /// Header Namespace for SceneController
         /// </summary>
         public const string ALEXA_SCENECONTROLLER = "Alexa.SceneController";
+        /// <summary>
+        /// Header Namespace for AuthorizationController
+        /// </summary>
+        public const string ALEXA_AUTHORIZATION = "Alexa.Authorization";
     }
 }

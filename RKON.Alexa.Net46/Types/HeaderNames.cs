@@ -184,7 +184,14 @@
         /// Header Name for Deactivate for a scene
         /// </summary>
         public const string DEACTIVATE = "Deactivate";
-
+        /// <summary>
+        /// Header Name for Accept Grant
+        /// </summary>
+        public const string ACCEPT_GRANT = "AcceptGrant";
+        /// <summary>
+        /// Header Name for Accept Grant Response
+        /// </summary>
+        public const string ACCEPT_GRANT_RESPONSE = "AcceptGrant.Response";
 
 
 

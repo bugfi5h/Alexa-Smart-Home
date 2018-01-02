@@ -92,6 +92,9 @@ namespace RKon.Alexa.NET46.Response
             }else if(reqHeader.Namespace == Namespaces.ALEXA_SCENECONTROLLER)
             {
                 name_space = Namespaces.ALEXA_SCENECONTROLLER;
+            }else if(reqHeader.Namespace == Namespaces.ALEXA_AUTHORIZATION)
+            {
+                name_space = Namespaces.ALEXA_AUTHORIZATION;
             }
             return name_space;
         }
@@ -117,6 +120,10 @@ namespace RKon.Alexa.NET46.Response
             if (reqHeader.Name == HeaderNames.DISCOVERY_REQUEST)
             {
                 name = HeaderNames.DISCOVERY_RESPONSE;
+            }
+            if(reqHeader.Name == HeaderNames.ACCEPT_GRANT)
+            {
+                name = HeaderNames.ACCEPT_GRANT_RESPONSE;
             }
             return name;
         }
