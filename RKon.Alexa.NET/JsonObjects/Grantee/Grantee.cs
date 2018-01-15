@@ -3,11 +3,12 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
-namespace RKon.Alexa.NET.JsonObjects
+namespace RKon.Alexa.NET.JsonObjects.Grantee
 {
     /// <summary>
     ///  	A polymorphic type that provides identifying information for a customer in a linked account service or system.
     /// </summary>
+    [JsonConverter(typeof(GranteeConverter))]
     public class Grantee
     {
         /// <summary>
@@ -15,6 +16,6 @@ namespace RKon.Alexa.NET.JsonObjects
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ScopeTypes Type { get; set; }
+        public GranteeTypes Type { get; set; }
     }
 }

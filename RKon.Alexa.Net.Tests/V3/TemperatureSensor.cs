@@ -26,8 +26,10 @@ namespace RKon.Alexa.Net.Tests.V3
               'endpointId': 'appliance-001',
               'cookie': {},
               'scope':{  
-                    'type':'BearerToken',
-                    'token':'some-access-token'
+                    'type': 'BearerTokenWithPartition',
+                    'token': 'some-access-token',
+                    'partition': 'Room101',
+                    'userId':'some-user-id'
               }
             },
             'payload': {
@@ -46,7 +48,8 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.REPORT_STATE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "some-access-token", "appliance-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "appliance-001");
+            TestFunctionsV3.TestBearerTokenWithPartitionV3(requestFromString.Directive.Endpoint.Scope, "some-access-token", "Room101", "some-user-id");
             //Payload Check
             Assert.NotNull(requestFromString.Directive.Payload);
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
@@ -120,7 +123,8 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.STATE_REPORT);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope,"access-token-from-Amazon");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(Payload), responseFromString.GetPayloadType());
         }
@@ -145,7 +149,7 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header, headerName: HeaderNames.STATE_REPORT);
             Assert.Null(e.Endpoint);
-            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            e.Endpoint = new Endpoint("endpoint-001", new NET.JsonObjects.Scopes.BearerToken("access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(Payload), response.GetPayloadType());
             Assert.NotNull(JsonConvert.SerializeObject(response));

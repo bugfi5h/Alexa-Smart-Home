@@ -49,6 +49,7 @@
     <Compile Include="JsonObjects\CameraStreamConfigurations.cs" />
     <Compile Include="JsonObjects\Capabilities\AlexaInterface.cs" />
     <Compile Include="JsonObjects\Capabilities\Capability.cs" />
+    <Compile Include="JsonObjects\Capabilities\CapabilityConverter.cs" />
     <Compile Include="JsonObjects\Cause.cs" />
     <Compile Include="JsonObjects\Change.cs" />
     <Compile Include="JsonObjects\Channel.cs" />
@@ -57,13 +58,21 @@
     <Compile Include="JsonObjects\ColorTemperature.cs" />
     <Compile Include="JsonObjects\ConnectivityProperty.cs" />
     <Compile Include="JsonObjects\Endpoint.cs" />
+    <Compile Include="JsonObjects\Grant.cs" />
+    <Compile Include="JsonObjects\Grantee\BearerToken.cs" />
+    <Compile Include="JsonObjects\Grantee\Grantee.cs" />
+    <Compile Include="JsonObjects\Grantee\GranteeConverter.cs" />
+    <Compile Include="JsonObjects\OAuth2AuthorizationCode.cs" />
     <Compile Include="JsonObjects\Properties.cs" />
     <Compile Include="JsonObjects\Property.cs" />
     <Compile Include="JsonObjects\PropertyConverter.cs" />
     <Compile Include="JsonObjects\Resolution.cs" />
     <Compile Include="JsonObjects\ResponseCameraStream.cs" />
     <Compile Include="JsonObjects\ResponseEndpoint.cs" />
-    <Compile Include="JsonObjects\Scope.cs" />
+    <Compile Include="JsonObjects\Scopes\BearerToken.cs" />
+    <Compile Include="JsonObjects\Scopes\BearerTokenWithPartition.cs" />
+    <Compile Include="JsonObjects\Scopes\Scope.cs" />
+    <Compile Include="JsonObjects\Scopes\ScopeConverter.cs" />
     <Compile Include="JsonObjects\Setpoint.cs" />
     <Compile Include="JsonObjects\Supported.cs" />
     <Compile Include="JsonObjects\TemperatureValidRange.cs" />
@@ -77,6 +86,7 @@
     <Compile Include="Payloads\ErrorResponse\TemperatureOutOfRangeErrorPayload.cs" />
     <Compile Include="Payloads\ErrorResponse\ValueOutRangeErrorPayload.cs" />
     <Compile Include="Payloads\Payload.cs" />
+    <Compile Include="Payloads\Request\AcceptGrantRequestPayload.cs" />
     <Compile Include="Payloads\Request\AdjustBrightnessRequestPayload.cs" />
     <Compile Include="Payloads\Request\AdjustPercentageRequestPayload.cs" />
     <Compile Include="Payloads\Request\AdjustPowerLevelRequestPayload.cs" />
@@ -121,6 +131,8 @@
     <Compile Include="Types\DeviceModes.cs" />
     <Compile Include="Types\DisplayCategories.cs" />
     <Compile Include="Types\ErrorTypes.cs" />
+    <Compile Include="Types\GranteeTypes.cs" />
+    <Compile Include="Types\GrantTypes.cs" />
     <Compile Include="Types\HeaderNames.cs" />
     <Compile Include="Types\Namespaces.cs" />
     <Compile Include="Types\Propertynames.cs" />

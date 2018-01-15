@@ -1,4 +1,4 @@
-﻿namespace RKon.Alexa.NET.Types
+﻿namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// Valid Types for Grants

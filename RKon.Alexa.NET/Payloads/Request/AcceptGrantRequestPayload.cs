@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.JsonObjects.Grantee;
 
 namespace RKon.Alexa.NET.Payloads
 {

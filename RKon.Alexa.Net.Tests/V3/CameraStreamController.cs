@@ -134,7 +134,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_CAMERASTREAMCONTROLLER, HeaderNames.INIT_CAMERA_STREAMS);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope, "access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(InitializeCameraRequestPayload),requestFromString.GetPayloadType());
             InitializeCameraRequestPayload payload = (requestFromString.Directive.Payload as InitializeCameraRequestPayload);
@@ -177,7 +178,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", responseFromString.Event.Header.CorrelationToken);
             //Endpoint Check
             Event e = responseFromString.Event as Event;
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope,  "access-token-from-Amazon");
             //Payload Check
             Assert.Equal(typeof(ResponseCameraStreamsPayload), responseFromString.GetPayloadType());
             ResponseCameraStreamsPayload payload = responseFromString.Event.Payload as ResponseCameraStreamsPayload;
@@ -205,7 +207,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, requestFromString.Directive.Header, Namespaces.ALEXA_CAMERASTREAMCONTROLLER);
             Assert.Null(e.Endpoint);
-            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            e.Endpoint = new Endpoint("endpoint-001", new NET.JsonObjects.Scopes.BearerToken("access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(ResponseCameraStreamsPayload), response.GetPayloadType());
             ResponseCameraStreamsPayload p = e.Payload as ResponseCameraStreamsPayload;

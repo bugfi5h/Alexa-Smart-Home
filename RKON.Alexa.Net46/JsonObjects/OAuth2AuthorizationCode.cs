@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using RKon.Alexa.NET.Types;
+using RKon.Alexa.NET46.Types;
 
-namespace RKon.Alexa.NET.JsonObjects
+namespace RKon.Alexa.NET46.JsonObjects
 {
     /// <summary>
     /// The only supported descendant for grant is type OAuth2.AuthorizationCode, which provides a code property that specifies an OAuth2 authorization code.

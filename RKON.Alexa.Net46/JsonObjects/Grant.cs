@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RKon.Alexa.NET.JsonObjects
+namespace RKon.Alexa.NET46.JsonObjects
 {
     /// <summary>
     ///  	A polymorphic type that provides identifying information for a customer in Amazon Alexa systems.

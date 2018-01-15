@@ -1,4 +1,5 @@
 ﻿using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.JsonObjects.Scopes;
 using RKon.Alexa.NET.Payloads;
 using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Response;
@@ -28,7 +29,8 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
             Assert.Equal(correlationToken, repo.Event.Header.CorrelationToken);
             //Endpoint Check
             Event e = repo.Event as Event;
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, endpointType, endpointToken, endpointID);
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, endpointID);
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, endpointToken);
             //Payload Check
             Assert.Equal(typeof(Payload), repo.GetPayloadType());
         }
@@ -42,14 +44,36 @@ namespace RKon.Alexa.Net.Tests.V3.TestFunctions
             Assert.Equal("3",header.PayloadVersion);
         }
 
-        public static void TestEndpointV3(Endpoint endpoint, ScopeTypes type, string token, string endpointId, Dictionary<string,string> Cookie = null)
+        public static void TestEndpointV3(Endpoint endpoint, string endpointId, Dictionary<string,string> Cookie = null)
         {
             Assert.True(endpoint != null);
             Assert.True(endpoint.Scope != null);
-            Assert.Equal(type,endpoint.Scope.Type);
-            Assert.Equal(token,endpoint.Scope.Token);
             Assert.Equal(endpointId,endpoint.EndpointID);
             CheckCookieDictionary(Cookie, endpoint.Cookie);
+        }
+
+        private static void TestScope(Scope scope, ScopeTypes expected)
+        {
+            Assert.NotNull(scope);
+            Assert.Equal(expected, scope.Type);
+        }
+
+        public static void TestBearerTokenV3(Scope scope, string expectedToken)
+        {
+            TestScope(scope, ScopeTypes.BearerToken);
+            Assert.True(scope is BearerToken);
+            BearerToken token = scope as BearerToken;
+            Assert.Equal(expectedToken, token.Token);
+        }
+
+        internal static void TestBearerTokenWithPartitionV3(Scope scope, string expectedToken, string partition, string user)
+        {
+            TestScope(scope, ScopeTypes.BearerTokenWithPartition);
+            Assert.True(scope is BearerTokenWithPartition);
+            BearerTokenWithPartition token = scope as BearerTokenWithPartition;
+            Assert.Equal(expectedToken, token.Token);
+            Assert.Equal(partition, token.Partition);
+            Assert.Equal(user, token.UserId);
         }
 
         public static void TestResponseEndpointV3(ResponseEndpoint endpoint, string manufacturer, string friendlyName, 

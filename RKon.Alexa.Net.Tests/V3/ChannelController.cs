@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.Net.Tests.V3.TestFunctions;
 using RKon.Alexa.NET.JsonObjects;
+using RKon.Alexa.NET.JsonObjects.Scopes;
 using RKon.Alexa.NET.Payloads;
 using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Response;
@@ -57,7 +58,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_CHANNELCONTROLLER, HeaderNames.CHANGE_CHANNEL);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==",requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope, "access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(ChangeChannelRequestPayload),requestFromString.GetPayloadType());
             ChangeChannelRequestPayload payload = (requestFromString.Directive.Payload as ChangeChannelRequestPayload);
@@ -110,7 +112,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_CHANNELCONTROLLER, HeaderNames.SKIP_CHANNELS);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken );
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope, "access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(SkipChannelRequestPayload), requestFromString.GetPayloadType());
             SkipChannelRequestPayload payload = (requestFromString.Directive.Payload as SkipChannelRequestPayload);
@@ -211,7 +214,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header);
             Assert.Null(e.Endpoint);
-            Scope s = new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon");
+            Scope s = new NET.JsonObjects.Scopes.BearerToken("access-token-from-Amazon");
             e.Endpoint = new Endpoint("endpoint-001", s);
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(Payload), e.Payload.GetType());

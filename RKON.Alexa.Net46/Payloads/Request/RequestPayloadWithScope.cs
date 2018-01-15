@@ -1,6 +1,6 @@
 ﻿
 using Newtonsoft.Json;
-using RKon.Alexa.NET46.JsonObjects;
+using RKon.Alexa.NET46.JsonObjects.Scopes;
 
 namespace RKon.Alexa.NET46.Payloads
 {

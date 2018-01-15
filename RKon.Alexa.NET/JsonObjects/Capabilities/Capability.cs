@@ -7,6 +7,7 @@ namespace RKon.Alexa.NET.JsonObjects
     /// <summary>
     /// A capability is a polymorphic type. Currently, AlexaInterface is the only supported type of capability.
     /// </summary>
+    [JsonConverter(typeof(Capabilities.CapabilityConverter))]
     public class Capability
     {
         /// <summary>

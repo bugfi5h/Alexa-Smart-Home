@@ -46,7 +46,8 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.ACTIVATE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope,  "access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
         }
@@ -107,7 +108,8 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.ACTIVATION_STARTED);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, "access-token-from-Amazon");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(SceneStartedResponsePayload), responseFromString.GetPayloadType());
             SceneStartedResponsePayload p = e.Payload as SceneStartedResponsePayload;
@@ -132,7 +134,7 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header,Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.ACTIVATION_STARTED);
             Assert.Null(e.Endpoint);
-            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            e.Endpoint = new Endpoint("endpoint-001", new NET.JsonObjects.Scopes.BearerToken("access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(SceneStartedResponsePayload), response.GetPayloadType());
             SceneStartedResponsePayload p = response.Event.Payload as SceneStartedResponsePayload;
@@ -178,7 +180,8 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.DEACTIVATE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope,"access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(Payload), requestFromString.GetPayloadType());
         }
@@ -239,7 +242,8 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.DEACTIVATION_STARTED);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope ,"access-token-from-Amazon");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(SceneStartedResponsePayload), responseFromString.GetPayloadType());
             SceneStartedResponsePayload p = e.Payload as SceneStartedResponsePayload;
@@ -264,7 +268,7 @@ namespace RKon.Alexa.Net.Tests.V3
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header, Namespaces.ALEXA_SCENECONTROLLER, HeaderNames.DEACTIVATION_STARTED);
             Assert.Null(e.Endpoint);
-            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            e.Endpoint = new Endpoint("endpoint-001", new NET.JsonObjects.Scopes.BearerToken("access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(SceneStartedResponsePayload), response.GetPayloadType());
             SceneStartedResponsePayload p = response.Event.Payload as SceneStartedResponsePayload;

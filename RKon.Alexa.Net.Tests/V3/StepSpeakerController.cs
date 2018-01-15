@@ -48,7 +48,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_STEPSPEAKER, HeaderNames.ADJUST_VOLUME);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope, "access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(StepSpeakerAdjustVolumeRequestPayload), requestFromString.GetPayloadType());
             StepSpeakerAdjustVolumeRequestPayload payload = (requestFromString.Directive.Payload as StepSpeakerAdjustVolumeRequestPayload);
@@ -93,7 +94,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             TestFunctionsV3.TestHeaderV3(requestFromString.Directive.Header, "1bd5d003-31b9-476f-ad03-71d471922820", Namespaces.ALEXA_STEPSPEAKER, HeaderNames.SET_MUTE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", requestFromString.Directive.Header.CorrelationToken);
             //Endpoint Check
-            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, ScopeTypes.BearerToken, "access-token-from-skill", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(requestFromString.Directive.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(requestFromString.Directive.Endpoint.Scope, "access-token-from-skill");
             //Payload Check
             Assert.Equal(typeof(SetMuteRequestPayload), requestFromString.GetPayloadType());
             SetMuteRequestPayload payload = (requestFromString.Directive.Payload as SetMuteRequestPayload);
@@ -170,7 +172,7 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Event e = response.Event as Event;
             TestFunctionsV3.CheckResponseCreatedBaseHeader(e.Header, request.Directive.Header);
             Assert.Null(e.Endpoint);
-            e.Endpoint = new Endpoint("endpoint-001", new Scope(ScopeTypes.BearerToken, "access-token-from-Amazon"));
+            e.Endpoint = new Endpoint("endpoint-001", new NET.JsonObjects.Scopes.BearerToken("access-token-from-Amazon"));
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(Payload), response.GetPayloadType());
             Assert.NotNull(JsonConvert.SerializeObject(response));

@@ -87,7 +87,8 @@ namespace RKon.Alexa.Net.Tests.V3
             Assert.Equal(typeof(Event), responseFromString.Event.GetType());
             Event e = responseFromString.Event as Event;
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.CHANGE_REPORT);
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, "access-token-from-Amazon");
             Assert.NotNull(e.Payload);
             Assert.Equal(typeof(ChangeReportPayload), e.Payload.GetType());
             ChangeReportPayload p = e.Payload as ChangeReportPayload;

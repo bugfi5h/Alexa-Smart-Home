@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RKon.Alexa.NET.JsonObjects.Scopes;
 using System.Collections.Generic;
 
 namespace RKon.Alexa.NET.JsonObjects

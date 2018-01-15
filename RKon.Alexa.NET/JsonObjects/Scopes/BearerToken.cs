@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 using RKon.Alexa.NET.Types;
 
-namespace RKon.Alexa.NET.JsonObjects
+namespace RKon.Alexa.NET.JsonObjects.Scopes
 {
     /// <summary>
-    /// Currently, the only supported descendant is the BearerToken type. BearerToken contains a single attribute, token, which contains the customer access token received by Alexa from the account linking process and identifies the customer in your system.
+    /// Scope Type BearerToken
     /// </summary>
-    public class BearerToken : Grantee
+    public class BearerToken : Scope
     {
         /// <summary>
         /// The access Token
@@ -16,11 +16,20 @@ namespace RKon.Alexa.NET.JsonObjects
         public string Token { get; set; }
 
         /// <summary>
-        /// Basic construcotr. Sets Type to scopetype
+        /// Basic Constructor
         /// </summary>
         public BearerToken()
         {
             Type = ScopeTypes.BearerToken;
+        }
+        /// <summary>
+        /// Initializes Scope
+        /// </summary>
+        /// <param name="token"></param>
+        public BearerToken(string token)
+        {
+            Type = ScopeTypes.BearerToken;
+            Token = token;
         }
     }
 }

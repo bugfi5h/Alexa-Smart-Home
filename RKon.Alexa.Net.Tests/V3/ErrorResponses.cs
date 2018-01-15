@@ -38,21 +38,22 @@ namespace RKon.Alexa.Net.Tests.V3
         [Fact]
         public void TestGeneralErrorResponse()
         {
-                SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(GENERAL_ERROR);
-                //Context check
-                Assert.Null(responseFromString.Context);
-                //Event Check
-                Assert.Equal(typeof(Event), responseFromString.Event.GetType());
-                Event e = responseFromString.Event as Event;
-                TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
-                Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
-                //Endpoint
-                TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
-                //Payload
-                Assert.Equal(typeof(ErrorPayload), responseFromString.GetPayloadType());
-                ErrorPayload p = e.Payload as ErrorPayload;
-                Assert.Equal(ErrorTypes.ENDPOINT_UNREACHABLE, p.Type);
-                Assert.Equal("Unable to reach endpoint-001 because it appears to be offline", p.Message);
+            SmartHomeResponse responseFromString = JsonConvert.DeserializeObject<SmartHomeResponse>(GENERAL_ERROR);
+            //Context check
+            Assert.Null(responseFromString.Context);
+            //Event Check
+            Assert.Equal(typeof(Event), responseFromString.Event.GetType());
+            Event e = responseFromString.Event as Event;
+            TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
+            Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
+            //Endpoint
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, "access-token-from-Amazon");
+            //Payload
+            Assert.Equal(typeof(ErrorPayload), responseFromString.GetPayloadType());
+            ErrorPayload p = e.Payload as ErrorPayload;
+            Assert.Equal(ErrorTypes.ENDPOINT_UNREACHABLE, p.Type);
+            Assert.Equal("Unable to reach endpoint-001 because it appears to be offline", p.Message);
         }
         #endregion
         #region EndpointLowPower
@@ -94,7 +95,8 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
             //Endpoint
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, "access-token-from-Amazon");
             //Payload
             Assert.Equal(typeof(EndpointLowPowerErrorPayload), responseFromString.GetPayloadType());
             EndpointLowPowerErrorPayload p = e.Payload as EndpointLowPowerErrorPayload;
@@ -151,7 +153,8 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
             //Endpoint
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, "access-token-from-Amazon");
             //Payload
             Assert.Equal(typeof(TemperatureOutOfRangeErrorPayload), responseFromString.GetPayloadType());
             TemperatureOutOfRangeErrorPayload p = e.Payload as TemperatureOutOfRangeErrorPayload;
@@ -208,7 +211,8 @@ namespace RKon.Alexa.Net.Tests.V3
             TestFunctionsV3.TestHeaderV3(e.Header, "5f8a426e-01e4-4cc9-8b79-65f8bd0fd8a4", Namespaces.ALEXA, HeaderNames.ERROR_RESPONSE);
             Assert.Equal("dFMb0z+PgpgdDmluhJ1LddFvSqZ/jCc8ptlAKulUj90jSqg==", e.Header.CorrelationToken);
             //Endpoint
-            TestFunctionsV3.TestEndpointV3(e.Endpoint, ScopeTypes.BearerToken, "access-token-from-Amazon", "endpoint-001");
+            TestFunctionsV3.TestEndpointV3(e.Endpoint, "endpoint-001");
+            TestFunctionsV3.TestBearerTokenV3(e.Endpoint.Scope, "access-token-from-Amazon");
             //Payload
             Assert.Equal(typeof(ValueOutRangeErrorPayload), responseFromString.GetPayloadType());
             ValueOutRangeErrorPayload p = e.Payload as ValueOutRangeErrorPayload;

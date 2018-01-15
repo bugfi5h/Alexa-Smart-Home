@@ -4,6 +4,7 @@ using RKon.Alexa.NET.JsonObjects;
 using RKon.Alexa.NET.Payloads;
 using RKon.Alexa.NET.Request;
 using RKon.Alexa.NET.Response;
+using RKon.Alexa.NET.JsonObjects.Scopes;
 using RKon.Alexa.NET.Types;
 using System.Collections.Generic;
 using Xunit;
@@ -46,7 +47,8 @@ namespace RKon.Alexa.Net.Tests.V3.Requests
             Assert.NotNull(payload);
             Assert.NotNull(payload.Scope);
             Assert.Equal(ScopeTypes.BearerToken, payload.Scope.Type);
-            Assert.Equal("access-token-from-skill", payload.Scope.Token);
+            NET.JsonObjects.Scopes.BearerToken token = payload.Scope as NET.JsonObjects.Scopes.BearerToken;
+            Assert.Equal("access-token-from-skill", token.Token);
         }
         #endregion
         #region DiscoveryResponse
