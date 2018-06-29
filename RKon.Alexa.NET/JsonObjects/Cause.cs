@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects
@@ -13,7 +12,6 @@ namespace RKon.Alexa.NET.JsonObjects
         /// Specifies the cause of the change
         /// </summary>
         [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public CauseTypes Type { get; set; }
 
         /// <summary>

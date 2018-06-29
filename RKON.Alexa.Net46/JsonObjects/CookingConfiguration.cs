@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using RKon.Alexa.NET.Types;
+using RKon.Alexa.NET46.Types;
 using System.Collections.Generic;
 
-namespace RKon.Alexa.NET.JsonObjects
+namespace RKon.Alexa.NET46.JsonObjects
 {
     /// <summary>
     /// Configuration Payload In addition to the standard discovery format, the Cooking discovery response should include a configuration object

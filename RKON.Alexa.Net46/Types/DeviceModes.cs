@@ -1,8 +1,12 @@
-﻿namespace RKon.Alexa.NET46.Types
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// List of all ThermostatModes
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ThermostatModes
     {
         /// <summary>
@@ -33,6 +37,7 @@
     /// <summary>
     ///List of all Lockstates
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum LockModes
     {
         /// <summary>
@@ -52,6 +57,7 @@
     /// <summary>
     /// List of all Powerstates
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PowerStates
     {
         /// <summary>
@@ -67,6 +73,7 @@
     /// <summary>
     /// List of all ErrorColorTemperature modes
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ColorTemperatureModes
     {
         /// <summary>

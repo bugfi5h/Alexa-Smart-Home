@@ -1,8 +1,12 @@
-﻿namespace RKon.Alexa.NET46.Types
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// Describes the authorization type. 
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CameraAuthorizationTypes
     {
         /// <summary>

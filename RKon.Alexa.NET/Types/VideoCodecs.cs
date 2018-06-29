@@ -1,8 +1,12 @@
-﻿namespace RKon.Alexa.NET.Types
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// The video codec for the stream.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum VideoCodecs
     {
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Payloads
@@ -15,7 +14,6 @@ namespace RKon.Alexa.NET.Payloads
         /// </summary>
         [JsonProperty("type")]
         [JsonRequired]
-        [JsonConverter(typeof(StringEnumConverter))]
         public ErrorTypes Type { get; set; }
 
         /// <summary>

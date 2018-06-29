@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace RKon.Alexa.NET.Types
+namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// Represents the a cooking mode for a cooking appliance like a microwave oven. 

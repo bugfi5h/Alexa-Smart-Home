@@ -1,8 +1,12 @@
-﻿namespace RKon.Alexa.NET46.Types
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// The audio code for the stream
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum AudioCodecs
     {
         /// <summary>

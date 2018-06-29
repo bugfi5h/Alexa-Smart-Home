@@ -14,7 +14,6 @@ namespace RKon.Alexa.NET46.JsonObjects.Scopes
         /// The Type of the Scope
         /// </summary>
         [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public ScopeTypes Type { get; set; }
         
         /// <summary>

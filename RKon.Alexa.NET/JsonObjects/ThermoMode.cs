@@ -13,7 +13,6 @@ namespace RKon.Alexa.NET.JsonObjects
         /// Indicates the desired thermostat mode for the device. Supported values: “AUTO”, “COOL”, “ECO”, “HEAT” and “OFF”
         /// </summary>
         [JsonProperty("value")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public ThermostatModes Value { get; set; }
 
         /// <summary>

@@ -1,10 +1,14 @@
 ﻿
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Possible error types
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ErrorTypes
     {
         /// <summary>
