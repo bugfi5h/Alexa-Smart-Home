@@ -1,6 +1,5 @@
 ﻿
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects.Grantee
@@ -15,7 +14,6 @@ namespace RKon.Alexa.NET.JsonObjects.Grantee
         /// The Type of the Scope (Has to be changed in the future if it gets other types as Scope
         /// </summary>
         [JsonProperty("type")]
-        [JsonConverter(typeof(StringEnumConverter))]
         public GranteeTypes Type { get; set; }
     }
 }

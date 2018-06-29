@@ -1,8 +1,12 @@
-﻿namespace RKon.Alexa.NET.Types
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Indicates the temperature scale for the temperature value
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Scale
     {
         /// <summary>

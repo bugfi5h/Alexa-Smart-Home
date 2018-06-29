@@ -57,6 +57,7 @@
     <Compile Include="JsonObjects\Color.cs" />
     <Compile Include="JsonObjects\ColorTemperature.cs" />
     <Compile Include="JsonObjects\ConnectivityProperty.cs" />
+    <Compile Include="JsonObjects\CookingConfiguration.cs" />
     <Compile Include="JsonObjects\Endpoint.cs" />
     <Compile Include="JsonObjects\Grant.cs" />
     <Compile Include="JsonObjects\Grantee\BearerToken.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Types\CapabilitiyTypes.cs" />
     <Compile Include="Types\CauseTypes.cs" />
     <Compile Include="Types\ConnectivityModes.cs" />
+    <Compile Include="Types\CookingModes.cs" />
     <Compile Include="Types\DeviceModes.cs" />
     <Compile Include="Types\DisplayCategories.cs" />
     <Compile Include="Types\ErrorTypes.cs" />

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects
@@ -15,7 +14,6 @@ namespace RKon.Alexa.NET.JsonObjects
         /// </summary>
         [JsonProperty("type")]
         [JsonRequired]
-        [JsonConverter(typeof(StringEnumConverter))]
         public CapabilitiyTypes Type { get; set; }
     }
 }

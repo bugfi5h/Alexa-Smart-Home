@@ -1,9 +1,13 @@
 ﻿
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Supported Types of Scopes
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ScopeTypes
     {
         /// <summary>

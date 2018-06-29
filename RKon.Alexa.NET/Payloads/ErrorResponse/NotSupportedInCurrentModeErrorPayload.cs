@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.Payloads
@@ -14,7 +13,6 @@ namespace RKon.Alexa.NET.Payloads
         /// </summary>
         [JsonProperty("currentDeviceMode ")]
         [JsonRequired]
-        [JsonConverter(typeof(StringEnumConverter))]
         public ColorTemperatureModes CurrentDeviceMode { get; set; }
     }
 }

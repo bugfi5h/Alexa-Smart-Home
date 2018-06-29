@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace RKon.Alexa.NET46.Types
 {
     /// <summary>
     /// The cause attribute is used to describe the cause of a property value change when you send a ChangeReport event. It is a polymorphic type with the following descendant types:
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CauseTypes
     {
         /// <summary>

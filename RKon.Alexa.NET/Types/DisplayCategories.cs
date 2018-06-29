@@ -1,8 +1,12 @@
-﻿namespace RKon.Alexa.NET.Types
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace RKon.Alexa.NET.Types
 {
     /// <summary>
     /// Available DisplayCategories
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DisplayCategory
     {
         /// <summary>

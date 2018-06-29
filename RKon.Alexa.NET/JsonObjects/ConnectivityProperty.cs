@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using RKon.Alexa.NET.Types;
 
 namespace RKon.Alexa.NET.JsonObjects
@@ -14,7 +13,6 @@ namespace RKon.Alexa.NET.JsonObjects
         /// </summary>
         [JsonProperty("value")]
         [JsonRequired]
-        [JsonConverter(typeof(StringEnumConverter))]
         public ConnectivityModes Value { get; set; }
 
 
